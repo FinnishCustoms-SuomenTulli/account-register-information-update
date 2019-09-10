@@ -61,7 +61,7 @@ Tässä luvussa on esitettu pankki- ja maksutilitietojen toimittaminen vuokaavio
 
 Kuvassa 2.1 on esitetty vuokaaviona pankki- ja maksutilitietojen toimittaminen tilirekisteriin.
 
-![Pankki- ja maksutilitietojen toimittaminen](diagrams/flowchart_update_08.png "Pankki- ja maksutilitietojen toimittaminen")  
+![Pankki- ja maksutilitietojen toimittaminen](diagrams/flowchart_update.png "Pankki- ja maksutilitietojen toimittaminen")  
 *__Kuva 2.1.__ Pankki- ja maksutilitietojen toimittaminen*
 
 Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bodyssa palautetaan joko tieto onnistuneesta päivityksestä tai virheestä esimerkiksi sanoman validoinnissa.
