@@ -2,12 +2,6 @@
 
 *Dokumentin versio 0.8*
 
-[English translation](https://github.com/FinnishCustoms-SuomenTulli/Tilirekisteri/blob/master/rajapintakuvaus_en.pdf)
-
-[Svensk översättning](https://github.com/FinnishCustoms-SuomenTulli/Tilirekisteri/blob/master/rajapintakuvaus_sv.pdf)
-
-Huom. käännösten versiot tulevat pienellä viiveellä suomenkieliseen rajapintakuvaukseen verrattuna.
-
 ## Versiohistoria
 
 Versio|Päivämäärä|Kuvaus|Tekijä
