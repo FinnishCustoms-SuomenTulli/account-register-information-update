@@ -80,7 +80,7 @@ Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
 Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId propertyssa.
 
-Erikseen määriteltyjen (ks. alla) tietueiden tulee sisältää `servicerIssuedId` property, joka on mikä tahansa tietojen toimittajan antama hyvien tapojen mukainen yksiselitteinen tunniste tietueelle merkkijonona. Esimerkiksi UUIDv4 on hyvä `servicerIssuedId`. Tämän propertyn perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa.
+Erikseen määriteltyjen (ks. [Tietueiden määritykset](#tietueet)) tietueiden tulee sisältää `servicerIssuedId` property, joka on tietojen toimittajan antama yksiselitteinen tunniste tietueelle merkkijonona. Tulli ei myönnä näitä tunnisteita vaan ne ovat tietojen toimittajan luomia tunnisteita joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän `servicerIssuedId` propertyn perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki hyvästä yksilöivästä tunnisteesta on UUIDv4 (Universally unique identifier). Myös muut hyvien tapojen mukaiset formaatit yksilöivälle tunnisteelle ovat sallittuja.
 
 Tili-, asiakkuus-, ja tallelokeroihin liittyvät roolitiedot ja henkilötiedot voidaan merkitä virheelliseksi asettamalla `disputed` property arvoon true. Tällöin uusin versio tiedosta merkitään "virheelliseksi ilmoitettu" -tilaan alkaen sanoman saapumispäivämäärästä.
 
@@ -154,7 +154,7 @@ Body
 
 
 
-#### <a name="Customer"></a> Tietueiden määritykset
+#### <a name="tietueet"></a> Tietueiden määritykset
 
 Customer
 ```
