@@ -41,7 +41,7 @@ Tämä dokumentti on pankki- ja maksutilirekisterin päivitysrajapinnan rajapint
 
 ### 1.3 Yleiskuvaus
 
-Tulli on perustanut Tilirekisterihankkeen, joka toteuttaa (EU) 2018/843 direktiivin ja sen täytäntöön panemiseksi säädetyn, Suomen lainsäädäntöön perustuvan pankki- ja maksutilien valvontajärjestelmän.
+Tämä dokumentti on osa Tullin julkaisemaa määräystä pankki- ja maksutilien valvontajärjestelmästä. Dokumentin tarkoitus on antaa ohjeet tiedon luovuttajille pankki- ja maksutilirekisterin (myöhemmin Tilirekisteri) päivitysrajapinnan toteuttamiseen. Tätä dokumenttia täydentää Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohje.
 
 Järjestelmä koostuu kahdesta osasta: pankki- ja maksutilirekisteristä sekä tiedonhakujärjestelmästä. 
 
@@ -64,7 +64,11 @@ Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bod
   
 ### 3.1 Tunnistaminen
 
-Tarkentuu.
+Lähtevät sanomat tulee automaattisesti allekirjoittaa käyttäen x.509 järjestelmäallekirjoitusvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV tunnus. Ilmoitusvelvollisen valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka ilmoitusvelvollinen on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
+
+Tilirekisteristä saapuvien sanomien allekirjoitus tulee hyväksyä, edellyttäen että <br />a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla <br />b) varmenteen Subject-kentän serialNumber attribuuttina on Tullin y-tunnus "0245442-8" tai kirjaimet FI ja Tullin y-tunnuksen numero-osa: "FI02454428", esim. Tullin varmenteessa tulee lukea "Subject: CN=ws.tulli.fi, serialNumber=FI02454428, O=Tulli ja L=Helsinki.
+
+Tietoliikenne tulee suojata (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen tulee käyttää asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin: <br />a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja <br />b) varmenteen Subject-kentän serialNumber attributti on "FI02454428" tai "0245442-8".
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarkempi sanomien allekirjoitusten kuvaus lisätään tähän dokumenttiin myöhemmin.
 
