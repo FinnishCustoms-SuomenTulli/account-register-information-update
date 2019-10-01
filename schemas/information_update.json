@@ -306,12 +306,12 @@
       "type": "object",
       "description": "Tallelokero",
       "required": [
-        "identifier",
+        "id",
         "startDate",
         "roles"
       ],
       "properties": {
-        "identifier": {
+        "id": {
           "type": "string",
           "description": "Tallelokeron tunniste.",
           "examples": [
