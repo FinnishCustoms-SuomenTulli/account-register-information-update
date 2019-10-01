@@ -111,7 +111,7 @@ Objekti {
 
 Alla on kuvattu endpointin vastaanottama ja palauttama sanomarakenne. Pakolliset tietueet merkitty tähdellä (*). Valinta merkitty kahdella tähdellä (**).
 
-JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](https://github.com/FinnishCustoms-SuomenTulli/account-register-information-update/blob/TR-220/schemas/information_update.json).
+JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](schemas/information_update.json).
 
 #### Request bodyn määritys
 ```
