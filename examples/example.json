@@ -146,7 +146,7 @@
             "id": "9827787-8",
             "description": "AssociationRegistrationNumber"
           },
-          "name": "Yritys Oyj",
+          "name": "Yhdistys Ry",
           "beneficiaries": [{
               "startDate": "1989-11-12",
               "type": "beneficiary",
@@ -378,7 +378,7 @@
               "id": "9827787-8",
               "description": "AssociationRegistrationNumber"
             },
-            "name": "Yritys Oyj",
+            "name": "Yhdistys Ry",
             "beneficiaries": [{
                 "startDate": "1989-11-12",
                 "type": "beneficiary",
