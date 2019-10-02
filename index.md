@@ -32,7 +32,7 @@ Versio|Päivämäärä|Kuvaus|Tekijä
 Lyhenne tai termi|Selite
 ---|---
 Rajapinta|Standardin mukainen käytäntö tai yhtymäkohta, joka mahdollistaa tietojen siirron laitteiden, ohjelmien tai käyttäjän välillä. 
-WS (Web Service)|Verkkopalvelimessa toimiva ohjelmisto, joka tarjoaa standardoitujen internetyhteyskäytäntöjen avulla palveluja sovellusten käytettäväksi. Tilirekisterin tarjoamia palveluja ovat tietojen toimittaminen, tietopyyntö, ja tietojen kysely. Tiedonhakujärjestelmä tarjoaa palveluna tietojen kyselyn.
+WS (Web Service)|Verkkopalvelimessa toimiva ohjelmisto, joka tarjoaa standardoitujen internetyhteyskäytäntöjen avulla palveluja sovellusten käytettäväksi. Tilirekisterin tarjoamia palveluja ovat tietojen toimittaminen, tietopyyntö ja tietojen kysely. Tiedonhakujärjestelmä tarjoaa palveluna tietojen kyselyn.
 Endpoint|Rajapintapalvelu, joka on saatavilla tietyssä verkko-osoitteessa
 
 ### 1.2 Dokumentin tarkoitus ja kattavuus
@@ -45,15 +45,15 @@ Tämä dokumentti on osa Tullin julkaisemaa määräystä pankki- ja maksutilien
 
 Järjestelmä koostuu kahdesta osasta: pankki- ja maksutilirekisteristä sekä tiedonhakujärjestelmästä. 
 
-Tässä dokumentissa kuvataan tilirekisterin päivitysrajapinta.
+Tässä dokumentissa kuvataan Tilirekisterin päivitysrajapinta.
 
 ## 2. Aktiviteettien kuvaus <a name="luku2"></a>
 
 Tässä luvussa on esitettu pankki- ja maksutilitietojen toimittaminen vuokaavioina.
 
-### 2.1 Pankki- ja maksutilitietojen toimittaminen tilirekisteriin
+### 2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin
 
-Kuvassa 2.1 on esitetty vuokaaviona pankki- ja maksutilitietojen toimittaminen tilirekisteriin.
+Kuvassa 2.1 on esitetty vuokaaviona pankki- ja maksutilitietojen toimittaminen Tilirekisteriin.
 
 ![Pankki- ja maksutilitietojen toimittaminen](diagrams/flowchart_update.png "Pankki- ja maksutilitietojen toimittaminen")  
 *__Kuva 2.1.__ Pankki- ja maksutilitietojen toimittaminen*
@@ -64,11 +64,11 @@ Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bod
   
 ### 3.1 Tunnistaminen
 
-Lähtevät sanomat tulee automaattisesti allekirjoittaa käyttäen x.509 järjestelmäallekirjoitusvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV tunnus. Ilmoitusvelvollisen valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka ilmoitusvelvollinen on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
+Lähtevät sanomat tulee automaattisesti allekirjoittaa käyttäen x.509 järjestelmäallekirjoitusvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollisen valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka ilmoitusvelvollinen on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
 
 Tilirekisteristä saapuvien sanomien allekirjoitus tulee hyväksyä, edellyttäen että  a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  b) varmenteen Subject-kentän serialNumber attribuuttina on Tullin y-tunnus "0245442-8" tai kirjaimet FI ja Tullin y-tunnuksen numero-osa: "FI02454428", esim. Tullin varmenteessa tulee lukea "Subject: CN=ws.tulli.fi, serialNumber=FI02454428, O=Tulli ja L=Helsinki.
 
-Tietoliikenne tulee suojata (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen tulee käyttää asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja  b) varmenteen Subject-kentän serialNumber attributti on "FI02454428" tai "0245442-8".
+Tietoliikenne tulee suojata (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen tulee käyttää asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja  b) varmenteen Subject-kentän serialNumber attributti on "FI02454428" tai "0245442-8".
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarkempi sanomien allekirjoitusten kuvaus lisätään tähän dokumenttiin myöhemmin.
 
@@ -84,7 +84,7 @@ Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
 Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId propertyssa.
 
-Erikseen määriteltyjen (ks. [Tietueiden määritykset](#tietueet)) tietueiden tulee sisältää `servicerIssuedId` property, joka on tietojen toimittajan antama yksiselitteinen tunniste tietueelle merkkijonona. Tulli ei myönnä näitä tunnisteita vaan ne ovat tietojen toimittajan luomia tunnisteita joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän `servicerIssuedId` propertyn perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki hyvästä yksilöivästä tunnisteesta on UUIDv4 (Universally unique identifier). Myös muut hyvien tapojen mukaiset formaatit yksilöivälle tunnisteelle ovat sallittuja.
+Erikseen määriteltyjen (ks. [Tietueiden määritykset](#tietueet)) tietueiden tulee sisältää `servicerIssuedId` property, joka on tietojen toimittajan antama yksiselitteinen tunniste tietueelle merkkijonona. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän `servicerIssuedId` propertyn perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki hyvästä yksilöivästä tunnisteesta on UUIDv4 (Universally unique identifier). Myös muut hyvien tapojen mukaiset formaatit yksilöivälle tunnisteelle ovat sallittuja.
 
 Tili-, asiakkuus-, ja tallelokeroihin liittyvät roolitiedot ja henkilötiedot voidaan merkitä virheelliseksi asettamalla `disputed` property arvoon true. Tällöin uusin versio tiedosta merkitään "virheelliseksi ilmoitettu" -tilaan alkaen sanoman saapumispäivämäärästä.
 
@@ -94,9 +94,9 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
-POST|/information-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen tilirekisteriin.|
+POST|/information-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 
-Endpointia käytetään tietojen toimittamiseen tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
+Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
 
 ### Notaatio
 
