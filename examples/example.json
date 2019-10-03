@@ -7,6 +7,7 @@
       "identification": {
         "organisation": {
           "servicerIssuedId": "5d892fac-07f0-465f-ab6a-af88a1d922ba",
+          "registrationDate": "1991-03-16",
           "registrationAuthority": "PRH",
           "businessId": "4276521-2",
           "businessIdCountryCode": "FI",
@@ -141,7 +142,6 @@
       "identification": {
         "organisation": {
           "servicerIssuedId": "279aeafc-528e-4f81-b79c-ecc8b0aafd4c",
-          "registrationAuthority": "PRH",
           "otherOrganisationId": {
             "id": "9827787-8",
             "description": "AssociationRegistrationNumber"
@@ -198,6 +198,7 @@
         "identification": {
           "organisation": {
             "servicerIssuedId": "5d892fac-07f0-465f-ab6a-af88a1d922ba",
+            "registrationDate": "1991-03-16",
             "registrationAuthority": "PRH",
             "businessId": "4276521-2",
             "businessIdCountryCode": "FI",
@@ -373,7 +374,6 @@
         "identification": {
           "organisation": {
             "servicerIssuedId": "279aeafc-528e-4f81-b79c-ecc8b0aafd4c",
-            "registrationAuthority": "PRH",
             "otherOrganisationId": {
               "id": "9827787-8",
               "description": "AssociationRegistrationNumber"

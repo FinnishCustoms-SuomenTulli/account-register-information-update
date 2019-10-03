@@ -255,7 +255,8 @@ Organisation
 ```
 Organisation {
   servicerIssuedId*         string
-  registrationAuthority*    string
+  registrationDate          date-time
+  registrationAuthority     string
   businessId**              string
   businessIdCountryCode*    string
   otherOrganisationId**     OtherOrganisationId
