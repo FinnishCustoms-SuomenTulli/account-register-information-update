@@ -117,14 +117,12 @@
           "required": [
             "businessId",
             "businessIdCountryCode",
-            "registrationAuthority",
             "beneficiaries"
           ]
         },
         {
           "required": [
             "otherOrganisationId",
-            "registrationAuthority",
             "beneficiaries"
           ]
         }
@@ -143,6 +141,10 @@
         "registrationAuthority": {
           "type": "string",
           "description": "Rekisteriviranomainen"
+        },
+        "registrationDate": {
+          "description": "Rekisteröitymispäivä",
+          "$ref": "#/definitions/date"
         },
         "beneficiaries": {
           "type": "array",
