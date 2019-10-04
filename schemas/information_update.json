@@ -117,13 +117,13 @@
           "required": [
             "businessId",
             "businessIdCountryCode",
-            "beneficiaries"
+            "roles"
           ]
         },
         {
           "required": [
             "otherOrganisationId",
-            "beneficiaries"
+            "roles"
           ]
         }
       ],
@@ -146,10 +146,10 @@
           "description": "Rekisteröitymispäivä",
           "$ref": "#/definitions/date"
         },
-        "beneficiaries": {
+        "roles": {
           "type": "array",
-          "description": "Edunsaajat. Taulukko oikeussubjektien tunnisteita.",
-          "items": { "$ref": "#/definitions/uuidv4" }
+          "description": "Edunsaajat. Roolin tyyppinä aina beneficiary.",
+          "items": { "$ref": "#/definitions/role" }
         },
         "name": {
           "type": "string",
