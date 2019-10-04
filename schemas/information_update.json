@@ -1,18 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "creationDateTime",
+    "senderBusinessId"
+  ],
   "definitions": {
     "account": {
       "type": "object",
       "description": "Tili",
       "required": [
         "id",
-        "servicerIssuedId",
         "openingDate",
         "roles"
       ],
       "properties": {
         "id": { "$ref": "#/definitions/accountIdentification" },
-        "servicerIssuedId": { "$ref": "#/definitions/servicerIssuedId" },
         "openingDate": {
           "description": "Tilin avauspäivämäärä.",
           "$ref": "#/definitions/date"
@@ -68,8 +70,7 @@
       "type": "object",
       "description": "Asiakkuus",
       "required": [
-        "startDate",
-        "identification"
+        "startDate"
       ],
       "properties": {
         "startDate": {
@@ -79,8 +80,7 @@
         "endDate": {
           "description": "Asiakkuuden päättymispäivämäärä.",
           "$ref": "#/definitions/date"
-        },
-        "identification": { "$ref": "#/definitions/identification" }
+        }
       }
     },
     "date": {
@@ -89,12 +89,7 @@
         "2019-08-17"
       ]
     },
-    "disputed": {
-      "type": "boolean",
-      "description": "Tietueeseen liittyvien tietojen ilmoittaminen virheelliseksi/kiistanalaiseksi.",
-      "default": false
-    },
-    "identification": {
+    "legalPerson": {
       "type": "object",
       "description": "Oikeussubjekti joka on aina oikeushenkilö tai luonnollinen henkilö.",
       "properties": {
@@ -120,26 +115,21 @@
       "oneOf": [
         {
           "required": [
-            "servicerIssuedId",
             "businessId",
             "businessIdCountryCode",
             "registrationAuthority",
-            "beneficiaries",
-            "disputed"
+            "beneficiaries"
           ]
         },
         {
           "required": [
-            "servicerIssuedId",
             "otherOrganisationId",
             "registrationAuthority",
-            "beneficiaries",
-            "disputed"
+            "beneficiaries"
           ]
         }
       ],
       "properties": {
-        "servicerIssuedId": { "$ref": "#/definitions/servicerIssuedId" },
         "businessId": { "$ref": "#/definitions/businessId" },
         "businessIdCountryCode": {
           "type": "string",
@@ -156,15 +146,14 @@
         },
         "beneficiaries": {
           "type": "array",
-          "description": "Edunsaajat. Taulukko role tietueita, joissa roolin tyyppinä 'beneficiary'.",
-          "items": { "$ref": "#/definitions/role" }
+          "description": "Edunsaajat. Taulukko oikeussubjektien tunnisteita.",
+          "items": { "$ref": "#/definitions/uuidv4" }
         },
         "name": {
           "type": "string",
           "description": "Organisaation nimi."
         },
-        "otherOrganisationId": { "$ref": "#/definitions/otherOrganisationId" },
-        "disputed": { "$ref": "#/definitions/disputed" }
+        "otherOrganisationId": { "$ref": "#/definitions/otherOrganisationId" }
       }
     },
     "otherAccountIdentification": {
@@ -211,29 +200,24 @@
       "oneOf": [
         {
           "required": [
-            "servicerIssuedId",
             "lastName",
             "firstNames",
             "birthdate",
             "nationality",
-            "hetu",
-            "disputed"
+            "hetu"
           ]
         },
         {
           "required": [
-            "servicerIssuedId",
             "lastName",
             "firstNames",
             "birthdate",
             "nationality",
-            "identificationDocumentId",
-            "disputed"
+            "identificationDocumentId"
           ]
         }
       ],
       "properties": {
-        "servicerIssuedId": { "$ref": "#/definitions/servicerIssuedId" },
         "lastName": {
           "type": "string",
           "description": "Sukunimi",
@@ -271,8 +255,7 @@
         "identificationDocumentId": {
           "type": "string",
           "description": "Henkilöllisyystodistuksen tunniste (käytetään jos henkilöturvatunnusta ei ole)."
-        },
-        "disputed": { "$ref": "#/definitions/disputed" }
+        }
       }
     },
     "role": {
@@ -281,8 +264,7 @@
       "required": [
         "startDate",
         "type",
-        "disputed",
-        "identification"
+        "legalPersonId"
       ],
       "properties": {
         "startDate": {
@@ -298,8 +280,10 @@
           "description": "Roolin tyyppi.",
           "enum": ["owner", "access", "beneficiary"]
         },
-        "disputed": { "$ref": "#/definitions/disputed" },
-        "identification": { "$ref": "#/definitions/identification" }
+        "legalPersonId": {
+          "description": "Oikeussubjektin tunniste",
+          "$ref": "#/definitions/uuidv4"
+        }
       }
     },
     "safetyDepositBox": {
@@ -333,51 +317,56 @@
         }
       }
     },
-    "servicerIssuedId": {
+    "uuidv4": {
       "type": "string",
-      "description": "Yksiselitteinen tunniste tietueelle, esim UUIDv4.",
+      "description": "Yksiselitteinen tunniste tietueelle. UUIDv4.",
       "examples": [
-        "5c1ed923-5eb0-4e7e-aebe-5fd35b6bb421"
+        "91e8c532-71e1-4c4f-bf30-ceec6160ece0"
       ]
     }
   },
-  "type": "object",
-  "title": "Information update schema",
-  "description": "Päivityssanoman rakenne.",
-  "required": [
-    "creationDateTime",
-    "senderBusinessId",
-    "messageSerialNumber"
-  ],
   "properties": {
     "creationDateTime": {
+      "$id": "#/properties/creationDateTime",
       "description": "Päivityssanoman päivämäärä.",
       "$ref": "#/definitions/date"
     },
     "senderBusinessId": {
+      "$id": "#/properties/senderBusinessId",
       "description": "Lähettäjän y-tunnus.",
       "$ref": "#/definitions/businessId"
     },
-    "messageSerialNumber": {
-      "type": "integer",
-      "description": "Sarjanumero, jota käytetään varmistamaan, ettei sanomia ole jäänyt saapumatta.",
-      "examples": [1, 2, 3],
-      "minimum": 1
+    "legalPersons": {
+      "$id": "#/properties/legalPersons",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/legalPerson"
+      },
+      "description": "Oikeussubjektit"
     },
     "customers": {
-      "type": "array",
-      "description": "Asiakkuudet. Taulukko Customer-tietueita.",
-      "items": { "$ref": "#/definitions/customer" }
+      "$id": "#/properties/customers",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/customer"
+      },
+      "description": "Asiakkuudet"
     },
     "accounts": {
-      "type": "array",
-      "description": "Tilit. Taulukko Account-tietueita.",
-      "items": { "$ref": "#/definitions/account" }
+      "$id": "#/properties/accounts",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/account"
+      },
+      "description": "Tilit"
     },
     "safetyDepositBoxes": {
-      "type": "array",
-      "description": "Tallelokerot. Taulukko SafetyDepositBox-tietueita.",
-      "items": { "$ref": "#/definitions/safetyDepositBox" }
+      "$id": "#/properties/safetyDepositBoxes",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/safetyDepositBox"
+      },
+      "description": "Tallelokerot"
     }
   }
 }
