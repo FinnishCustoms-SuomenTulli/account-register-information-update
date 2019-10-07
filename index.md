@@ -88,8 +88,6 @@ Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessI
 
 Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#sanomarakenne).
 
-Tili-, asiakkuus-, ja tallelokeroihin liittyvät roolitiedot ja henkilötiedot voidaan merkitä virheelliseksi asettamalla `disputed` property arvoon true. Tällöin uusin versio tiedosta merkitään "virheelliseksi ilmoitettu" -tilaan alkaen sanoman saapumispäivämäärästä.
-
 Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi erillisillä sanomilla ja endpointeilla. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
 
 Seuraavassa taulukossa on listattu rajapinnan endpointit.
