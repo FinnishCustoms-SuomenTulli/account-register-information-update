@@ -34,6 +34,8 @@ Lyhenne tai termi|Selite
 Rajapinta|Standardin mukainen käytäntö tai yhtymäkohta, joka mahdollistaa tietojen siirron laitteiden, ohjelmien tai käyttäjän välillä. 
 WS (Web Service)|Verkkopalvelimessa toimiva ohjelmisto, joka tarjoaa standardoitujen internetyhteyskäytäntöjen avulla palveluja sovellusten käytettäväksi. Tilirekisterin tarjoamia palveluja ovat tietojen toimittaminen, tietopyyntö ja tietojen kysely. Tiedonhakujärjestelmä tarjoaa palveluna tietojen kyselyn.
 Endpoint|Rajapintapalvelu, joka on saatavilla tietyssä verkko-osoitteessa
+REST|(Representational State Transfer) HTTP-protokollaan perustuva arkkitehtuurimalli ohjelmointirajapintojen toteuttamiseen.
+JSON|(JavaScript Object Notation) avoimen standardin tiedostomuoto tiedonvälitykseen.
 
 ### 1.2 Dokumentin tarkoitus ja kattavuus
 
@@ -41,7 +43,7 @@ Tämä dokumentti on pankki- ja maksutilirekisterin päivitysrajapinnan rajapint
 
 ### 1.3 Yleiskuvaus
 
-Tämä dokumentti on osa Tullin julkaisemaa määräystä pankki- ja maksutilien valvontajärjestelmästä. Dokumentin tarkoitus on antaa ohjeet tiedon luovuttajille pankki- ja maksutilirekisterin (myöhemmin Tilirekisteri) päivitysrajapinnan toteuttamiseen. Tätä dokumenttia täydentää Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohje.
+Tämä dokumentti on osa Tullin määräystä pankki- ja maksutilien valvontajärjestelmästä. Dokumentin tarkoitus on antaa ohjeet tiedon luovuttajille pankki- ja maksutilirekisterin (myöhemmin Tilirekisteri) päivitysrajapinnan toteuttamiseen. Tätä dokumenttia täydentää Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohje.
 
 Järjestelmä koostuu kahdesta osasta: pankki- ja maksutilirekisteristä sekä tiedonhakujärjestelmästä. 
 
@@ -49,7 +51,7 @@ Tässä dokumentissa kuvataan Tilirekisterin päivitysrajapinta.
 
 ## 2. Aktiviteettien kuvaus <a name="luku2"></a>
 
-Tässä luvussa on esitettu pankki- ja maksutilitietojen toimittaminen vuokaavioina.
+Tässä luvussa on esitetty pankki- ja maksutilitietojen toimittaminen vuokaavioina.
 
 ### 2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin
 
@@ -68,7 +70,7 @@ Lähtevät sanomat tulee automaattisesti allekirjoittaa käyttäen x.509 järjes
 
 Tilirekisteristä saapuvien sanomien allekirjoitus tulee hyväksyä, edellyttäen että  a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  b) varmenteen Subject-kentän serialNumber attribuuttina on Tullin y-tunnus "0245442-8" tai kirjaimet FI ja Tullin y-tunnuksen numero-osa: "FI02454428", esim. Tullin varmenteessa tulee lukea "Subject: CN=ws.tulli.fi, serialNumber=FI02454428, O=Tulli ja L=Helsinki.
 
-Tietoliikenne tulee suojata (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen tulee käyttää asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja  b) varmenteen Subject-kentän serialNumber attributti on "FI02454428" tai "0245442-8".
+Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen on käytettävä asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja  b) varmenteen Subject-kentän serialNumber attribuutti on "FI02454428" tai "0245442-8".
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarkempi sanomien allekirjoitusten kuvaus lisätään tähän dokumenttiin myöhemmin.
 
@@ -76,25 +78,27 @@ Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarke
 
 Päivitysrajapinta toteutetaan REST/JSON-menetelmällä.
 
-Rajapinnan käyttäjän (tiedon luovuttajan) on lähetettävä vähintään yksi (1) minimisanoma (ks. alla *-merkityt kentät täytetty) määritellyssä ajassa, esim. kerran kuukaudessa (watchdog timer reset). Jos yhtään viestiä ei tänä aikana toimiteta, lähetetään vianselvittämispyyntö. Jos tähän ei määritellyssä ajassa reagoida, aloitetaan sanktiomenettely.
+Rajapinnan käyttäjän (tiedon toimittajan) on lähetettävä vähintään yksi (1) minimisanoma (ks. alla *-merkityt kentät täytetty) määritellyssä ajassa, esim. kerran kuukaudessa (watchdog timer reset). Jos yhtään viestiä ei tänä aikana toimiteta, lähetetään vianselvittämispyyntö. Jos tähän ei määritellyssä ajassa reagoida, aloitetaan sanktiomenettely.
 
 Kyselysanomat allekirjoitetaan JWS-allekirjoituksella (PKI, tarkentuu myöhemmin).
 
-Jokaisessa sanomassa tulee olla mukana luontipäivämäärä. 
+Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
-Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId propertyssa.
+Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId property-kentässä.
 
-Erikseen määriteltyjen (ks. [Tietueiden määritykset](#tietueet)) tietueiden tulee sisältää `servicerIssuedId` property, joka on tietojen toimittajan antama yksiselitteinen tunniste tietueelle merkkijonona. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän `servicerIssuedId` propertyn perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki hyvästä yksilöivästä tunnisteesta on UUIDv4 (Universally unique identifier). Myös muut hyvien tapojen mukaiset formaatit yksilöivälle tunnisteelle ovat sallittuja.
+Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#sanomarakenne).
 
 Tili-, asiakkuus-, ja tallelokeroihin liittyvät roolitiedot ja henkilötiedot voidaan merkitä virheelliseksi asettamalla `disputed` property arvoon true. Tällöin uusin versio tiedosta merkitään "virheelliseksi ilmoitettu" -tilaan alkaen sanoman saapumispäivämäärästä.
 
-Sanomassa tulee olla mukana sarjanumero. Sarjanumeroa käytetään varmistamaan, ettei sanomia ole jäänyt saapumatta.
+Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi erillisillä sanomilla ja endpointeilla. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
 
-Seuraavassa taulukossa on listattu rajapinnan endpointit. 
+Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
-POST|/information-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
+POST|/report-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
+POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tietojen oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi.|
+POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin lähettoimitetunetyn sanoman tiedot virheellisiksi.|
 
 Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
 
@@ -107,23 +111,17 @@ Objekti {
 }
 ```
 
-### Kuvaus
+### <a name="sanomarakenne"></a>Sanomarakenteen kuvaus
 
-Alla on kuvattu endpointin vastaanottama ja palauttama sanomarakenne. Pakolliset tietueet merkitty tähdellä (*). Valinta merkitty kahdella tähdellä (**).
+Esimerkkisanomat löytyvät alla olevista linkeistä:
 
-JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](schemas/information_update.json).
+[Päivityssanoma](examples/example.json)
 
-#### Request bodyn määritys
-```
-{ 
-  creationDateTime*         date-time
-  senderBusinessId*         string
-  messageSerialNumber*      integer
-  customers                 [ Customer ]
-  accounts                  [ Account ]
-  safetyDepositBoxes        [ SafetyDepositBox ]                   
-}
-```
+[Tiedon ilmoittaminen kiistanalaiseksi](examples/report-disputable.json)
+
+[Tiedon ilmoittaminen virheelliseksi](examples/report-incorrect.json)
+
+Päivityssanoman JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](schemas/information_update.json).
 
 #### <a name="InformationUpdate response"></a> HTTP vastaukset
 
@@ -155,136 +153,3 @@ Body
   errorMessage              string
 }
 ```
-
-
-
-#### <a name="tietueet"></a> Tietueiden määritykset
-
-Customer
-```
-Customer { 
-  startDate*                date-time
-  endDate                   date-time
-  identification*           Identification
-}
-```
-Account
-```
-Account {
-  id*                       AccountIdentification
-  servicerIssuedId*         string
-  openingDate*              date-time
-  closingDate               date-time
-  roles*                    [ Role ]
-}
-```
-
-```
-"roles": {
-    "type": "array",
-    "items": {
-        "type": "string"
-    },
-    "minItems": 1,
-    "uniqueItems": true
-}
-```
-
-AccountIdentification
-```
-AccountIdentification {
-  iban**                    string
-  other**                   OtherAccountIdentification
-}
-```
-OtherAccountIdentification
-```
-OtherAccountIdentification {
-  id*                       string
-  description*              string
-}
-```
-
-SafetyDepositBox
-```
-SafetyDepositBox {
-  id*                       string
-  servicerIssuedId*         string
-  startDate*                date-time
-  endDate                   date-time
-  roles*                    [ Role ]
-}
-```
-
-```
-"roles": {
-    "type": "array",
-    "items": {
-        "type": "string"
-    },
-    "minItems": 1,
-    "uniqueItems": true
-}
-```
-
-Identification
-```
-Identification {
-  organisation**            Organisation  
-  privatePerson**           PrivatePerson                         
-}
-```
-Role
-```
-Role {
-  startDate*                date-time
-  endDate                   date-time
-  role*                     RoleType
-  identification*           Identification
-  disputed                  boolean
-}
-```
-
-|RoleType|kuvaus|
-|:---|:---|
-|Owner|Omistaja|
-|Access|Käyttöoikeuden haltija|
-|Beneficiary|Edunsaaja|
-
-Organisation
-```
-Organisation {
-  servicerIssuedId*         string
-  registrationAuthority*    string
-  businessId**              string
-  businessIdCountryCode*    string
-  otherOrganisationId**     OtherOrganisationId
-  name                      string
-  beneficiaries*            [ Role ]   
-  disputed                  boolean
-}
-```
-Jos businessId on suomalainen Y-tunnus, businessIdCountryCode arvoksi asetetaan "FI". Jos Y-tunnusta tai vastaavaa ei ole saatavilla, annetaan otherOrganisationId. Jos yhdistyksellä ei ole Y-tunnusta, käytetään OtherOrganisationId: `{id: string, description: "AssociationRegistrationNumber"}`.
-
-OtherOrganisationId 
-```
-OtherOrganisationId {
-  id*                       string
-  description*              string
-}
-```
-
-PrivatePerson
-```
-PrivatePerson {
-  servicerIssuedId*         string
-  lastName*                 string
-  firstNames*               string
-  hetu**                    string
-  birthdate*                date-time
-  nationality*              string
-  identificationDocumentId**string
-  disputed                  boolean
-}
-```
-Suomalaisille henkilöille on liitettävä aina suomalainen henkilötunnus.
