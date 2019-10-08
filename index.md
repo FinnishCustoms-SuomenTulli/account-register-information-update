@@ -98,8 +98,8 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
 POST|/report-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
-POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tietojen oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi.|
-POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tiedot virheellisiksi.|
+POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tietojen oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /report-incorrect.|
+POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tiedot virheellisiksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 
 Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
 
