@@ -84,7 +84,7 @@ Kyselysanomat allekirjoitetaan JWS-allekirjoituksella (PKI, tarkentuu myöhemmin
 
 Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
-Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId property-kentässä.
+Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId kentässä.
 
 Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#sanomarakenne).
 
