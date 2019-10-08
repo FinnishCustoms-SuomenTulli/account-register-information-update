@@ -99,7 +99,7 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 |---|---|---|
 POST|/report-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tietojen oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi.|
-POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin lähettoimitetunetyn sanoman tiedot virheellisiksi.|
+POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tiedot virheellisiksi.|
 
 Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
 
