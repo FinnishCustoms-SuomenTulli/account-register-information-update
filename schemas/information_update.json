@@ -138,6 +138,10 @@
           "minLength": 2,
           "maxLength": 2
         },
+        "registrationDate": {
+          "description": "Rekisteröitymispäivä",
+          "$ref": "#/definitions/date"
+        },
         "registrationAuthority": {
           "type": "string",
           "description": "Rekisteriviranomainen"
