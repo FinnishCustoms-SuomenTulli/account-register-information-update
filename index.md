@@ -88,8 +88,45 @@ Päivitysrajapinnan yhteydet käyttävät HTTP-protokollan versiota 1.1.
 
 ### 3.4 Sanomatason allekirjoitus
 
-Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarkempi sanomien allekirjoitusten kuvaus lisätään tähän dokumenttiin myöhemmin.
+Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). JWS-allekirjoitukseen käytetään RS256 algoritmia ja ne allekirjoitetaan lähettäjän yksityisellä avaimella. Julkisen avaimen toimittamisesta Tullille ohjeistetaan Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohjeessa.
 
+Sanomassa on oltava kaksi erillistä JWS-allekirjoitusta (esimerkit alempana):  
+a) Authorization headerissa on oltava Bearer token JWS josta löytyy lähettäjän Y-tunnus.  
+b) Request bodyssa on oltava JWS jossa "reportUpdate" property sisältää [JSON skeeman](schemas/information_update.json) mukaisen päivityssanoman. 
+
+a) Authorization header JWS:
+
+JWT Header
+```
+{
+  "alg": "RS256",
+  "typ": "JWT"
+}
+```
+JWT Payload
+```
+{
+  "sub": "[SUBJECT]",
+  "senderBusinessId": "[BUSINESS_ID]"
+}
+```
+
+b) Request body JWS:
+
+JWT Header
+```
+{
+  "alg": "RS256",
+  "typ": "JWT"
+}
+```
+JWT Payload
+```
+{
+  "sub": "[SUBJECT]",
+  "reportUpdate": "[JSON STRING]"
+}
+```
 ### 3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
 
 Rajapinnan käyttäjä on velvollinen ilmoittamaan viivytyksettä käyttämiensä varmenteiden tai näiden salaisten avainten vaarantumisesta sekä varmenteen myöntäjälle että Tullille.
@@ -105,8 +142,6 @@ Rajapinnan sallittu maksimaalinen päivitystiheys ja sanomien koko lisätään t
 Päivitysrajapinta toteutetaan REST/JSON-menetelmällä.
 
 Rajapinnan käyttäjän (tiedon toimittajan) on lähetettävä vähintään yksi (1) minimisanoma (ks. alla *-merkityt kentät täytetty) määritellyssä ajassa, esim. kerran kuukaudessa (watchdog timer reset). Jos yhtään viestiä ei tänä aikana toimiteta, lähetetään vianselvittämispyyntö. Jos tähän ei määritellyssä ajassa reagoida, aloitetaan sanktiomenettely.
-
-Kyselysanomat allekirjoitetaan JWS-allekirjoituksella (PKI, tarkentuu myöhemmin).
 
 Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
