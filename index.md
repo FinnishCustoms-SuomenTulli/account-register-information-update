@@ -90,9 +90,11 @@ Päivitysrajapinnan yhteydet käyttävät HTTP-protokollan versiota 1.1.
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). JWS-allekirjoitukseen käytetään RS256 algoritmia ja ne allekirjoitetaan lähettäjän yksityisellä avaimella. Julkisen avaimen toimittamisesta Tullille ohjeistetaan Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohjeessa.
 
-Sanomassa on oltava kaksi erillistä JWS-allekirjoitusta (esimerkit alempana):  
+Päivityssanomassa on oltava kaksi erillistä JWS-allekirjoitusta (esimerkit alempana):  
 a) Authorization headerissa on oltava Bearer token JWS josta löytyy lähettäjän Y-tunnus.  
 b) Request bodyssa on oltava JWS jossa "reportUpdate" property sisältää [JSON skeeman](schemas/information_update.json) mukaisen päivityssanoman. 
+
+Virheellisen tai virheelliseksi epäillyn sanoman ilmoitus eroaa päivityssanomasta niin, että "reportUpdate" claim jää kokonaan pois ja sen tilalla on joko "reportDisputable" tai "reportIncorrect" tilanteesta riippuen ([kts. Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)).
 
 a) Authorization header JWS:
 
