@@ -66,13 +66,39 @@ Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bod
   
 ### 3.1 Tunnistaminen
 
-Lähtevät sanomat tulee automaattisesti allekirjoittaa käyttäen x.509 järjestelmäallekirjoitusvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollisen valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka ilmoitusvelvollinen on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
+Lähtevät sanomat on automaattisesti allekirjoitettava käyttäen x.509 (versio 3) järjestelmäallekirjoitusvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon Y-tunnus tai ALV-tunnus. Ilmoitusvelvollisen valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka ilmoitusvelvollinen on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
 
-Tilirekisteristä saapuvien sanomien allekirjoitus tulee hyväksyä, edellyttäen että  a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  b) varmenteen Subject-kentän serialNumber attribuuttina on Tullin y-tunnus "0245442-8" tai kirjaimet FI ja Tullin y-tunnuksen numero-osa: "FI02454428".
+Tilirekisteristä saapuvien sanomien allekirjoitus on hyväksyttävä, edellyttäen että  
+a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  
+b) varmenteen Subject-kentän serialNumber attribuuttina on Tullin Y-tunnus “0245442-8” tai kirjaimet FI ja Tullin Y-tunnuksen numero-osa: “FI02454428”.
 
-Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 varmenteita käyttäen. Yhteyden muodostukseen on käytettävä asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon y-tunnus tai ALV-tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla ja  b) varmenteen Subject-kentän serialNumber attribuutti on "FI02454428" tai "0245442-8".
+Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 (versio 3) varmenteita käyttäen. Yhteyden muodostukseen on käytettävä asiakas- tai palvelinvarmennetta, jonka Subject-kentän serialNumber attribuuttina on ko. ilmoitusvelvollisen tai ilmoitusvelvollisen valtuuttaman tahon Y-tunnus tai ALV-tunnus. Ilmoitusvelvollinen tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  
+a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla  
+b) varmenteen Subject-kentän serialNumber attributti on “FI02454428” tai “0245442-8”.
+
+### 3.2 Yhteyksien suojaaminen
+
+Tilirekisterin päivitysrajapinnan yhteydet on suojattava TLS-salauksella käyttäen TLS-protokollan versiota 1.2 tai korkeampaa. Yhteyden molemmat päät tunnistetaan yllä kuvatuilla palvelinvarmenteilla käyttäen kaksisuuntaista kättelyä. Yhteys on muodostettava käyttäen ephemeral Diffie-Hellman (DHE) avaintenvaihtoa, jossa jokaiselle sessiolle luodaan uusi uniikki yksityinen salausavain. Tämän menettelyn tarkoituksena on taata salaukselle forward secrecy -ominaisuus, jotta salausavaimen paljastuminen ei jälkikäteen johtaisi salattujen tietojen paljastumiseen.
+
+TLS-salauksessa käytettyjen kryptografisten algoritmien on vastattava kryptografiselta vahvuudeltaan vähintään Viestintäviraston määrittelemiä kryptografisia vahvuusvaatimuksia kansalliselle suojaustasolle ST IV. Tämänhetkiset vahvuusvaatimukset on kuvattu dokumentissa https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
+
+### 3.3 Sallittu HTTP-versio
+
+Päivitysrajapinnan yhteydet käyttävät HTTP-protokollan versiota 1.1.
+
+### 3.4 Sanomatason allekirjoitus
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). Tarkempi sanomien allekirjoitusten kuvaus lisätään tähän dokumenttiin myöhemmin.
+
+### 3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
+
+Rajapinnan käyttäjä on velvollinen ilmoittamaan viivytyksettä käyttämiensä varmenteiden tai näiden salaisten avainten vaarantumisesta sekä varmenteen myöntäjälle että Tullille.
+
+Rajapinnan käyttäjä on myös velvollinen ilmoittamaan viivytyksettä Tullille mikäli rajapintaa käyttävässä tietojärjestelmässä havaitaan tietoturvapoikkeama.
+
+### 3.6 Rajapinnan kapasiteetti
+
+Rajapinnan sallittu maksimaalinen päivitystiheys ja sanomien koko lisätään tähän dokumenttiin myöhemmin.
 
 ## <a name="päivitysrajapinta"></a> 4. Tilirekisterin päivitysrajapinnan yleiskuvaus
 
