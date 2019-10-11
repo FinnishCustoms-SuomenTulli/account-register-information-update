@@ -131,7 +131,7 @@
         "businessId": { "$ref": "#/definitions/businessId" },
         "businessIdCountryCode": {
           "type": "string",
-          "description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, anotherOrganizationId has to be provided.",
+          "description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, otherOrganizationId has to be provided.",
           "examples": [
             "FI"
           ],
