@@ -83,7 +83,7 @@ Tilirekisteristä saapuvien sanomien allekirjoitus on hyväksyttävä, edellytt�
 a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  
 b) varmenteen kohteen serialNumber attribuuttina on Tullin Y-tunnus “0245442-8” tai kirjaimet FI ja Tullin Y-tunnuksen numero-osa: “FI02454428”.
 
-#### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon tietoliikennevarmenne
+#### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon palvelinvarmenne
 
 Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 (versio 3) varmenteita käyttäen.
 
@@ -97,9 +97,9 @@ a) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa, eikä esiinny VR
 tai  
 b) palvelinvarmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus.
 
-Mikäli tiedon luovuttajan tietoliikennevarmenteessa ja lähtevän sanoman allekirjoitusvarmenteessa käytetään samaa Y-tunnusta tai ALV-tunnusta, voidaan kumpaankin tarkoitukseen käyttää samaa varmennetta.
+Mikäli tiedon luovuttajan palvelinvarmenteessa ja lähtevän sanoman allekirjoitusvarmenteessa käytetään samaa Y-tunnusta tai ALV-tunnusta, voidaan kumpaankin tarkoitukseen käyttää samaa varmennetta.
 
-#### Tilirekisterin tietoliikennevarmenne
+#### Tilirekisterin palvelinvarmenne
 
 Tiedon luovuttaja tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  
 a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt VRK, varmenne on voimassa eikä esiinny VRK:n ylläpitämällä sulkulistalla  
