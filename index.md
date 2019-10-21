@@ -6,6 +6,7 @@
 
 Versio|Päivämäärä|Kuvaus|Tekijä
 ---|---|---|---
+1.0|21.10.2019|Versio 1.0||
 
 ## Sisällysluettelo
 
