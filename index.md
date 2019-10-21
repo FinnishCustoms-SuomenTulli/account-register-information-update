@@ -1,18 +1,11 @@
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 0.9*
+*Dokumentin versio 1.0*
 
 ## Versiohistoria
 
 Versio|Päivämäärä|Kuvaus|Tekijä
 ---|---|---|---
-0.3|26.4.2019|Alustava versio|AP,TV
-0.4|9.5.2019|Sanomarakenne päivitetty alustavasti ISO 20022 mukaillen|AP|
-0.5|22.5.2019|Päivityksiä standardinmukaisuuteen liittyen|AP|
-0.6|31.5.2019|Tarkennuksia rajapintakuvauksen käyttöohjeistukseen|AP|
-0.7|10.6.2019|Tarkennus virtuaalivaluutan tarjoajien osalta|TV|
-0.8|11.9.2019|Rajapintakuvaus jaettu kahdeksi dokumentiksi|AL|
-0.9|18.10.2019|Tekstimuutoksia varmenteiden osalta|TV|
 
 ## Sisällysluettelo
 
