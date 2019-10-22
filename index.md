@@ -1,3 +1,9 @@
+[Käyttöönoton ja ylläpidon ohje](instructions/Käyttöönoton_ja ylläpidon_ohje_Tilirekisteri.pdf)
+[Deployment and maintenance instructions for the Bank and Payment Account Register](instructions/Deployment and maintenance instructions for the Bank and Payment Account Register_EN.pdf)
+[Data updating interface description](instructions/Data updating interface description_EN.pdf)
+[Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret](instructions/Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret_SV.pdf)
+[Beskrivning av Kontoregistrets uppdateringsgränssnitt](instructions/Beskrivning av Kontoregistrets uppdateringsgränssnitt_SV.pdf)
+
 # Tilirekisterin päivitysrajapintakuvaus
 
 *Dokumentin versio 1.0*
