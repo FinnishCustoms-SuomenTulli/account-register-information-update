@@ -213,8 +213,7 @@
             "lastName",
             "firstNames",
             "birthdate",
-            "nationality",
-            "identificationDocumentId"
+            "nationality"
           ]
         }
       ],
