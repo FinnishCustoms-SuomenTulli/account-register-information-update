@@ -208,7 +208,7 @@ Objekti {
 
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
-[Päivityssanoma](examples/example.json)
+[Päivityssanoma](examples/report-update.json)
 
 [Tiedon ilmoittaminen kiistanalaiseksi](examples/report-disputable.json)
 
