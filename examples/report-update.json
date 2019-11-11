@@ -25,33 +25,30 @@
             "type": "beneficiary"
           }
         ]
-       }
+      }
     },
     "6cd7cc3f-6de1-4583-a572-895613e71130": {
       "privatePerson": {
         "lastName": "Esimerkki",
-        "firstNames": "Ella",
+        "firstNames": "Ella Elviira",
         "hetu": "010659-1031",
-        "birthdate": "1959-06-01",
-        "nationality": "FI"
+        "birthdate": "1959-06-01"
       }
     },
     "cc695a85-32a9-4cf7-88a3-9b635f5c03b5": {
       "privatePerson": {
         "lastName": "Esimerkki",
-        "firstNames": "Eppu",
+        "firstNames": "Eppu Elina",
         "hetu": "140368-2513",
-        "birthdate": "1968-03-14",
-        "nationality": "FI"
+        "birthdate": "1968-03-14"
       }
     },
     "edfb750c-26e6-44fc-b857-bd0caa06b74e": {
       "privatePerson": {
         "lastName": "Esimerkki",
-        "firstNames": "Erkki",
+        "firstNames": "Erkki Kalevi",
         "hetu": "211156-312X",
-        "birthdate": "1956-11-21",
-        "nationality": "FI"
+        "birthdate": "1956-11-21"
       }
     },
     "e4a623ca-0ad7-4f3b-9b9e-81109b33da27": {
@@ -77,8 +74,7 @@
         "lastName": "Testaaja",
         "firstNames": "Taina",
         "hetu": "070280-021E",
-        "birthdate": "1980-02-07",
-        "nationality": "FI"
+        "birthdate": "1980-02-07"
       }
     },
     "3b153d44-4caa-4feb-bdd1-a91b6b1759ce": {
@@ -86,8 +82,7 @@
         "lastName": "Testaaja",
         "firstNames": "Turo",
         "hetu": "241100A505M",
-        "birthdate": "2000-11-24",
-        "nationality": "FI"
+        "birthdate": "2000-11-24"
       }
     },
     "ebab0a47-00a7-4d56-aa63-028102d7a329": {
@@ -95,8 +90,7 @@
         "lastName": "Testaaja",
         "firstNames": "Tiina",
         "hetu": "020783-785N",
-        "birthdate": "1983-07-02",
-        "nationality": "FI"
+        "birthdate": "1983-07-02"
       }
     },
     "279aeafc-528e-4f81-b79c-ecc8b0aafd4c": {
@@ -108,16 +102,16 @@
         },
         "name": "Yhdistys Ry",
         "roles": [{
-          "legalPersonId": "a51b4ee8-1ec1-48ae-8d14-5948118a9659",
-          "startDate": "1989-11-12",
-          "type": "beneficiary"
-        },
-        {
-          "legalPersonId": "1b420512-acad-4ce4-be24-f73f0e078e8b",
-          "startDate": "1989-11-12",
-          "type": "beneficiary"
-        }
-      ]
+            "legalPersonId": "a51b4ee8-1ec1-48ae-8d14-5948118a9659",
+            "startDate": "1989-11-12",
+            "type": "beneficiary"
+          },
+          {
+            "legalPersonId": "1b420512-acad-4ce4-be24-f73f0e078e8b",
+            "startDate": "1989-11-12",
+            "type": "beneficiary"
+          }
+        ]
       }
     },
     "a51b4ee8-1ec1-48ae-8d14-5948118a9659": {
@@ -125,8 +119,7 @@
         "lastName": "Malli",
         "firstNames": "Mauno",
         "hetu": "180971-8952",
-        "birthdate": "1971-09-18",
-        "nationality": "FI"
+        "birthdate": "1971-09-18"
       }
     },
     "1b420512-acad-4ce4-be24-f73f0e078e8b": {
@@ -134,8 +127,7 @@
         "lastName": "Malli",
         "firstNames": "Minna",
         "hetu": "250578-2080",
-        "birthdate": "1978-05-25",
-        "nationality": "FI"
+        "birthdate": "1978-05-25"
       }
     }
   },
