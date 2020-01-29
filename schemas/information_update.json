@@ -202,34 +202,25 @@
       "oneOf": [
         {
           "required": [
-            "lastName",
-            "firstNames",
+            "fullName",
             "birthdate",
             "hetu"
           ]
         },
         {
           "required": [
-            "lastName",
-            "firstNames",
+            "fullName",
             "birthdate",
             "nationality"
           ]
         }
       ],
       "properties": {
-        "lastName": {
+        "fullName": {
           "type": "string",
-          "description": "Last name.",
+          "description": "Full name.",
           "examples": [
-            "Korhonen"
-          ]
-        },
-        "firstNames": {
-          "type": "string",
-          "description": "First names.",
-          "examples": [
-            "Juhani Antti"
+            "Korhonen, Juhani Antti"
           ]
         },
         "birthdate": {

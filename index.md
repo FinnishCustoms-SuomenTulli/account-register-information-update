@@ -10,9 +10,10 @@
 
 ## Versiohistoria
 
-Versio|Päivämäärä|Kuvaus|Tekijä
----|---|---|---
-1.0|21.10.2019|Versio 1.0||
+Versio|Päivämäärä|Kuvaus|
+---|---|---
+1.0|21.10.2019|Versio 1.0|
+1.0.1|29.1.2020|JSON skeeman privatePerson objektin firstName ja lastName propertyt yhdistetty fullName propertyksi|
 
 ## Sisällysluettelo
 
