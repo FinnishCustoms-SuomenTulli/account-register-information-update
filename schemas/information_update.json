@@ -1,386 +1,366 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"properties": {
-		"creationDateTime": {
-			"$id": "#/properties/creationDateTime",
-			"description": "Creation date of the message.",
-			"$ref": "#/definitions/date"
-		},
-		"senderBusinessId": {
-			"$id": "#/properties/senderBusinessId",
-			"description": "Sender business id (Y-tunnus).",
-			"$ref": "#/definitions/businessId"
-		},
-		"legalPersons": {
-			"$id": "#/properties/legalPersons",
-			"description": "Legal persons.",
-			"type": "object",
-			"additionalProperties": {
-				"$ref": "#/definitions/legalPerson"
-			}
-		},
-		"customers": {
-			"$id": "#/properties/customers",
-			"description": "Customers",
-			"type": "object",
-			"additionalProperties": {
-				"$ref": "#/definitions/customer"
-			}
-		},
-		"accounts": {
-			"$id": "#/properties/accounts",
-			"description": "Accounts",
-			"type": "object",
-			"additionalProperties": {
-				"$ref": "#/definitions/account"
-			}
-		},
-		"safetyDepositBoxes": {
-			"$id": "#/properties/safetyDepositBoxes",
-			"description": "Safety deposit boxes.",
-			"type": "object",
-			"additionalProperties": {
-				"$ref": "#/definitions/safetyDepositBox"
-			}
-		}
-	},
-	"required": [
-		"creationDateTime",
-		"senderBusinessId"
-	],
-	"definitions": {
-		"account": {
-			"description": "Account",
-			"type": "object",
-			"properties": {
-				"id": {
-					"$ref": "#/definitions/accountIdentification"
-				},
-				"openingDate": {
-					"description": "Account opening date.",
-					"$ref": "#/definitions/date"
-				},
-				"closingDate": {
-					"description": "Account closing date.",
-					"$ref": "#/definitions/date"
-				},
-				"roles": {
-					"description": "Account related roles.",
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/role"
-					}
-				}
-			},
-			"required": [
-				"id",
-				"openingDate",
-				"roles"
-			]
-		},
-		"accountIdentification": {
-			"description": "Account identification.",
-			"type": "object",
-			"properties": {
-				"iban": {
-					"description": "IBAN account number.",
-					"type": "string",
-					"examples": [
-						"FI2753564444694907"
-					]
-				},
-				"other": {
-					"$ref": "#/definitions/otherAccountIdentification"
-				}
-			},
-			"oneOf": [
-				{
-					"required": [
-						"iban"
-					]
-				},
-				{
-					"required": [
-						"other"
-					]
-				}
-			]
-		},
-		"businessId": {
-			"description": "Business id (Y-tunnus)",
-			"type": "string",
-			"minLength": 9,
-			"maxLength": 9,
-			"pattern": "[0-9]{7}[-][0-9]",
-			"examples": [
-				"0245442-8"
-			]
-		},
-		"customer": {
-			"description": "Customer",
-			"type": "object",
-			"properties": {
-				"startDate": {
-					"description": "Customer start date.",
-					"$ref": "#/definitions/date"
-				},
-				"endDate": {
-					"description": "Customer end date.",
-					"$ref": "#/definitions/date"
-				}
-			},
-			"required": [
-				"startDate"
-			]
-		},
-		"date": {
-			"type": "string",
-			"examples": [
-				"2019-08-17"
-			]
-		},
-		"legalPerson": {
-			"description": "Legal person which is always either a natural person (privatePerson) or a juridical person (organisation).",
-			"type": "object",
-			"properties": {
-				"organisation": {
-					"$ref": "#/definitions/organisation"
-				},
-				"privatePerson": {
-					"$ref": "#/definitions/privatePerson"
-				}
-			},
-			"oneOf": [
-				{
-					"required": [
-						"organisation"
-					]
-				},
-				{
-					"required": [
-						"privatePerson"
-					]
-				}
-			]
-		},
-		"organisation": {
-			"description": "Juridical person.",
-			"type": "object",
-			"properties": {
-				"businessId": {
-					"$ref": "#/definitions/businessId"
-				},
-				"businessIdCountryCode": {
-					"description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, otherOrganizationId has to be provided.",
-					"type": "string",
-					"minLength": 2,
-					"maxLength": 2,
-					"examples": [
-						"FI"
-					]
-				},
-				"registrationAuthority": {
-					"description": "Registration authority.",
-					"type": "string"
-				},
-				"registrationDate": {
-					"description": "Registration date.",
-					"$ref": "#/definitions/date"
-				},
-				"roles": {
-					"description": "Beneficiaries. Role type has to be beneficiary.",
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/role"
-					}
-				},
-				"name": {
-					"description": "Organisation name.",
-					"type": "string"
-				},
-				"otherOrganisationId": {
-					"$ref": "#/definitions/otherOrganisationId"
-				}
-			},
-			"oneOf": [
-				{
-					"required": [
-						"businessId",
-						"businessIdCountryCode",
-						"roles"
-					]
-				},
-				{
-					"required": [
-						"otherOrganisationId",
-						"roles"
-					]
-				}
-			]
-		},
-		"otherAccountIdentification": {
-			"description": "Other than IBAN account number.",
-			"type": "object",
-			"properties": {
-				"id": {
-					"description": "Account identification.",
-					"type": "string"
-				},
-				"description": {
-					"description": "Description of the used account identification type.",
-					"type": "string"
-				}
-			},
-			"required": [
-				"id",
-				"description"
-			]
-		},
-		"otherOrganisationId": {
-			"description": "Other organisation identification (used when Finnish business id (Y-tunnus) is not available).",
-			"type": "object",
-			"properties": {
-				"id": {
-					"title": "Id",
-					"description": "Other organisation identification.",
-					"type": "string"
-				},
-				"description": {
-					"title": "Description",
-					"description": "Description of the used organisation identification type.",
-					"type": "string"
-				}
-			},
-			"required": [
-				"id",
-				"description"
-			]
-		},
-		"privatePerson": {
-			"description": "Natural person.",
-			"type": "object",
-			"properties": {
-				"fullName": {
-					"description": "Full name.",
-					"type": "string",
-					"examples": [
-						"Korhonen, Juhani Antti"
-					]
-				},
-				"birthdate": {
-					"description": "Date of birth.",
-					"$ref": "#/definitions/date"
-				},
-				"nationalities": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "creationDateTime",
+    "senderBusinessId"
+  ],
+  "definitions": {
+    "account": {
+      "type": "object",
+      "description": "Account",
+      "required": [
+        "id",
+        "openingDate",
+        "roles"
+      ],
+      "properties": {
+        "id": { "$ref": "#/definitions/accountIdentification" },
+        "openingDate": {
+          "description": "Account opening date.",
+          "$ref": "#/definitions/date"
+        },
+        "closingDate": {
+          "description": "Account closing date.",
+          "$ref": "#/definitions/date"
+        },
+        "roles": {
+          "type": "array",
+          "description": "Account related roles.",
+          "items": { "$ref": "#/definitions/role" }
+        }
+      }
+    },
+    "accountIdentification": {
+      "type": "object",
+      "description": "Account identification.",
+      "oneOf": [
+        {
+          "required": [
+            "iban"
+          ]
+        },
+        {
+          "required": [
+            "other"
+          ]
+        }
+      ],
+      "properties": {
+        "iban": {
+          "type": "string",
+          "description": "IBAN account number.",
+          "examples": [
+            "FI2753564444694907"
+          ]
+        },
+        "other": { "$ref": "#/definitions/otherAccountIdentification" }
+      }
+    },
+    "businessId": {
+      "type": "string",
+      "description": "Business id (Y-tunnus)",
+      "examples": [
+        "0245442-8"
+      ],
+      "minLength": 9,
+      "maxLength": 9,
+      "pattern": "[0-9]{7}[-][0-9]"
+    },
+    "customer": {
+      "type": "object",
+      "description": "Customer",
+      "required": [
+        "startDate"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "Customer start date.",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Customer end date.",
+          "$ref": "#/definitions/date"
+        }
+      }
+    },
+    "date": {
+      "type": "string",
+      "examples": [
+        "2019-08-17"
+      ]
+    },
+    "legalPerson": {
+      "type": "object",
+      "description": "Legal person which is always either a natural person (privatePerson) or a juridical person (organisation).",
+      "properties": {
+        "organisation": { "$ref": "#/definitions/organisation" },
+        "privatePerson": { "$ref": "#/definitions/privatePerson" }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "organisation"
+          ]
+        },
+        {
+          "required": [
+            "privatePerson"
+          ]
+        }
+      ]
+    },
+    "organisation": {
+      "type": "object",
+      "description": "Juridical person.",
+      "oneOf": [
+        {
+          "required": [
+            "businessId",
+            "businessIdCountryCode",
+            "roles"
+          ]
+        },
+        {
+          "required": [
+            "otherOrganisationId",
+            "roles"
+          ]
+        }
+      ],
+      "properties": {
+        "businessId": { "$ref": "#/definitions/businessId" },
+        "businessIdCountryCode": {
+          "type": "string",
+          "description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, otherOrganizationId has to be provided.",
+          "examples": [
+            "FI"
+          ],
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "registrationAuthority": {
+          "type": "string",
+          "description": "Registration authority."
+        },
+        "registrationDate": {
+          "description": "Registration date.",
+          "$ref": "#/definitions/date"
+        },
+        "roles": {
+          "type": "array",
+          "description": "Beneficiaries. Role type has to be beneficiary.",
+          "items": { "$ref": "#/definitions/role" }
+        },
+        "name": {
+          "type": "string",
+          "description": "Organisation name."
+        },
+        "otherOrganisationId": { "$ref": "#/definitions/otherOrganisationId" }
+      }
+    },
+    "otherAccountIdentification": {
+      "type": "object",
+      "description": "Other than IBAN account number.",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Account identification."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the used account identification type."
+        }
+      }
+    },
+    "otherOrganisationId": {
+      "type": "object",
+      "description": "Other organisation identification (used when Finnish business id (Y-tunnus) is not available).",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id",
+          "description": "Other organisation identification."
+        },
+        "description": {
+          "type": "string",
+          "title": "Description",
+          "description": "Description of the used organisation identification type."
+        }
+      }
+    },
+    "privatePerson": {
+      "type": "object",
+      "description": "Natural person.",
+      "oneOf": [
+        {
+          "required": [
+            "fullName",
+            "birthdate",
+            "hetu"
+          ]
+        },
+        {
+          "required": [
+            "fullName",
+            "birthdate",
+            "nationality"
+          ]
+        }
+      ],
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Full name.",
+          "examples": [
+            "Korhonen, Juhani Antti"
+          ]
+        },
+        "birthdate": {
+          "description": "Date of birth.",
+          "$ref": "#/definitions/date"
+        },
+        "nationalities": {
 					"description": "Nationalities",
 					"type": "array",
 					"items": {
-						"type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2 
 					},
 					"examples": [
 						"FI", "RU"
 					]
 				},
-				"hetu": {
-					"description": "Personal identity code (Finnish hetu).",
-					"type": "string",
-					"examples": [
-						"151080-999L"
-					]
-				},
-				"identificationDocumentId": {
-					"description": "Identification document (e.g passport) identifier (used when Finnish personal identity code (hetu) is not available).",
-					"type": "string"
-				}
-			},
-			"oneOf": [
-				{
-					"required": [
-						"birthdate",
-						"fullName",
-						"hetu"
-					]
-				},
-				{
-					"required": [
-						"birthdate",
-						"fullName",
-						"nationality"
-					]
-				}
-			]
-		},
-		"role": {
-			"description": "Role",
-			"type": "object",
-			"properties": {
-				"startDate": {
-					"description": "Role start date.",
-					"$ref": "#/definitions/date"
-				},
-				"endDate": {
-					"description": "Role end date.",
-					"$ref": "#/definitions/date"
-				},
-				"type": {
-					"description": "Role type.",
-					"type": "string",
-					"enum": [
-						"owner",
-						"access",
-						"beneficiary"
-					]
-				},
-				"legalPersonId": {
-					"description": "Legal person identifier",
-					"$ref": "#/definitions/uuidv4"
-				}
-			},
-			"required": [
-				"startDate",
-				"type",
-				"legalPersonId"
-			]
-		},
-		"safetyDepositBox": {
-			"description": "Safety deposit box.",
-			"type": "object",
-			"properties": {
-				"id": {
-					"description": "Safety deposit box identifier.",
-					"type": "string",
-					"examples": [
-						"OKOYFIHH-41138848"
-					]
-				},
-				"startDate": {
-					"description": "Safety deposit box start date.",
-					"$ref": "#/definitions/date"
-				},
-				"endDate": {
-					"description": "Safety deposit box end date.",
-					"$ref": "#/definitions/date"
-				},
-				"roles": {
-					"description": "Safety deposit box related roles.",
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/role"
-					}
-				}
-			},
-			"required": [
-				"id",
-				"startDate",
-				"roles"
-			]
-		},
-		"uuidv4": {
-			"description": "Unambiguous identifier used for record. UUIDv4.",
-			"type": "string",
-			"examples": [
-				"91e8c532-71e1-4c4f-bf30-ceec6160ece0"
-			]
-		}
-	}
+        "hetu": {
+          "type": "string",
+          "description": "Personal identity code (Finnish hetu).",
+          "examples": [
+            "151080-999L"
+          ]
+        },
+        "identificationDocumentId": {
+          "type": "string",
+          "description": "Identification document (e.g passport) identifier (used when Finnish personal identity code (hetu) is not available)."
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "description": "Role",
+      "required": [
+        "startDate",
+        "type",
+        "legalPersonId"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "Role start date.",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Role end date.",
+          "$ref": "#/definitions/date"
+        },
+        "type": {
+          "type": "string",
+          "description": "Role type.",
+          "enum": ["owner", "access", "beneficiary"]
+        },
+        "legalPersonId": {
+          "description": "Legal person identifier",
+          "$ref": "#/definitions/uuidv4"
+        }
+      }
+    },
+    "safetyDepositBox": {
+      "type": "object",
+      "description": "Safety deposit box.",
+      "required": [
+        "id",
+        "startDate",
+        "roles"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Safety deposit box identifier.",
+          "examples": [
+            "OKOYFIHH-41138848"
+          ]
+        },
+        "startDate": {
+          "description": "Safety deposit box start date.",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Safety deposit box end date.",
+          "$ref": "#/definitions/date"
+        },
+        "roles": {
+          "type": "array",
+          "description": "Safety deposit box related roles.",
+          "items": { "$ref": "#/definitions/role" }
+        }
+      }
+    },
+    "uuidv4": {
+      "type": "string",
+      "description": "Unambiguous identifier used for record. UUIDv4.",
+      "examples": [
+        "91e8c532-71e1-4c4f-bf30-ceec6160ece0"
+      ]
+    }
+  },
+  "properties": {
+    "creationDateTime": {
+      "$id": "#/properties/creationDateTime",
+      "description": "Creation date of the message.",
+      "$ref": "#/definitions/date"
+    },
+    "senderBusinessId": {
+      "$id": "#/properties/senderBusinessId",
+      "description": "Sender business id (Y-tunnus).",
+      "$ref": "#/definitions/businessId"
+    },
+    "legalPersons": {
+      "$id": "#/properties/legalPersons",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/legalPerson"
+      },
+      "description": "Legal persons."
+    },
+    "customers": {
+      "$id": "#/properties/customers",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/customer"
+      },
+      "description": "Customers"
+    },
+    "accounts": {
+      "$id": "#/properties/accounts",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/account"
+      },
+      "description": "Accounts"
+    },
+    "safetyDepositBoxes": {
+      "$id": "#/properties/safetyDepositBoxes",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/safetyDepositBox"
+      },
+      "description": "Safety deposit boxes."
+    }
+  }
 }
