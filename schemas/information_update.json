@@ -227,15 +227,18 @@
           "description": "Date of birth.",
           "$ref": "#/definitions/date"
         },
-        "nationality": {
-          "type": "string",
-          "description": "Nationality",
-          "examples": [
-            "FI"
-          ],
-          "minLength": 2,
-          "maxLength": 2
-        },
+        "nationalities": {
+					"description": "Nationalities",
+					"type": "array",
+					"items": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2 
+					},
+					"examples": [
+						"FI", "RU"
+					]
+				},
         "hetu": {
           "type": "string",
           "description": "Personal identity code (Finnish hetu).",
