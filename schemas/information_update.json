@@ -14,7 +14,9 @@
         "roles"
       ],
       "properties": {
-        "id": { "$ref": "#/definitions/accountIdentification" },
+        "id": {
+          "$ref": "#/definitions/accountIdentification"
+        },
         "openingDate": {
           "description": "Account opening date.",
           "$ref": "#/definitions/date"
@@ -26,15 +28,16 @@
         "roles": {
           "type": "array",
           "description": "Account related roles.",
-          "items": { "$ref": "#/definitions/role" }
+          "items": {
+            "$ref": "#/definitions/role"
+          }
         }
       }
     },
     "accountIdentification": {
       "type": "object",
       "description": "Account identification.",
-      "oneOf": [
-        {
+      "oneOf": [{
           "required": [
             "iban"
           ]
@@ -53,7 +56,9 @@
             "FI2753564444694907"
           ]
         },
-        "other": { "$ref": "#/definitions/otherAccountIdentification" }
+        "other": {
+          "$ref": "#/definitions/otherAccountIdentification"
+        }
       }
     },
     "businessId": {
@@ -93,11 +98,14 @@
       "type": "object",
       "description": "Legal person which is always either a natural person (privatePerson) or a juridical person (organisation).",
       "properties": {
-        "organisation": { "$ref": "#/definitions/organisation" },
-        "privatePerson": { "$ref": "#/definitions/privatePerson" }
+        "organisation": {
+          "$ref": "#/definitions/organisation"
+        },
+        "privatePerson": {
+          "$ref": "#/definitions/privatePerson"
+        }
       },
-      "oneOf": [
-        {
+      "oneOf": [{
           "required": [
             "organisation"
           ]
@@ -112,8 +120,7 @@
     "organisation": {
       "type": "object",
       "description": "Juridical person.",
-      "oneOf": [
-        {
+      "oneOf": [{
           "required": [
             "businessId",
             "businessIdCountryCode",
@@ -128,7 +135,9 @@
         }
       ],
       "properties": {
-        "businessId": { "$ref": "#/definitions/businessId" },
+        "businessId": {
+          "$ref": "#/definitions/businessId"
+        },
         "businessIdCountryCode": {
           "type": "string",
           "description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, otherOrganizationId has to be provided.",
@@ -149,13 +158,17 @@
         "roles": {
           "type": "array",
           "description": "Beneficiaries. Role type has to be beneficiary.",
-          "items": { "$ref": "#/definitions/role" }
+          "items": {
+            "$ref": "#/definitions/role"
+          }
         },
         "name": {
           "type": "string",
           "description": "Organisation name."
         },
-        "otherOrganisationId": { "$ref": "#/definitions/otherOrganisationId" }
+        "otherOrganisationId": {
+          "$ref": "#/definitions/otherOrganisationId"
+        }
       }
     },
     "otherAccountIdentification": {
@@ -199,19 +212,18 @@
     "privatePerson": {
       "type": "object",
       "description": "Natural person.",
-      "oneOf": [
-        {
+      "oneOf": [{
           "required": [
             "fullName",
-            "birthdate",
+            "birthDate",
             "hetu"
           ]
         },
         {
           "required": [
             "fullName",
-            "birthdate",
-            "nationality"
+            "birthDate",
+            "nationalities"
           ]
         }
       ],
@@ -223,22 +235,22 @@
             "Korhonen, Juhani Antti"
           ]
         },
-        "birthdate": {
+        "birthDate": {
           "description": "Date of birth.",
           "$ref": "#/definitions/date"
         },
         "nationalities": {
-					"description": "Nationalities",
-					"type": "array",
-					"items": {
+          "description": "Nationalities",
+          "type": "array",
+          "items": {
             "type": "string",
             "minLength": 2,
-            "maxLength": 2 
-					},
-					"examples": [
-						"FI", "RU"
-					]
-				},
+            "maxLength": 2
+          },
+          "examples": [
+            "FI", "RU"
+          ]
+        },
         "hetu": {
           "type": "string",
           "description": "Personal identity code (Finnish hetu).",
@@ -307,7 +319,9 @@
         "roles": {
           "type": "array",
           "description": "Safety deposit box related roles.",
-          "items": { "$ref": "#/definitions/role" }
+          "items": {
+            "$ref": "#/definitions/role"
+          }
         }
       }
     },
