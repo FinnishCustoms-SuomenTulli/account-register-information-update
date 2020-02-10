@@ -297,7 +297,6 @@
       "description": "Safety deposit box.",
       "required": [
         "id",
-        "startDate",
         "roles"
       ],
       "properties": {
