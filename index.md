@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.2*
+*Dokumentin versio 1.0.3*
 
 ## Versiohistoria
 
@@ -15,6 +15,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0|21.10.2019|Versio 1.0|
 1.0.1|29.1.2020|JSON skeeman privatePerson objektin firstName ja lastName propertyt yhdistetty fullName propertyksi|
 1.0.2|3.2.2020|luonnollisen henkilön kansalaisuus muutettu kansalaisuudet-listaksi|
+1.0.3|3.2.2020|Organisaation ominaisuuksista muutettu businessId -> registrationNumber ja poistettu businessIdCountryCode|
 
 ## Sisällysluettelo
 
