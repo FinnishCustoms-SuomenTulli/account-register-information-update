@@ -135,17 +135,9 @@
         }
       ],
       "properties": {
-        "businessId": {
-          "$ref": "#/definitions/businessId"
-        },
-        "businessIdCountryCode": {
+        "registrationNumber": {
           "type": "string",
-          "description": "If businessId is a Finnish business id (Y-tunnus) businessIdCountryCode value is set to “FI”. If Finnish business id or equivalent is not available, otherOrganizationId has to be provided.",
-          "examples": [
-            "FI"
-          ],
-          "minLength": 2,
-          "maxLength": 2
+          "description": "Registration number."
         },
         "registrationAuthority": {
           "type": "string",

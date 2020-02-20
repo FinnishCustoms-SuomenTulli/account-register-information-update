@@ -5,8 +5,7 @@
     "5d892fac-07f0-465f-ab6a-af88a1d922ba": {
       "organisation": {
         "registrationAuthority": "PRH",
-        "businessId": "4276521-2",
-        "businessIdCountryCode": "FI",
+        "registrationNumber": "4276521-2",
         "name": "Firma Oy",
         "roles": [{
             "legalPersonId": "6cd7cc3f-6de1-4583-a572-895613e71130",
