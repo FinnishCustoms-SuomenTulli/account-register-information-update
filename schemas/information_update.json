@@ -120,20 +120,12 @@
     "organisation": {
       "type": "object",
       "description": "Juridical person.",
-      "oneOf": [{
-          "required": [
-            "businessId",
-            "businessIdCountryCode",
-            "roles"
-          ]
-        },
-        {
-          "required": [
-            "otherOrganisationId",
-            "roles"
-          ]
-        }
-      ],
+	  "required": [
+		"name",
+		"registrationAuthority",
+		"registrationDate",
+		"roles"
+	  ],
       "properties": {
         "registrationNumber": {
           "type": "string",
@@ -240,7 +232,7 @@
             "maxLength": 2
           },
           "examples": [
-            "FI", "RU"
+            ["FI", "RU"]
           ]
         },
         "hetu": {
