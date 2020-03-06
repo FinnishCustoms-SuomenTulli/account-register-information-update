@@ -16,7 +16,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.1|29.1.2020|JSON skeeman privatePerson objektin firstName ja lastName propertyt yhdistetty fullName propertyksi|
 1.0.2|3.2.2020|luonnollisen henkilön kansalaisuus muutettu kansalaisuudet-listaksi|
 1.0.3|3.2.2020|Organisaation ominaisuuksista muutettu businessId -> registrationNumber ja poistettu businessIdCountryCode|
-1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite.|
+1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite. Päivitetty rajapinnan maksimaalista sanomakokoa ja päivitetty kuvausta tietojen toimittamisesta Tilirekisteriin. Tarkennettu kiistanalaisten/virheellisten tietojen ilmoittamista.|
 
 ## Sisällysluettelo
 
@@ -60,6 +60,8 @@ Tässä dokumentissa kuvataan Tilirekisterin päivitysrajapinta.
 Tässä luvussa on esitetty pankki- ja maksutilitietojen toimittaminen vuokaavioina.
 
 ### 2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin
+
+Tilirekisteriin toimitetaan ensimmäisellä päivityskerralla kaikki tiedot. Tämän jälkeen seuraavilla päivityskerroilla toimitetaan vain päivittyneet tai uudet tiedot päivittäin.
 
 Kuvassa 2.1 on esitetty vuokaaviona pankki- ja maksutilitietojen toimittaminen Tilirekisteriin.
 
@@ -173,7 +175,7 @@ Rajapinnan käyttäjä on myös velvollinen ilmoittamaan viivytyksettä Tullille
 
 ### 3.6 Rajapinnan kapasiteetti
 
-Rajapinnan sallittu maksimaalinen päivitystiheys ja sanomien koko lisätään tähän dokumenttiin myöhemmin.
+Rajapinnan sallittu maksimaalinen sanomakoko on 5MB. Rajapinnan sallittu maksimaalinen päivitystiheys lisätään tähän dokumenttiin myöhemmin.
 
 ## <a name="päivitysrajapinta"></a> 4. Tilirekisterin päivitysrajapinnan yleiskuvaus
 
@@ -190,15 +192,15 @@ Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallel
 Sanomien yksilöintiin käytetään X-Correlation-ID tunnistetta (UUIDv4) joka kulkee sanoman headerissa. Jos sitä ei ole lähetetyssä sanomassa se generoidaan automaattisesti ja palautetaan vastaussanomassa.
 
 Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi erillisillä sanomilla ja endpointeilla.
-Tähän käytetään aiemmin mainittua X-Correlation-ID tunnistetta. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
+Tähän käytetään aiemmin mainittua tietueelle yksilöllistä UUIDv4 tunnistetta. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
 
 Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
 POST|/report-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
-POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tietojen oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /report-incorrect.|
-POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun sanoman tiedot virheellisiksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
+POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /report-incorrect.|
+POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 
 Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
 
