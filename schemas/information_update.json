@@ -133,7 +133,7 @@
         },
         "registrationAuthority": {
           "type": "string",
-          "description": "Registration authority."
+          "description": "Registration authority. (Registration authority is set to PRH when association registration number is provided in otherOrganisationId)"
         },
         "registrationDate": {
           "description": "Registration date.",
