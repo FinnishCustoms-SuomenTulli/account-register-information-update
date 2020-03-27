@@ -120,24 +120,36 @@
     "organisation": {
       "type": "object",
       "description": "Juridical person.",
-      "oneOf": [{
-          "required": [
-            "businessId",
-            "businessIdCountryCode",
-            "roles"
-          ]
-        },
-        {
-          "required": [
-            "otherOrganisationId",
-            "roles"
-          ]
-        }
+      "required": [
+        "name",
+        "registrationNumber",
+        "roles"
       ],
       "properties": {
         "registrationNumber": {
           "type": "string",
-          "description": "Registration number."
+          "minLength": 1,
+          "maxLength": 35
+        },
+        "registrationNumberType": {
+          "type": "string",
+          "oneOf": [
+            {
+              "description": "Finnish business id (Y-tunnus)",
+              "type": "string",
+              "const": "businessId"
+            },
+            {
+              "description": "Registration number of a Finnish association",
+              "type": "string",
+              "const": "associationRegistrationNumber"
+            },
+            {
+              "description": "Generic registration number",
+              "type": "string",
+              "const": "registrationNumber"
+            }
+          ]
         },
         "registrationAuthority": {
           "type": "string",
@@ -157,9 +169,6 @@
         "name": {
           "type": "string",
           "description": "Organisation name."
-        },
-        "otherOrganisationId": {
-          "$ref": "#/definitions/otherOrganisationId"
         }
       }
     },
@@ -178,26 +187,6 @@
         "description": {
           "type": "string",
           "description": "Description of the used account identification type."
-        }
-      }
-    },
-    "otherOrganisationId": {
-      "type": "object",
-      "description": "Other organisation identification (used when Finnish business id (Y-tunnus) is not available).",
-      "required": [
-        "id",
-        "description"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "title": "Id",
-          "description": "Other organisation identification."
-        },
-        "description": {
-          "type": "string",
-          "title": "Description",
-          "description": "Description of the used organisation identification type."
         }
       }
     },
@@ -240,7 +229,7 @@
             "maxLength": 2
           },
           "examples": [
-            "FI", "RU"
+            ["FI", "RU"]
           ]
         },
         "hetu": {
