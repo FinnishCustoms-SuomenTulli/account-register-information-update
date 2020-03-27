@@ -123,6 +123,7 @@
       "required": [
         "name",
         "registrationNumber",
+        "registrationNumberType",
         "roles"
       ],
       "properties": {
