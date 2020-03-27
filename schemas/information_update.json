@@ -238,10 +238,6 @@
           "examples": [
             "151080-999L"
           ]
-        },
-        "identificationDocumentId": {
-          "type": "string",
-          "description": "Identification document (e.g passport) identifier (used when Finnish personal identity code (hetu) is not available)."
         }
       }
     },
