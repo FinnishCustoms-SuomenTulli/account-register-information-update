@@ -194,7 +194,7 @@
     "privatePerson": {
       "type": "object",
       "description": "Natural person.",
-      "oneOf": [{
+      "anyOf": [{
           "required": [
             "fullName",
             "birthDate",
@@ -205,6 +205,14 @@
           "required": [
             "fullName",
             "birthDate",
+            "nationalities"
+          ]
+        },
+          {
+          "required": [
+            "fullName",
+            "birthDate",
+            "hetu",
             "nationalities"
           ]
         }
