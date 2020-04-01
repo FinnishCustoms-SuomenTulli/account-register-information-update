@@ -123,34 +123,24 @@
       "required": [
         "name",
         "registrationNumber",
-        "registrationNumberType",
         "roles"
       ],
       "properties": {
         "registrationNumber": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 35
-        },
-        "registrationNumberType": {
-          "type": "string",
-          "oneOf": [
-            {
-              "description": "Finnish business id (Y-tunnus)",
+          "type": "object",
+          "required": [
+            "number",
+            "type"
+          ],
+          "properties": {
+            "number": {
               "type": "string",
-              "const": "businessId"
+              "description": "Organisation registration number"
             },
-            {
-              "description": "Registration number of a Finnish association",
-              "type": "string",
-              "const": "associationRegistrationNumber"
-            },
-            {
-              "description": "Generic registration number",
-              "type": "string",
-              "const": "registrationNumber"
+            "type": {
+              "$ref": "#/definitions/registrationNumberType"
             }
-          ]
+          }
         },
         "registrationAuthority": {
           "type": "string",
@@ -277,6 +267,26 @@
           "$ref": "#/definitions/uuidv4"
         }
       }
+    },
+    "registrationNumberType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "description": "Finnish business id (Y-tunnus)",
+          "type": "string",
+          "const": "businessId"
+        },
+        {
+          "description": "Registration number of a Finnish association",
+          "type": "string",
+          "const": "associationRegistrationNumber"
+        },
+        {
+          "description": "Generic registration number",
+          "type": "string",
+          "const": "registrationNumber"
+        }
+      ]
     },
     "safetyDepositBox": {
       "type": "object",
