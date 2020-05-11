@@ -244,13 +244,12 @@
       "type": "object",
       "description": "Role",
       "required": [
-        "startDate",
         "type",
         "legalPersonId"
       ],
       "properties": {
         "startDate": {
-          "description": "Role start date.",
+          "description": "Role start date. Required for other than beneficiary roles.",
           "$ref": "#/definitions/date"
         },
         "endDate": {
