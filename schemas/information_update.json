@@ -245,7 +245,7 @@
       "description": "Role",
       "required": [
         "type",
-        "legalPersonId"
+        "legalPersonReference"
       ],
       "properties": {
         "startDate": {
@@ -261,7 +261,7 @@
           "description": "Role type.",
           "enum": ["owner", "access", "beneficiary"]
         },
-        "legalPersonId": {
+        "legalPersonReference": {
           "description": "Legal person identifier",
           "$ref": "#/definitions/uuidv4"
         }
@@ -330,7 +330,7 @@
   "properties": {
     "creationDateTime": {
       "$id": "#/properties/creationDateTime",
-      "description": "Creation date of the message.",
+      "description": "Creation date and time of the message.",
       "$ref": "#/definitions/date"
     },
     "senderBusinessId": {
