@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.5*
+*Dokumentin versio 1.0.6*
 
 ## Versiohistoria
 
@@ -18,6 +18,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.3|3.2.2020|Organisaation ominaisuuksista muutettu businessId -> registrationNumber ja poistettu businessIdCountryCode|
 1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite. Päivitetty rajapinnan maksimaalista sanomakokoa ja päivitetty kuvausta tietojen toimittamisesta Tilirekisteriin. Tarkennettu kiistanalaisten/virheellisten tietojen ilmoittamista.|
 1.0.5|12.5.2020|Lisätty request/response esimerkki selventämään JWT tokenien ja HTTP headerien käyttöä.|
+1.0.6|13.5.2020|Poistettu kappaleesta 3.1 kohta Saapuvan sanoman allekirjoitusvarmenne.|
 
 ## Sisällysluettelo
 
@@ -84,12 +85,6 @@ a) varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämäll�
 
 tai  
 b) varmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus.
-
-#### Saapuvan sanoman allekirjoitusvarmenne
-
-Tilirekisteristä saapuvien sanomien allekirjoitus on hyväksyttävä, edellyttäen että  
-a) allekirjoituksessa käytetty varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämällä sulkulistalla  
-b) varmenteen kohteen serialNumber attribuuttina on Tullin Y-tunnus “0245442-8” tai kirjaimet FI ja Tullin Y-tunnuksen numero-osa: “FI02454428”.
 
 #### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon palvelinvarmenne
 
