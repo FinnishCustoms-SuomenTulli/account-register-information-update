@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.4*
+*Dokumentin versio 1.0.5*
 
 ## Versiohistoria
 
@@ -17,6 +17,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.2|3.2.2020|luonnollisen henkilön kansalaisuus muutettu kansalaisuudet-listaksi|
 1.0.3|3.2.2020|Organisaation ominaisuuksista muutettu businessId -> registrationNumber ja poistettu businessIdCountryCode|
 1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite. Päivitetty rajapinnan maksimaalista sanomakokoa ja päivitetty kuvausta tietojen toimittamisesta Tilirekisteriin. Tarkennettu kiistanalaisten/virheellisten tietojen ilmoittamista.|
+1.0.5|12.5.2020|Lisätty request/response esimerkki selventämään JWT tokenien ja HTTP headerien käyttöä.|
 
 ## Sisällysluettelo
 
@@ -147,7 +148,7 @@ JWT Payload
 ```
 {
   "sub": "[SUBJECT]",
-  "senderBusinessId": "[BUSINESS_ID]"
+  "aud": "accountRegister"
 }
 ```
 
@@ -164,7 +165,8 @@ JWT Payload
 ```
 {
   "sub": "[SUBJECT]",
-  "reportUpdate": "[JSON STRING]"
+  "aud": "accountRegister",
+  "reportUpdate": "[JSON OBJECT]"
 }
 ```
 ### 3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
