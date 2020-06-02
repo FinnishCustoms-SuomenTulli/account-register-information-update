@@ -153,6 +153,7 @@
         "roles": {
           "type": "array",
           "description": "Beneficiaries. Role type has to be beneficiary.",
+          "minItems": 1,
           "items": {
             "$ref": "#/definitions/role"
           }
