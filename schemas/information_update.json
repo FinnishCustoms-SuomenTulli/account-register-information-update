@@ -27,7 +27,7 @@
         },
         "roles": {
           "type": "array",
-          "description": "Account related roles, owner role is mandatory.",
+          "description": "Account related roles.",
           "minItems": 1,
           "items": {
             "$ref": "#/definitions/role"
@@ -313,7 +313,7 @@
         },
         "roles": {
           "type": "array",
-          "description": "Safety deposit box related roles, owner role is mandatory.",
+          "description": "Safety deposit box related roles.",
           "minItems": 1,
           "items": {
             "$ref": "#/definitions/role"
