@@ -19,6 +19,8 @@ Versio|Päivämäärä|Kuvaus|
 1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite. Päivitetty rajapinnan maksimaalista sanomakokoa ja päivitetty kuvausta tietojen toimittamisesta Tilirekisteriin. Tarkennettu kiistanalaisten/virheellisten tietojen ilmoittamista.|
 1.0.5|12.5.2020|Lisätty request/response esimerkki selventämään JWT tokenien ja HTTP headerien käyttöä.|
 1.0.6|13.5.2020|Poistettu kappaleesta 3.1 kohta Saapuvan sanoman allekirjoitusvarmenne.|
+1.0.7|13.5.2020|Poistettu skeemasta roolin alkupäivän pakollisuus edunsaajan osalta.|
+1.0.8|5.6.2020|Lisätty skeemaan tilin ja talletuslokeron roolien vähimmäismääräksi 1.|
 
 ## Sisällysluettelo
 
