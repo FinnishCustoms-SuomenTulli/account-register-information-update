@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.6*
+*Dokumentin versio 1.0.8*
 
 ## Versiohistoria
 
