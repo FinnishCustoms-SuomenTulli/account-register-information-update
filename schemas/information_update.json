@@ -64,13 +64,16 @@
     },
     "businessId": {
       "type": "string",
-      "description": "Business id (Y-tunnus)",
+      "description": "Business id or VAT number",
       "examples": [
-        "0245442-8"
+        "0245442-8",
+        "FI02454428",
+        "SE999999999901",
+        "NL999999999B01"
       ],
-      "minLength": 9,
-      "maxLength": 9,
-      "pattern": "[0-9]{7}[-][0-9]"
+      "minLength": 4,
+      "maxLength": 20,
+      "pattern": "[A-Z|0-9|-]+"
     },
     "customer": {
       "type": "object",
@@ -337,7 +340,7 @@
     },
     "senderBusinessId": {
       "$id": "#/properties/senderBusinessId",
-      "description": "Sender business id (Y-tunnus).",
+      "description": "Sender business id or VAT number.",
       "$ref": "#/definitions/businessId"
     },
     "legalPersons": {
