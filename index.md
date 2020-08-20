@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.9*
+*Dokumentin versio 1.0.10*
 
 ## Versiohistoria
 
@@ -22,6 +22,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.7|13.5.2020|Poistettu skeemasta roolin alkupäivän pakollisuus edunsaajan osalta.|
 1.0.8|5.6.2020|Lisätty skeemaan tilin ja talletuslokeron roolien vähimmäismääräksi 1.|
 1.0.9|11.6.2020|Päivitetty JWS-allekirjoituksen kuvaus kappaleessa 3.4.|
+1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
 
 ## Sisällysluettelo
 
@@ -175,7 +176,7 @@ Rajapinnan käyttäjä on myös velvollinen ilmoittamaan viivytyksettä Tullille
 
 ### 3.6 Rajapinnan kapasiteetti
 
-Rajapinnan sallittu maksimaalinen sanomakoko on 5MB. Rajapinnan sallittu maksimaalinen päivitystiheys lisätään tähän dokumenttiin myöhemmin.
+Rajapinnan sallittu maksimaalinen sanomakoko on 50kB JWT-muodossa. Sanomat tulee lähettää peräkkäin niin, että odotetaan edellisen pyynnön OK-kuittausta ennen seuraavan lähetystä.
 
 ## <a name="päivitysrajapinta"></a> 4. Tilirekisterin päivitysrajapinnan yleiskuvaus
 
