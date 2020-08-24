@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.10*
+*Dokumentin versio 1.0.11*
 
 ## Versiohistoria
 
@@ -23,6 +23,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.8|5.6.2020|Lisätty skeemaan tilin ja talletuslokeron roolien vähimmäismääräksi 1.|
 1.0.9|11.6.2020|Päivitetty JWS-allekirjoituksen kuvaus kappaleessa 3.4.|
 1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
+1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
 
 ## Sisällysluettelo
 
@@ -90,6 +91,8 @@ a) varmenne on VRK:n myöntämä, voimassa, eikä esiinny VRK:n ylläpitämäll�
 tai  
 b) varmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus.
 
+Huom. Jotta sanomien allekirjoitukset täyttävät alla viitatut kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee allekirjoituksiin käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Allekirjoituksiin käytettävän varmenteen käyttötarkoituksiin täytyy myös kuulua ”digitaalinen allekirjoitus”. Nämä seikat tulee huomioida varmennetta tilattaessa.
+
 #### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon palvelinvarmenne
 
 Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 (versio 3) varmenteita käyttäen.
@@ -105,6 +108,8 @@ tai
 b) palvelinvarmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus.
 
 Mikäli tiedon luovuttajan palvelinvarmenteessa ja lähtevän sanoman allekirjoitusvarmenteessa käytetään samaa Y-tunnusta tai ALV-tunnusta, voidaan kumpaankin tarkoitukseen käyttää samaa varmennetta.
+
+Huom. Jotta tietoliikenteen suojaus täyttää alla viitatut Kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Tämä tulee huomioida varmennetta tilattaessa.
 
 #### Tilirekisterin palvelinvarmenne
 
