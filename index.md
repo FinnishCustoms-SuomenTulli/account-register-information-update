@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.11*
+*Dokumentin versio 1.0.12*
 
 ## Versiohistoria
 
@@ -24,6 +24,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.9|11.6.2020|Päivitetty JWS-allekirjoituksen kuvaus kappaleessa 3.4.|
 1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
 1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
+1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
 
 ## Sisällysluettelo
 
@@ -32,10 +33,15 @@ Versio|Päivämäärä|Kuvaus|
   1.2 Dokumentin tarkoitus ja kattavuus  
   1.3 Yleiskuvaus  
 2. [Aktiviteettien kuvaus](#luku2)  
-  2.1 Pankki- ja maksutilitietojen toimittaminen  
+  2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin 
 3. [Tietoturva](#tietoturva)  
   3.1 Tunnistaminen
-4. [Tilirekisterin päivitysrajapinta](#päivitysrajapinta)  
+  3.2 Yhteyksien suojaaminen
+  3.3 Sallittu HTTP-versio
+  3.4 Sanomatason allekirjoitus
+  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
+  3.6 Rajapinnan kapasiteetti
+4. [Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)  
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -194,6 +200,10 @@ Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId kentässä.
 
 Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#sanomarakenne).
+
+Päivityssanomissa on mahdollista toimittaa kokonaisia tietueita, jotka viittaavat aiemmin toimitettuihin tietueelle yksilöllisiin tunnisteisiin. Esimerkiksi voidaan toimittaa tiedot tilistä, joka sisältää rooliviittauksia aiemmin toimitettuihin LegalPerson-tietueisiin. Lisäksi voidaan esimerkiksi toimittaa LegalPerson-tietueesta pelkkä nimen muutos, jolloin LegalPerson-tietueeseen liittyviä roolitietoja ei tarvitse toimittaa sanomalla uudestaan.
+
+Kuitenkin on huomioitava, että kun toimitetaan Account, SafetyDepositBox roolilistoja tai Organisation-tietueen roolilistoja, on roolilistojen oltava tällöin aina täydellisiä, ts. ei ole mahdollista toimittaa esimerkiksi Account.roles-kentässä vain uusia rooleja, vaan on toimitettava kaikki sillä ajan hetkellä voimassaolevat roolit.
 
 Sanomien yksilöintiin käytetään X-Correlation-ID tunnistetta (UUIDv4) joka kulkee sanoman headerissa. Jos sitä ei ole lähetetyssä sanomassa se generoidaan automaattisesti ja palautetaan vastaussanomassa.
 
