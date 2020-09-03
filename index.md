@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.12*
+*Dokumentin versio 1.0.13*
 
 ## Versiohistoria
 
@@ -25,6 +25,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
 1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
 1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
+1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.
 
 ## Sisällysluettelo
 
@@ -35,12 +36,12 @@ Versio|Päivämäärä|Kuvaus|
 2. [Aktiviteettien kuvaus](#luku2)  
   2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin 
 3. [Tietoturva](#tietoturva)  
-  3.1 Tunnistaminen
-  3.2 Yhteyksien suojaaminen
-  3.3 Sallittu HTTP-versio
-  3.4 Sanomatason allekirjoitus
-  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
-  3.6 Rajapinnan kapasiteetti
+  3.1 Tunnistaminen  
+  3.2 Yhteyksien suojaaminen  
+  3.3 Sallittu HTTP-versio  
+  3.4 Sanomatason allekirjoitus  
+  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus  
+  3.6 Rajapinnan kapasiteetti  
 4. [Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)  
 
 ## 1. Johdanto <a name="luku1"></a>
@@ -142,6 +143,8 @@ Allekirjoituksessa käytettyjen kryptografisten algoritmien on vastattava krypto
 Päivityssanomassa on oltava kaksi erillistä JWS-allekirjoitusta (esimerkit alempana):  
 a) Authorization headerissa on oltava Bearer token JWS josta löytyy sub-väitteessä (sub claim) lähettäjän Y-tunnus tai ALV-tunnus.  
 b) Request bodyssa on oltava JWS jossa "reportUpdate" property sisältää [JSON skeeman](schemas/information_update.json) mukaisen päivityssanoman. 
+
+Molempien JWS-allekirjoitusten sub-kentässä tulee olla lähettäjän Y-tunnus tai VAT-tunnus samassa muodossa kuin lähettäjän julkisessa varmenteessa SERIALNUMBER-kentässä.
 
 Virheellisen tai virheelliseksi epäillyn sanoman ilmoitus eroaa päivityssanomasta niin, että "reportUpdate" claim jää kokonaan pois ja sen tilalla on joko "reportDisputable" tai "reportIncorrect" tilanteesta riippuen ([kts. Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)).
 
