@@ -36,12 +36,12 @@ Versio|Päivämäärä|Kuvaus|
 2. [Aktiviteettien kuvaus](#luku2)  
   2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin 
 3. [Tietoturva](#tietoturva)  
-  3.1 Tunnistaminen
-  3.2 Yhteyksien suojaaminen
-  3.3 Sallittu HTTP-versio
-  3.4 Sanomatason allekirjoitus
-  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
-  3.6 Rajapinnan kapasiteetti
+  3.1 Tunnistaminen  
+  3.2 Yhteyksien suojaaminen  
+  3.3 Sallittu HTTP-versio  
+  3.4 Sanomatason allekirjoitus  
+  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus  
+  3.6 Rajapinnan kapasiteetti  
 4. [Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)  
 
 ## 1. Johdanto <a name="luku1"></a>
