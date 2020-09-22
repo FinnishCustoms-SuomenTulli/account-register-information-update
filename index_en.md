@@ -18,8 +18,8 @@ Version|Date|Description|
 1.0.9|11.6.2020|The description of the JWS signature in section 3.4 was updated.|
 1.0.10|20.8.2020|The maximum size of the message and the mention of consecutive sending were updated in section 3.6.|
 1.0.11|24.8.2020|A specifying note regarding the lengths of keys used in data communications and message signatures was added.|
-1.0.12|1.9.2020|A clarification was added in chapter 4: lists of roles have to include all currently valid roles. Updated table of contents.|
-1.0.13|2.9.2020|Added a mention in chapter 3.4: the sub-field in signatures has to be equal to SerialNumber field of the certificate.
+1.0.12|1.9.2020|An addition was made to chapter 4, specifying that all roles that are valid at that moment in time must be sent with the role lists. The list of contents was updated.|
+1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.
 
 ## Table of contents
 
@@ -204,9 +204,9 @@ Each message must include the Business ID of the supplier of information in the 
 
 In the message structure of the updating message, legal persons, customers, accounts and safety deposit boxes are indicated as key-value pairs where a unique UUIDv4 (Universally unique identifier) is used as the key for the data record. These identifiers are not issued by Customs; instead, they are identifiers created by the supplier of information for identifying customer details. This identifier allows the records to be identified, for example if the person’s name or personal identity code changes. An example of the message structure of an updating message is found in [Description of the message structure](#messagestructure).
 
-In update messages, it is possible to provide complete records that refer to previously submitted unique identifiers for the record. For example, you can submit information about an account that contains role references to previously submitted LegalPerson records. In addition, for example, a mere name change can be submitted from a LegalPerson record, so that the role information associated with the LegalPerson record does not need to be submitted again.
+The updating messages can be used to send whole records that refer to unique identifiers that have previously been sent for the record. For example, data can be sent concerning an account that contains references to roles in LegalPerson records that have previously been sent. It is also possible to send only a change of name as regards a LegalPerson record without having to send the role data concerning the LegalPerson record again in the message.
 
-However, it should be noted that when submitting Account, SafetyDepositBox or Organization record role lists, the role lists must always be complete, ie it is not possible to submit only new roles in the Account.roles field, for example, but all currently valid roles must be submitted.
+However, it should be noted that when sending role lists for Account, for SafetyDepositBox or for the record Organisation, the role lists must always be complete. In other words, it is not possible to send only new roles in e.g. the Account.roles field; instead, all roles valid at that moment in time must be sent.
 
 The messages are identified by X-Correlation-IDs (UUIDv4) which are transmitted in the message headers. If it is not included in the message sent, it is generated automatically and returned in the reply message.
 
