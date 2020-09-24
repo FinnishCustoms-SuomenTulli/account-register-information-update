@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "referredEntityId",
+    "correlationId"
+  ],
+  "definitions": {
+   "uuidv4": {
+    "type": "string",
+    "description": "Universally unique identifier (UUIDv4).",
+    "examples": [
+     "91e8c532-71e1-4c4f-bf30-ceec6160ece0"
+    ]
+   }
+  },
+   "properties": {
+    "referredEntityId": {
+     "$id": "#/properties/referredEntityId",
+     "description": "Identifier (UUIDv4) for the data record that is marked incorrect.",
+     "$ref": "#/definitions/uuidv4"
+   },
+    "correlationId": {
+      "$id": "#/properties/correlationId",
+      "description": "X-Correlation-ID (UUIDv4) of the update message in which the data record was originally reported.",
+      "$ref": "#/definitions/uuidv4"
+   }
+  }
+}

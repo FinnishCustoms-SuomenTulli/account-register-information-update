@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.13*
+*Dokumentin versio 1.0.14*
 
 ## Versiohistoria
 
@@ -26,6 +26,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
 1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
 1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.
+1.0.14|24.9.2020|Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP vastaukset -listaa.
 
 ## Sisällysluettelo
 
@@ -210,8 +211,8 @@ Kuitenkin on huomioitava, että kun toimitetaan Account, SafetyDepositBox roolil
 
 Sanomien yksilöintiin käytetään X-Correlation-ID tunnistetta (UUIDv4) joka kulkee sanoman headerissa. Jos sitä ei ole lähetetyssä sanomassa se generoidaan automaattisesti ja palautetaan vastaussanomassa.
 
-Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi erillisillä sanomilla ja endpointeilla.
-Tähän käytetään aiemmin mainittua tietueelle yksilöllistä UUIDv4 tunnistetta. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
+Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi (kiistanalaiseksi) erillisillä sanomilla ja endpointeilla.
+Tähän käytetään aiemmin mainittua tietueelle yksilöllistä UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on alunperin ilmoitettu. Tietue voi olla joko Account, SafetyDepositBox tai LegalPerson. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
 
 Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
@@ -242,7 +243,13 @@ Esimerkkisanomat löytyvät alla olevista linkeistä:
 
 [Tiedon ilmoittaminen virheelliseksi](examples/report-incorrect.json)
 
-Päivityssanoman JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](schemas/information_update.json).
+Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
+
+Päivityssanoman [skeema](schemas/information_update.json)
+
+Kiistanalaiseksi ilmoittamissanoman [skeema](schemas/report_disputable.json)
+
+Virheelliseksi ilmoittamissanoman [skeema](schemas/report_incorrect.json)
 
 #### <a name="InformationUpdate response"></a> HTTP vastaukset
 
@@ -253,24 +260,37 @@ Päivityssanoman JSON rakenteen validointia varten on tehty [JSON Schema draft 7
 Body
 ```
 {
-  errorMessage              string
+  message              string
+  objectErrors         string-taulukko
+  fieldErrors          string-taulukko   
 }
 ```
 
-405 Method Not Allowed
+403 Forbidden
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
+
+404 Not Found
+
+Body
+```
+{
+  message              string
+}
+```
+
+405 Method Not Allowed
 
 500 Internal Server Error
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
