@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.13*
+*Dokumentin versio 1.0.14*
 
 ## Versiohistoria
 
@@ -25,7 +25,8 @@ Versio|Päivämäärä|Kuvaus|
 1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
 1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
 1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
-1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.
+1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.|
+1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
 
 ## Sisällysluettelo
 
@@ -136,7 +137,7 @@ Päivitysrajapinnan yhteydet käyttävät HTTP-protokollan versiota 1.1.
 
 ### 3.4 Sanomatason allekirjoitus
 
-Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). JWS-allekirjoitukseen käytetään RS256 algoritmia ja ne allekirjoitetaan lähettäjän yksityisellä avaimella. Julkisen avaimen toimittamisesta Tullille ohjeistetaan Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohjeessa.
+Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). JWS-allekirjoitukseen käytetään RS256 algoritmia ja ne allekirjoitetaan lähettäjän yksityisellä avaimella. Julkisen avaimen sisältävän varmenteen toimittamisesta Tullille ohjeistetaan Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohjeessa.
 
 Allekirjoituksessa käytettyjen kryptografisten algoritmien on vastattava kryptografiselta vahvuudeltaan vähintään Viestintäviraston määrittelemiä kryptografisia vahvuusvaatimuksia kansalliselle suojaustasolle ST IV. Tämänhetkiset vahvuusvaatimukset on kuvattu dokumentissa https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
