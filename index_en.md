@@ -1,6 +1,6 @@
 # Data updating interface description of the Account Register
 
-*Document version 1.0.13*
+*Document version 1.0.14*
 
 ## Version history
 
@@ -19,7 +19,8 @@ Version|Date|Description|
 1.0.10|20.8.2020|The maximum size of the message and the mention of consecutive sending were updated in section 3.6.|
 1.0.11|24.8.2020|A specifying note regarding the lengths of keys used in data communications and message signatures was added.|
 1.0.12|1.9.2020|An addition was made to chapter 4, specifying that all roles that are valid at that moment in time must be sent with the role lists. The list of contents was updated.|
-1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.
+1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.|
+1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
 
 ## Table of contents
 
@@ -134,7 +135,7 @@ The connections of the data updating interface use HTTP version 1.1.
 
 ### 3.4 Message-level signature
 
-The data updating interface messages are signed using JWS signatures (PKI). The RS256 algorithm is used for JWS signatures, and they are done with the sender’s private key. The deployment and maintenance instructions for the Bank and Payment Account Register contain information on submitting public keys to Customs.
+The data updating interface messages are signed using JWS signatures (PKI). The RS256 algorithm is used for JWS signatures, and they are done with the sender’s private key. The deployment and maintenance instructions for the Bank and Payment Account Register contain information on submitting certificates containing public keys to Customs.
 
 In terms of cryptographic strength, the cryptographic algorithms used in signatures must correspond at least with the cryptographic strength requirements set out by the Finnish Transport and Communications Agency as concerns national protection level ST IV. Current strength requirements are described in the Finnish-language document available
 at this link: https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Record No.:190/651/2015).
