@@ -1,6 +1,6 @@
 # Data updating interface description of the Account Register
 
-*Document version 1.0.14*
+*Document version 1.0.15*
 
 ## Version history
 
@@ -21,6 +21,7 @@ Version|Date|Description|
 1.0.12|1.9.2020|An addition was made to chapter 4, specifying that all roles that are valid at that moment in time must be sent with the role lists. The list of contents was updated.|
 1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.|
 1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
+1.0.15|12.1.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4.|
 
 ## Table of contents
 
@@ -195,9 +196,6 @@ The maximum permissible size of messages to the interface is 50kB in JWT format.
 ## <a name="chapter4"></a> 4. General description of the account register updating interface
 
 The updating interface will be implemented using the REST/JSON method.
-
-The user of the interface (supplier of information) must send at least one (1) minimal message (see below, fields marked with an asterisk filled in) during the specified period, for example once a month (watchdog timer reset). If no messages are sent during this period, a diagnosis request is sent. If this is not responded to within the specified time, a
-sanction procedure will be initiated.
 
 Each message must include its date of creation.
 
