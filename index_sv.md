@@ -23,22 +23,22 @@ Version|Datum|Beskrivning|
 
 ## Innehåll
 
-1. [Inledning](#luku1)  
+1. [Inledning](#kapitel1)  
   1.1 Termer och förkortningar
   1.2 Dokumentets syfte och omfattning
   1.3 Allmän beskrivning  
-2. [Aktivitetsbeskrivning](#luku2)  
+2. [Aktivitetsbeskrivning](#kapitel2)  
   2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret
-3. [Dataskydd](#tietoturva)  
+3. [Dataskydd](#kapitel3)  
   3.1 Identifiering  
   3.2 Skydd för förbindelser
   3.3 Tillåten HTTP-version
   3.4 Signering på meddelandenivå
   3.5 Skyldighet att anmäla informationssäkerhetsincidenter
   3.6 Gränssnittets kapacitet
-4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#päivitysrajapinta)  
+4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#kapitel4)  
 
-## 1. Inledning <a name="luku1"></a>
+## 1. Inledning <a name="kapitel1"></a>
 
 ### 1.1 Termer och förkortningar
 
@@ -64,7 +64,7 @@ Systemet består av två delar: registret över bank- och betalkonton och datas�
 
 I detta dokument beskrivs Kontoregistrets uppdateringsgränssnitt.
 
-## 2. Aktivitetsbeskrivning <a name="luku2"></a>
+## 2. Aktivitetsbeskrivning <a name="kapitel2"></a>
 
 I detta kapitel beskrivs överföring av bank- och betalkontouppgifter i form av flödesscheman.
 
@@ -79,7 +79,7 @@ På bild 2.1 visas överföring av bank- och betalkontouppgifter till Kontoregis
 
 Av bilden framgår att uppdateringsgränssnittet är synkront. I brödtexten till ett HTTP-svar returneras antingen en uppgift om att uppdateringen lyckats eller en uppgift om fel vid exempelvis validering av meddelandet.
 
-## <a name="tietoturva"></a> 3. Dataskydd
+## <a name="kapitel3"></a> 3. Dataskydd
   
 ### 3.1 Identifiering
 
@@ -186,11 +186,11 @@ Den som använder gränssnittet är skyldig att utan dröjsmål anmäla till så
 
 Den som använder gränssnittet är även skyldig att utan dröjsmål anmäla till Tullen om det observeras informationssäkerhetsincidenter i datasystemet som använder gränssnittet.
 
-### 3.6Gränssnittets kapacitet
+### 3.6 Gränssnittets kapacitet
 
 Den maximala tillåtna meddelandestorleken i gränssnittet är 50kB i JWT-format. Man ska skicka meddelandena efter varandra så att man väntar tills föregående begäran kvitterats med OK innan man skickar nästa.
 
-## <a name="päivitysrajapinta"></a> 4. Allmän beskrivning av kontoregistrets uppdateringsgränssnitt
+## <a name="kapitel4"></a> 4. Allmän beskrivning av kontoregistrets uppdateringsgränssnitt
 
 Uppdateringsgränssnittet implementeras med REST/JSON.
 
@@ -201,7 +201,7 @@ Varje meddelande ska innehålla datum då det skapats.
 Varje meddelande ska innehålla uppgiftsleverantörens FO-nummer i senderBusinessId-
 fältet.
 
-I uppdateringsmeddelandets meddelandestruktur anmäls juridiska personer, kundrelationer, konton och bankfack som nyckel-värde-par, där nyckeln utgör ett individuellt id UUIDv4 (Universally unique identifier) för posten. Tullen utfärdar inte dessa id, utan de skapas av den som överför uppgifter och de kan användas för att specificera kunduppgifter. Utifrån detta id kan posterna identifieras, till exempel om personens namn eller personbeteckning ändras. Exempel på uppdateringsmeddelandets meddelandestruktur finns under Beskrivning av meddelandestrukturen.
+I uppdateringsmeddelandets meddelandestruktur anmäls juridiska personer, kundrelationer, konton och bankfack som nyckel-värde-par, där nyckeln utgör ett individuellt id UUIDv4 (Universally unique identifier) för posten. Tullen utfärdar inte dessa id, utan de skapas av den som överför uppgifter och de kan användas för att specificera kunduppgifter. Utifrån detta id kan posterna identifieras, till exempel om personens namn eller personbeteckning ändras. Exempel på uppdateringsmeddelandets meddelandestruktur finns under [Beskrivning av meddelandestrukturen](#meddelandestrukturen).
 
 I uppdateringsmeddelandena är det möjligt att skicka hela poster som hänvisar till id som tidigare skickats och som är individuella för posten. Man kan till exempel skicka uppgifter om ett konto som innehåller rollhänvisningar till LegalPerson-poster som skickats tidigare. Dessutom kan man till exempel skicka enbart en namnändring angående en LegalPerson-post, och behöver då inte skicka rolluppgifterna som hänför sig till LegalPerson-posten på nytt i meddelandet.
 
@@ -209,7 +209,7 @@ Dock bör man beakta att när man skickar rollförteckningar som gäller Account
 
 För specificering av meddelanden används id:t X-Correlation-ID (UUIDv4) som finns i meddelandets header. Om ett sådant inte finns i meddelandet genereras det automatiskt och returneras i svarsmeddelandet.
 
-Man kan anmäla inlämnade uppgifter som felaktiga eller så kan man anmäla att man misstänker att de är felaktiga med separata meddelanden och endpoints. För detta används det ovannämnda, for posten individuella id:t UUIDv4. Exempel på meddelanden finns Beskrivning av meddelandestrukturen.
+Man kan anmäla inlämnade uppgifter som felaktiga eller så kan man anmäla att man misstänker att de är felaktiga med separata meddelanden och endpoints. För detta används det ovannämnda, for posten individuella id:t UUIDv4. Exempel på meddelanden finns [Beskrivning av meddelandestrukturen](#meddelandestrukturen).
 
 I tabellen nedan finns en lista över gränssnittets endpoints.
 
@@ -231,7 +231,7 @@ Objekt {
 }
 ```
 
-### <a name="sanomarakenne"></a>Beskrivning av meddelandestrukturen
+### <a name="meddelandestrukturen"></a>Beskrivning av meddelandestrukturen
 
 Exempelmeddelanden finns via länkarna nedan:
 
@@ -243,7 +243,7 @@ Exempelmeddelanden finns via länkarna nedan:
 
 För validering av uppdateringsmeddelandets JSON-struktur har man gjort ett [schema enligt JSON Schema draft 7.](schemas/information_update.json).
 
-#### <a name="InformationUpdate response"></a> HTTP-svar
+#### HTTP-svar
 
 200 OK
 
