@@ -2,7 +2,7 @@
 [Deployment and maintenance instructions for the Bank and Payment Account Register](instructions/Deployment_and_maintenance_instructions_for_the_Bank_and_Payment_Account_Register_EN.pdf)  
 [Data updating interface description](index_en.md)  
 [Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret](instructions/Instruktioner_för_produktionssättning_och_underhåll_av_bank_och_betalkontoregistret_SV.pdf)  
-[Beskrivning av Kontoregistrets uppdateringsgränssnitt](instructions/Beskrivning_av_Kontoregistrets_uppdateringsgränssnitt_SV.pdf)
+[Beskrivning av Kontoregistrets uppdateringsgränssnitt](index_sv.md)
 
 # Tilirekisterin päivitysrajapintakuvaus
 
