@@ -74,7 +74,7 @@ När uppgifter överförs till kontoregistret första gången ska alla berörda 
 
 På bild 2.1 visas överföring av bank- och betalkontouppgifter till Kontoregistret i form av ett flödesschema.
 
-![Pankki- ja maksutilitietojen toimittaminen](diagrams/flowchart_update.png "Pankki- ja maksutilitietojen toimittaminen")  
+![Överföring av bank- och betalkontouppgifter](diagrams/flowchart_update.png "Överföring av bank- och betalkontouppgifter")  
 *__Bild 2.1.__ Överföring av bank- och betalkontouppgifter.*
 
 Av bilden framgår att uppdateringsgränssnittet är synkront. I brödtexten till ett HTTP-svar returneras antingen en uppgift om att uppdateringen lyckats eller en uppgift om fel vid exempelvis validering av meddelandet.
