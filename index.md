@@ -27,7 +27,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
 1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.|
 1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
-1.0.15|12.1.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa.|
+1.0.15|4.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa.|
 
 ## Sisällysluettelo
 
