@@ -21,7 +21,7 @@ Version|Datum|Beskrivning|
 1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.|
 1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.|
 1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av certifikat som innehåller en öppen nyckel.|
-1.0.15|4.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid 4.|
+1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid 4. Ersatt BRC -> MDB|
 
 ## Innehåll
 
@@ -91,7 +91,7 @@ Utgående meddelanden ska automatiskt signeras med servercertifikatet x.509 (ver
 
 antingen
 
-a) att certifikatet har utfärdats av BRC, är i kraft och inte finns på BRC:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren
+a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren
 
 eller
 
@@ -107,7 +107,7 @@ Ett servercertifikat ska användas för att bilda en förbindelse, och FO-nummer
 
 antingen
 
-a) att servercertifikatet har utfärdats av BRC, är i kraft och inte finns på BRC:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne
+a) att servercertifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne
 
 eller
 
@@ -121,7 +121,7 @@ Obs. För att skydd av datakommunikation ska uppfylla de datasäkerhetskrav frå
 #### Kontoregistrets servercertifikat
 
 Uppgiftslämnaren identifierar förbindelsens motpart som Kontoregistret på basis av ett servercertifikat, förutsatt att
-a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av BRC och inte finns på BRC:s spärrlista
+a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av MDB och inte finns på MDB:s spärrlista
 b) attributet serialNumber för objektet för certifikatet är ”FI02454428” eller ”0245442-8”.
 
 ### 3.2 Skydd för förbindelser
