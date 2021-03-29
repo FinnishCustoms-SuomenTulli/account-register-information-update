@@ -1,6 +1,6 @@
 # Data updating interface description of the Account Register
 
-*Document version 1.0.14*
+*Document version 1.0.15*
 
 ## Version history
 
@@ -21,6 +21,7 @@ Version|Date|Description|
 1.0.12|1.9.2020|An addition was made to chapter 4, specifying that all roles that are valid at that moment in time must be sent with the role lists. The list of contents was updated.|
 1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.|
 1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
+1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
 
 ## Table of contents
 
@@ -89,7 +90,7 @@ The outgoing messages must be automatically signed using x.509 (version 3) serve
 
 either
 
-a) the certificate was issued by the Population Register Centre, the certificate is valid and is not included in the certificate revocation list of the Population Register Centre, and the serialNumber attribute of the Subject field of the certificate consists of the Business ID or VAT identifier of the data supplier
+a) the certificate was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital And Population Data Services Agency, and the serialNumber attribute of the Subject field of the certificate consists of the Business ID or VAT identifier of the data supplier
 
 or
 
@@ -107,7 +108,7 @@ Acceptance of the signature requires that
 
 either
 
-a) the server certificate was issued by the Population Register Centre, the certificate is valid and is not included in the certificate revocation list of the Population Register Centre, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier
+a) the server certificate was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital And Population Data Services Agency, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier
 
 or
 
@@ -120,7 +121,7 @@ Please note: For the protection of data communications to meet the information s
 #### Server certificate of the Account Register
 
 The data supplier will identify the Account Register as the counterpart of the connection on the basis of the server certificate provided that  
-a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Population Register Centre, the certificate is valid and is not included in the certificate revocation list published by the Population Register Centre  
+a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list published by the Digital And Population Data Services Agency  
 b) the serialNumber attribute of the subject of the certificate is “FI02454428” or “0245442-8”.
 
 ### 3.2 Protecting the connections
@@ -195,9 +196,6 @@ The maximum permissible size of messages to the interface is 50kB in JWT format.
 ## <a name="chapter4"></a> 4. General description of the account register updating interface
 
 The updating interface will be implemented using the REST/JSON method.
-
-The user of the interface (supplier of information) must send at least one (1) minimal message (see below, fields marked with an asterisk filled in) during the specified period, for example once a month (watchdog timer reset). If no messages are sent during this period, a diagnosis request is sent. If this is not responded to within the specified time, a
-sanction procedure will be initiated.
 
 Each message must include its date of creation.
 

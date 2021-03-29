@@ -1,6 +1,6 @@
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 1.0.13*
+*Dokumentversion 1.0.15*
 
 ## Versionshistorik
 
@@ -20,6 +20,8 @@ Version|Datum|Beskrivning|
 1.0.11|24.8.2020|En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikation och i meddelandenas signaturer har lagts till.|
 1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.|
 1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.|
+1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av certifikat som innehåller en öppen nyckel.|
+1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid 4. Ersatt BRC -> MDB|
 
 ## Innehåll
 
@@ -89,7 +91,7 @@ Utgående meddelanden ska automatiskt signeras med servercertifikatet x.509 (ver
 
 antingen
 
-a) att certifikatet har utfärdats av BRC, är i kraft och inte finns på BRC:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren
+a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren
 
 eller
 
@@ -105,7 +107,7 @@ Ett servercertifikat ska användas för att bilda en förbindelse, och FO-nummer
 
 antingen
 
-a) att servercertifikatet har utfärdats av BRC, är i kraft och inte finns på BRC:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne
+a) att servercertifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne
 
 eller
 
@@ -119,7 +121,7 @@ Obs. För att skydd av datakommunikation ska uppfylla de datasäkerhetskrav frå
 #### Kontoregistrets servercertifikat
 
 Uppgiftslämnaren identifierar förbindelsens motpart som Kontoregistret på basis av ett servercertifikat, förutsatt att
-a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av BRC och inte finns på BRC:s spärrlista
+a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av MDB och inte finns på MDB:s spärrlista
 b) attributet serialNumber för objektet för certifikatet är ”FI02454428” eller ”0245442-8”.
 
 ### 3.2 Skydd för förbindelser
@@ -134,7 +136,7 @@ De förbindelser som används av uppdateringsgränssnittet använder version 1.1
 
 ### 3.4 Signering på meddelandenivå
 
-Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS-signaturen används algoritmen RS256 och meddelandena signeras med avsändarens privata nyckel. Anvisningar om inlämning av den öppna nyckeln till Tullen finns i Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret.
+Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS-signaturen används algoritmen RS256 och meddelandena signeras med avsändarens privata nyckel. Anvisningar om inlämning till Tullen av certifikat som innehåller den öppna nyckeln finns i Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret.
 
 De kryptografiska algoritmer som används i signaturen ska till sin kryptografiska styrka motsvara minst Kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
@@ -193,8 +195,6 @@ Den maximala tillåtna meddelandestorleken i gränssnittet är 50kB i JWT-format
 ## <a name="kapitel4"></a> 4. Allmän beskrivning av kontoregistrets uppdateringsgränssnitt
 
 Uppdateringsgränssnittet implementeras med REST/JSON.
-
-Användaren av gränssnittet (den som överför uppgifter) ska skicka minst ett (1) minimimeddelande (se till att de *-märkta fälten nedan har ifyllts) inom utsatt tid, t.ex. en gång per månad (watchdog timer reset). Om inget meddelande har skickats under denna tid, skickas en begäran om utredning av fel. Om man inte reagerar på detta inom utsatt tid, inleds ett sanktionsförfarande.
 
 Varje meddelande ska innehålla datum då det skapats.
 
