@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.15*
+*Dokumentin versio 1.0.16*
 
 ## Versiohistoria
 
@@ -28,6 +28,12 @@ Versio|Päivämäärä|Kuvaus|
 1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.|
 1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
 1.0.15|18.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
+1.0.16|??.?.2021|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-sḱeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP vastaukset -listaa.
+
+```
+[Versiotiedote]
+```
+
 
 ## Sisällysluettelo
 
@@ -45,6 +51,13 @@ Versio|Päivämäärä|Kuvaus|
   3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus  
   3.6 Rajapinnan kapasiteetti  
 4. [Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)  
+  4.1 Yleistä  
+  4.2 Tiedonluovuttajien kategoriat  
+  4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi  
+  4.4 Rajapinnat  
+  4.5 JSON skeemat  
+  4.6 Esimerkkisanomat  
+  4.7 HTTP vastaukset  
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -196,13 +209,15 @@ Rajapinnan sallittu maksimaalinen sanomakoko on 50kB JWT-muodossa. Sanomat tulee
 
 ## <a name="päivitysrajapinta"></a> 4. Tilirekisterin päivitysrajapinnan yleiskuvaus
 
+### <a name="Yleista"></a> 4.1 Yleistä
+
 Päivitysrajapinta toteutetaan REST/JSON-menetelmällä.
 
 Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
 Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus senderBusinessId kentässä.
 
-Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#sanomarakenne).
+Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#Esimerkkisanomat).
 
 Päivityssanomissa on mahdollista toimittaa kokonaisia tietueita, jotka viittaavat aiemmin toimitettuihin tietueelle yksilöllisiin tunnisteisiin. Esimerkiksi voidaan toimittaa tiedot tilistä, joka sisältää rooliviittauksia aiemmin toimitettuihin LegalPerson-tietueisiin. Lisäksi voidaan esimerkiksi toimittaa LegalPerson-tietueesta pelkkä nimen muutos, jolloin LegalPerson-tietueeseen liittyviä roolitietoja ei tarvitse toimittaa sanomalla uudestaan.
 
@@ -210,20 +225,7 @@ Kuitenkin on huomioitava, että kun toimitetaan Account, SafetyDepositBox roolil
 
 Sanomien yksilöintiin käytetään X-Correlation-ID tunnistetta (UUIDv4) joka kulkee sanoman headerissa. Jos sitä ei ole lähetetyssä sanomassa se generoidaan automaattisesti ja palautetaan vastaussanomassa.
 
-Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi erillisillä sanomilla ja endpointeilla.
-Tähän käytetään aiemmin mainittua tietueelle yksilöllistä UUIDv4 tunnistetta. Esimerkit sanomista löytyvät [täältä](#sanomarakenne).
-
-Seuraavassa taulukossa on listattu rajapinnan endpointit.
-
-|HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
-|---|---|---|
-POST|/report-update|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
-POST|/report-disputable|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /report-incorrect.|
-POST|/report-incorrect|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
-
-Endpointia käytetään tietojen toimittamiseen Tilirekisteriin. Sanomassa toimitetaan tiedot asiakkuuksista, tileista ja tallelokeroista.
-
-### Notaatio
+#### Notaatio
 
 Rajapintatietueiden rakenteiseen kuvaukseen käytetään seuraavanlaista notaatiota:
 ```
@@ -232,19 +234,66 @@ Objekti {
 }
 ```
 
-### <a name="sanomarakenne"></a>Sanomarakenteen kuvaus
+### <a name="Kategoriat"></a> 4.2 Tiedonluovuttajien kategoriat
+
+Tietojen toimitusvelvolliset on jaettu kahteen kategoriaan:
+
+Kategoria 1: luottolaitokset  
+Kategoria 2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat  
+
+Päivityssanomien sisältö vaihtelee hieman kategorioiden välillä ja on kuvattu [JSON skeemoissa](#JSONskeemat).
+
+### <a name="VirheellinenKiistanalainen"></a> 4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi
+
+Toimitettuja tietoja voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi (kiistanalaiseksi) erillisillä sanomilla ja endpointeilla.
+
+Tähän käytetään aiemmin mainittua tietueelle yksilöllistä UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on ilmoitettu. Tietue, johon tietuuen tunnistteella viitataan, voi olla joko tili, tallelokero tai oikeudellinen henkilö. Esimerkit sanomista löytyvät [täältä](#Esimerkkisanomat).
+
+Molempien kategorioiden tietojen luovuttajat käyttävät samoja rajapintoja tietojen virheelliseksi ja kiistanalaiseksi ilmoittamiseen.
+
+### <a name="Rajapinnat"></a> 4.4 Rajapinnat
+
+Seuraavassa taulukossa on listattu rajapinnan endpointit.
+
+|HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
+|---|---|---|
+POST|/report-update/|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.<br />*Huom! Tämä rajapinta poistuu käytöstä ??.??.2021, mihin mennessä tietojen luovuttajien on siirryttävä käyttämään yrityksen tyypistä riippuen jompaa kumpaa v2-rajapintaa.*|
+POST|/v2/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
+POST|/v2/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
+POST|/v2/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /report-incorrect.|
+POST|/v2/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
+
+### <a name="JSONskeemat"></a> 4.5 JSON skeemat
+
+Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
+
+Päivityssanoma v1: kaikki tiedonluovuttajat [skeema](schemas/information_update-v1.json)
+
+Päivityssanoma v2: luottolaitokset [skeema](schemas/information_update-v2-credit_institution.json)
+
+Päivityssanoma v2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat [skeema](schemas/information_update-v2-other.json)
+
+Kiistanalaiseksi ilmoittamissanoman [skeema](schemas/report_disputable.json)
+
+Virheelliseksi ilmoittamissanoman [skeema](schemas/report_incorrect.json)
+
+### <a name="Esimerkkisanomat"></a> 4.6 Esimerkkisanomat
 
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
-[Päivityssanoma](examples/report-update.json)
+[Päivityssanoma v1: kaikki tiedonluovuttajat](examples/report-update-v1.json)
+
+[Päivityssanoma v2: luottolaitokset](examples/report-update-v2-credit_institution.json)
+
+[Päivityssanoma v2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat](examples/report-update-v2-other.json)
 
 [Tiedon ilmoittaminen kiistanalaiseksi](examples/report-disputable.json)
 
 [Tiedon ilmoittaminen virheelliseksi](examples/report-incorrect.json)
 
-Päivityssanoman JSON rakenteen validointia varten on tehty [JSON Schema draft 7 mukainen skeema](schemas/information_update.json).
+### <a name="InformationUpdate response"></a> 4.7 HTTP vastaukset
 
-#### <a name="InformationUpdate response"></a> HTTP vastaukset
+Järjestelmä palauttaa seuraavia HTTP vastauksia:
 
 200 OK
 
@@ -253,24 +302,37 @@ Päivityssanoman JSON rakenteen validointia varten on tehty [JSON Schema draft 7
 Body
 ```
 {
-  errorMessage              string
+  message              string
+  objectErrors         string-taulukko
+  fieldErrors          string-taulukko   
 }
 ```
 
-405 Method Not Allowed
+403 Forbidden
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
+
+404 Not Found
+
+Body
+```
+{
+  message              string
+}
+```
+
+405 Method Not Allowed
 
 500 Internal Server Error
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
