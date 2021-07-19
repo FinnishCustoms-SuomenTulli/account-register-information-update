@@ -249,7 +249,7 @@ Toimitettuja tietueita voidaan ilmoittaa joko virheellisiksi tai virheelliseksi 
 
 Tähän käytetään tietueen yksilöivää UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on ilmoitettu. Tietue, johon tietueen tunnisteella viitataan, voi olla joko tili, tallelokero tai oikeudellinen henkilö. Esimerkit sanomista löytyvät [täältä](#Esimerkkisanomat).
 
-Molempien kategorioiden tietojen luovuttajat käyttävät samoja rajapintoja tietojen virheelliseksi ja kiistanalaiseksi ilmoittamiseen.
+Molempien kategorioiden tiedon luovuttajat käyttävät samoja rajapintoja tietojen virheelliseksi ja kiistanalaiseksi ilmoittamiseen.
 
 ### <a name="Rajapinnat"></a> 4.4 Rajapinnat
 
@@ -257,7 +257,7 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
-POST|/report-update/|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.<br /><br />*Huom! Tämä rajapinta poistuu käytöstä ??.??.2021, mihin mennessä tietojen luovuttajien on siirryttävä käyttämään yrityksen tyypin mukaista v2-rajapintaa.*|
+POST|/report-update/|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.<br /><br />*Huom! Tämä rajapinta poistuu käytöstä ??.??.2021, mihin mennessä tiedon luovuttajien on siirryttävä käyttämään yrityksen tyypin mukaista v2-rajapintaa.*|
 POST|/v2/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/v2/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
 POST|/v2/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v2/report-incorrect/.|
@@ -267,29 +267,29 @@ POST|/v2/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun t
 
 Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
 
-Päivityssanoma v1: kaikki tiedonluovuttajat [skeema](schemas/information_update-v1.json)
+Päivityssanoma v1 (kaikki tiedon luovuttajat) [skeema](schemas/information_update-v1.json)
 
-Päivityssanoma v2: luottolaitokset [skeema](schemas/information_update-v2-credit_institution.json)
+Päivityssanoma v2 (luottolaitokset) [skeema](schemas/information_update-v2-credit_institution.json)
 
-Päivityssanoma v2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat [skeema](schemas/information_update-v2-other.json)
+Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v2-other.json)
 
-Tiedon ilmoittaminen kiistanalaiseksi v2: [skeema](schemas/report_disputable.json)
+Tiedon ilmoittaminen kiistanalaiseksi v2 [skeema](schemas/report_disputable.json)
 
-Tiedon ilmoittaminen virheelliseksi v2: [skeema](schemas/report_incorrect.json)
+Tiedon ilmoittaminen virheelliseksi v2 [skeema](schemas/report_incorrect.json)
 
 ### <a name="Esimerkkisanomat"></a> 4.6 Esimerkkisanomat
 
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
-[Päivityssanoma v1: kaikki tiedonluovuttajat](examples/report-update-v1.json)
+[Päivityssanoma v1 (kaikki tiedon luovuttajat)](examples/report-update-v1.json)
 
-[Päivityssanoma v2: luottolaitokset](examples/report-update-v2-credit_institution.json)
+[Päivityssanoma v2 (luottolaitokset)](examples/report-update-v2-credit_institution.json)
 
-[Päivityssanoma v2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat](examples/report-update-v2-other.json)
+[Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v2-other.json)
 
-[Tiedon ilmoittaminen kiistanalaiseksi v2:](examples/report-disputable.json)
+[Tiedon ilmoittaminen kiistanalaiseksi v2](examples/report-disputable.json)
 
-[Tiedon ilmoittaminen virheelliseksi v2:](examples/report-incorrect.json)
+[Tiedon ilmoittaminen virheelliseksi v2](examples/report-incorrect.json)
 
 ### <a name="InformationUpdate response"></a> 4.7 HTTP-vastaukset
 
