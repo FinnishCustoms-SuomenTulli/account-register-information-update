@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 1.0.16*
+*Dokumentin versio 2.0.00*
 
 ## Versiohistoria
 
@@ -28,7 +28,7 @@ Versio|Päivämäärä|Kuvaus|
 1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.|
 1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
 1.0.15|18.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
-1.0.16|??.?.2021|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.
+2.0.00|pp.kk.2021|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.
 
 ```
 [Versiotiedote]
@@ -58,6 +58,7 @@ Versio|Päivämäärä|Kuvaus|
   4.5 JSON-skeemat  
   4.6 Esimerkkisanomat  
   4.7 HTTP-vastaukset  
+  4.8 Rajapinnan kehittäminen  
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -245,11 +246,14 @@ Päivityssanomien sisältö on kuvattu [JSON skeemoissa](#JSONskeemat).
 
 ### <a name="VirheellinenKiistanalainen"></a> 4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi
 
-Toimitettuja tietueita voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi (kiistanalaiseksi).
-
-Tähän käytetään tietueen yksilöivää UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on ilmoitettu. Tietue, johon tietueen tunnisteella viitataan, voi olla joko tili, tallelokero tai oikeudellinen henkilö. Esimerkit sanomista löytyvät [täältä](#Esimerkkisanomat).
+Toimitettuja tietueita voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi (kiistanalaiseksi). Tähän käytetään tietueen yksilöivää UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on ilmoitettu. Tietue, johon tietueen tunnisteella viitataan, voi olla joko tili, tallelokero tai oikeudellinen henkilö. Esimerkit sanomista löytyvät [täältä](#Esimerkkisanomat).
 
 Molempien kategorioiden tiedon luovuttajat käyttävät samoja rajapintoja tietojen virheelliseksi ja kiistanalaiseksi ilmoittamiseen.
+
+Virheelliseksi epäily voidaan perua jos epäily todetaan aiheettomaksi mutta virheelliseksi ilmoitetun tietueen tilaa ei voi enää muuttaa.
+
+![Tietueen tilan muuttaminen](diagrams/state_diagram_incorrect_disputed.png "Tietueen tilan muuttaminen")  
+*__Kuva 4.3.__ Tietueen tilan muuttaminen*
 
 ### <a name="Rajapinnat"></a> 4.4 Rajapinnat
 
@@ -336,3 +340,18 @@ Body
   message              string
 }
 ```
+
+### <a name="API development"></a> 4.8 Rajapinnan kehittäminen
+
+Päivitysrajapinta kehittyy ja muuttuu jatkossakin. Suurin osa muutoksista on luonteeltaan sellaisia, että rajapintaa kutsuvaa toiminnallisuutta ei tarvitse muuttaa. Mutta, on myös tilanteita, joissa julkaistava muutos pakottaa muutoksiin rajapinnan kutsuvassa päässä. Tätä varten on oltava toimintamalli, jonka avulla muutoksia hallitaan.
+
+Kun Tulli julkaisee päivitysrajapinnasta uuden version on Tiedonluovuttaja velvollinen muuttamaan rajapintaa kutsuvaa toteutustaan siten, että se kykenee toimittamaan vaaditut tiedot uuden version avulla. 
+
+Kun ko. muutos on tulossa Tulli tiedottaa asiasta, julkaisee kuvauksen muutoksista, ohjeistaa muutokset ja antaa rajapintaa kutsuvan toteutuksen kehittämiselle aikataulun, jolloin muutokset pitäisi Tiedonluovuttajilla olla valmiina. 
+
+Kehittämisen aikaa pidetään ns. siirtymäaikana, jolloin päivitysrajapinnan edellinen, eli ns. vanha versio on käytössä normaalisti. Vanha versio kuitenkin poistetaan käytöstä kun kaikki Tiedonluovuttajat ovat kyenneet ottamaan käyttöön päivitysrajapinnan uuden version. Luonnollisesti kaikki uudet toimijat tekevät toteutuksena aina tuoreinta käytössä olevaan rajapintaa vasten.
+
+Tällä toimintamallilla pyritään siihen, että kukin toimija voi siirtyä sujuvasti käyttämään rajapinnan uusinta versiota ilman, että tuotannollinen toiminta häiriintyy. 
+
+Tulli tarjoaa tukea kehityksen ja testauksen kaikissa vaiheissa, jotta muutokset saadaan toteutettua sujuvasti.
+
