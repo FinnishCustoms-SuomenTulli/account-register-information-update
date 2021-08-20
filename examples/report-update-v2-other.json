@@ -128,6 +128,7 @@
       },
       "roles": [{
         "legalPersonReference": "5d892fac-07f0-465f-ab6a-af88a1d922ba",
+        "startDate": "2016-11-30",
         "type": "owner"
       }]
     },
@@ -140,10 +141,14 @@
       },
       "roles": [{
           "legalPersonReference": "e4a623ca-0ad7-4f3b-9b9e-81109b33da27",
+          "startDate": "2010-11-12",
+          "endDate": "2019-01-21",
           "type": "owner"
         },
         {
           "legalPersonReference": "a092893a-14e5-4b8d-adaf-80c1b7be95b6",
+          "startDate": "2013-09-20",
+          "endDate": "2019-01-21",
           "type": "access"
         }
       ]

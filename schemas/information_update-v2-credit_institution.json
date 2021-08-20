@@ -252,6 +252,14 @@
         "legalPersonReference"
       ],
       "properties": {
+        "startDate": {
+          "description": "Role start date. Required for owner and access roles.",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Role end date.",
+          "$ref": "#/definitions/date"
+        },
         "type": {
           "type": "string",
           "description": "Role type.",

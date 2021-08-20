@@ -231,10 +231,19 @@
       "type": "object",
       "description": "Role",
       "required": [
+        "startDate",
         "type",
         "legalPersonReference"
       ],
       "properties": {
+        "startDate": {
+          "description": "Role start date",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Role end date.",
+          "$ref": "#/definitions/date"
+        },
         "type": {
           "type": "string",
           "description": "Role type.",

@@ -14,14 +14,18 @@
         "name": "Firma Oy",
         "roles": [{
             "legalPersonReference": "6cd7cc3f-6de1-4583-a572-895613e71130",
+            "startDate": "1999-11-10",
             "type": "beneficiary"
           },
           {
             "legalPersonReference": "cc695a85-32a9-4cf7-88a3-9b635f5c03b5",
+            "startDate": "1970-01-04",
             "type": "beneficiary"
           },
           {
             "legalPersonReference": "edfb750c-26e6-44fc-b857-bd0caa06b74e",
+            "startDate": "2006-09-09",
+            "endDate": "2018-11-14",
             "type": "beneficiary"
           }
         ]
@@ -95,10 +99,12 @@
         "name": "Yhdistys Ry",
         "roles": [{
             "legalPersonReference": "a51b4ee8-1ec1-48ae-8d14-5948118a9659",
+            "startDate": "1989-11-12",
             "type": "beneficiary"
           },
           {
             "legalPersonReference": "1b420512-acad-4ce4-be24-f73f0e078e8b",
+            "startDate": "1989-11-12",
             "type": "beneficiary"
           }
         ]
@@ -135,6 +141,7 @@
       "openingDate": "2016-11-30",
       "roles": [{
         "legalPersonReference": "5d892fac-07f0-465f-ab6a-af88a1d922ba",
+        "startDate": "2016-11-30",
         "type": "owner"
       }]
     },
@@ -149,10 +156,14 @@
       "closingDate": "2019-01-21",
       "roles": [{
           "legalPersonReference": "e4a623ca-0ad7-4f3b-9b9e-81109b33da27",
+          "startDate": "2010-11-12",
+          "endDate": "2019-01-21",
           "type": "owner"
         },
         {
           "legalPersonReference": "a092893a-14e5-4b8d-adaf-80c1b7be95b6",
+          "startDate": "2013-09-20",
+          "endDate": "2019-01-21",
           "type": "access"
         }
       ]
@@ -165,14 +176,20 @@
       "endDate": "2019-07-03",
       "roles": [{
           "legalPersonReference": "82911739-6f97-439e-b561-22fac327b774",
+          "startDate": "2015-02-11",
+          "endDate": "2019-07-03",
           "type": "owner"
         },
         {
           "legalPersonReference": "3b153d44-4caa-4feb-bdd1-a91b6b1759ce",
+          "startDate": "2015-02-11",
+          "endDate": "2019-07-03",
           "type": "access"
         },
         {
           "legalPersonReference": "ebab0a47-00a7-4d56-aa63-028102d7a329",
+          "startDate": "2015-09-30",
+          "endDate": "2019-07-03",
           "type": "access"
         }
       ]
@@ -182,6 +199,7 @@
       "startDate": "2016-02-11",
       "roles": [{
         "legalPersonReference": "279aeafc-528e-4f81-b79c-ecc8b0aafd4c",
+        "startDate": "2016-12-30",
         "type": "owner"
       }]
     }
