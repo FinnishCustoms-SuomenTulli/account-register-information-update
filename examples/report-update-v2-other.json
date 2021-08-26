@@ -126,6 +126,7 @@
       "id": {
         "iban": "FI8371356610003253"
       },
+      "openingDate": "2016-11-30",
       "roles": [{
         "legalPersonReference": "5d892fac-07f0-465f-ab6a-af88a1d922ba",
         "startDate": "2016-11-30",
@@ -139,6 +140,8 @@
           "description": "other account id"
         }
       },
+      "openingDate": "2010-10-30",
+      "closingDate": "2019-01-21",
       "roles": [{
           "legalPersonReference": "e4a623ca-0ad7-4f3b-9b9e-81109b33da27",
           "startDate": "2010-11-12",

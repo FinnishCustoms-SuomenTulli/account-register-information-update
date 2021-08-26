@@ -10,11 +10,20 @@
       "description": "Account",
       "required": [
         "id",
+        "openingDate",
         "roles"
       ],
       "properties": {
         "id": {
           "$ref": "#/definitions/accountIdentification"
+        },
+        "openingDate": {
+          "description": "Account opening date.",
+          "$ref": "#/definitions/date"
+        },
+        "closingDate": {
+          "description": "Account closing date.",
+          "$ref": "#/definitions/date"
         },
         "roles": {
           "type": "array",
