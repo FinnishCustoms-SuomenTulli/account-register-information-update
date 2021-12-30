@@ -30,9 +30,6 @@ Versio|Päivämäärä|Kuvaus|
 1.0.15|18.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
 2.0.00|pp.kk.2021|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.
 
-```
-[Versiotiedote]
-```
 
 
 ## Sisällysluettelo
@@ -58,7 +55,7 @@ Versio|Päivämäärä|Kuvaus|
   4.5 JSON-skeemat  
   4.6 Esimerkkisanomat  
   4.7 HTTP-vastaukset  
-  4.8 Rajapinnan kehittäminen  
+  
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -261,11 +258,11 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
-POST|/v1/report-update/|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.<br /><br />*Huom! Tämä rajapinta poistuu käytöstä ??.??.2021, mihin mennessä tiedon luovuttajien on siirryttävä käyttämään yrityksen tyypin mukaista v2-rajapintaa.*|
+POST|/v1/report-update/|Tietojen toimitusvelvolliset (Maksulaitokset, sähkörahayhteisöt, virtuaalivaluutan tarjoajat tai Finanssivalvonnalta saadulla poikkeusluvalla luottolaitokset) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/v2/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/v2/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
-POST|/v2/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v2/report-incorrect/.|
-POST|/v2/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
+POST|/v1/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v1/report-incorrect/.|
+POST|/v1/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 
 ### <a name="JSONskeemat"></a> 4.5 JSON-skeemat
 
@@ -341,17 +338,4 @@ Body
 }
 ```
 
-### <a name="API development"></a> 4.8 Rajapinnan kehittäminen
-
-Päivitysrajapinta kehittyy ja muuttuu jatkossakin. Suurin osa muutoksista on luonteeltaan sellaisia, että rajapintaa kutsuvaa toiminnallisuutta ei tarvitse muuttaa. Mutta, on myös tilanteita, joissa julkaistava muutos pakottaa muutoksiin rajapinnan kutsuvassa päässä. Tätä varten on oltava toimintamalli, jonka avulla muutoksia hallitaan.
-
-Kun Tulli julkaisee päivitysrajapinnasta uuden version on Tiedonluovuttaja velvollinen muuttamaan rajapintaa kutsuvaa toteutustaan siten, että se kykenee toimittamaan vaaditut tiedot uuden version avulla. 
-
-Kun ko. muutos on tulossa Tulli tiedottaa asiasta, julkaisee kuvauksen muutoksista, ohjeistaa muutokset ja antaa rajapintaa kutsuvan toteutuksen kehittämiselle aikataulun, jolloin muutokset pitäisi Tiedonluovuttajilla olla valmiina. 
-
-Kehittämisen aikaa pidetään ns. siirtymäaikana, jolloin päivitysrajapinnan edellinen, eli ns. vanha versio on käytössä normaalisti. Vanha versio kuitenkin poistetaan käytöstä kun kaikki Tiedonluovuttajat ovat kyenneet ottamaan käyttöön päivitysrajapinnan uuden version. Luonnollisesti kaikki uudet toimijat tekevät toteutuksena aina tuoreinta käytössä olevaan rajapintaa vasten.
-
-Tällä toimintamallilla pyritään siihen, että kukin toimija voi siirtyä sujuvasti käyttämään rajapinnan uusinta versiota ilman, että tuotannollinen toiminta häiriintyy. 
-
-Tulli tarjoaa tukea kehityksen ja testauksen kaikissa vaiheissa, jotta muutokset saadaan toteutettua sujuvasti.
 
