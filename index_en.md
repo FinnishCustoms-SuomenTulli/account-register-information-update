@@ -1,6 +1,12 @@
+[Käyttöönoton ja ylläpidon ohje](instructions/Käyttöönoton_ja_ylläpidon_ohje_Tilirekisteri.pdf)  
+[Deployment and maintenance instructions for the Bank and Payment Account Register](instructions/Deployment_and_maintenance_instructions_for_the_Bank_and_Payment_Account_Register_EN.pdf)  
+[Data updating interface description](index_en.md)  
+[Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret](instructions/Instruktioner_för_produktionssättning_och_underhåll_av_bank_och_betalkontoregistret_SV.pdf)  
+[Beskrivning av Kontoregistrets uppdateringsgränssnitt](index_sv.md)
+
 # Data updating interface description of the Account Register
 
-*Document version 1.0.15*
+*Document version 2.0.00*
 
 ## Version history
 
@@ -22,6 +28,7 @@ Version|Date|Description|
 1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.|
 1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
 1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
+2.0.00|20.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
 
 ## Table of contents
 
@@ -39,6 +46,13 @@ Version|Date|Description|
   3.5 Duty to report information security deviations  
   3.6 Capacity of the interface  
 4. [General description of the account register updating interface](#chapter4)  
+  4.1 General  
+  4.2 Data supplier categories  
+  4.3 Reporting data as incorrect or disputable  
+  4.4 Interfaces  
+  4.5 JSON schemas  
+  4.6 Example messages  
+  4.7 HTTP responses
 
 ## 1. Introduction <a name="chapter1"></a>
 
@@ -59,9 +73,9 @@ This document is the interface description of the data updating interface of the
 
 ### 1.3 General description
 
-This document is part of the order issued by Finnish Customs regarding a bank and payment account monitoring system. The purpose of the document is to issue instructions to data suppliers regarding implementation of the data updating interface of the bank and payment account register (hereinafter “the Account Register”). This document is supplemented by the Deployment and maintenance instructions for the Bank and Payment Account Register.
+This document is part of the regulation issued by Finnish Customs regarding a bank and payment account monitoring system. The purpose of the document is to issue instructions to data suppliers regarding implementation of the data updating interface of the Bank and Payment Account Register (hereinafter “the Account Register”). This document is supplemented by the Deployment and maintenance instructions for the Bank and Payment Account Register.
 
-The system consists of two parts; the bank and payment account register and the data retrieval system.
+The system consists of two parts: the Bank and Payment Account Register and the data retrieval system.
 
 This document describes the data updating interface of the Account Register.
 
@@ -86,15 +100,15 @@ The figure shows that the updating interface is synchronous. The body of the HTT
 
 #### Signature certificate of outgoing messages
 
-The outgoing messages must be automatically signed using x.509 (version 3) server certificate showing the Business ID or VAT code of the data supplier concerned. Acceptance of the signature requires that
+The outgoing messages must be automatically signed using x.509 (version 3) server certificate showing the Business ID or VAT number of the data supplier concerned. Acceptance of the signature requires that
 
 either
 
-a) the certificate was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital And Population Data Services Agency, and the serialNumber attribute of the Subject field of the certificate consists of the Business ID or VAT identifier of the data supplier
+a) the certificate was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital and Population Data Services Agency, and the serialNumber attribute of the Subject field of the certificate consists of the Business ID or VAT number of the data supplier
 
 or
 
-b) the certificate is an eIDAS-approved website identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the organizationIdentifier attribute of the Subject field of the certificate consists of the Business ID or VAT identifier of the data supplier. Please note: For the message signatures to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used for signatures must have at least 3072 bits. The uses of the certificate used for signatures must also include “digital signature”. These factors must be taken into account when ordering a certificate.
+b) the certificate is an eIDAS-approved website identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the organizationIdentifier attribute of the Subject field of the certificate consists of the Business ID or VAT number of the data supplier.
 
 Please note: For the message signatures to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used for signatures must have at least 3072 bits. The uses of the certificate used for signatures must also include “digital signature”. These factors must be taken into account when ordering a certificate.
 
@@ -102,33 +116,33 @@ Please note: For the message signatures to meet the information security require
 
 Data traffic must be protected (encryption and counterpart identification) using x.509 (version 3) certificates.
 
-Connections must be established using a server certificate showing the Business ID or VAT code of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
+Connections must be established using a server certificate showing the Business ID or VAT number of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
 
 Acceptance of the signature requires that
 
 either
 
-a) the server certificate was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital And Population Data Services Agency, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier
+a) the server certificate was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital and Population Data Services Agency, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT number of the data supplier or the party authorised by the data supplier
 
 or
 
 b) the server certificate is an eIDAS-approved website identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the organizationIdentifier attribute of the subject of the certificate consists of the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier.
 
-If the same Business ID or VAT identifier is used in the data traffic certificate and outgoing message signature certificate of the data supplier, the same certificate can be used for both purposes.
+If the same Business ID or VAT number is used in the data traffic certificate and outgoing message signature certificate of the data supplier, the same certificate can be used for both purposes.
 
 Please note: For the protection of data communications to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used must have at least 3072 bits. This must be taken into account when ordering a certificate.
 
 #### Server certificate of the Account Register
 
-The data supplier will identify the Account Register as the counterpart of the connection on the basis of the server certificate provided that  
-a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Digital And Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list published by the Digital And Population Data Services Agency  
+The data supplier will identify the counterpart of the connection as the Account Register on the basis of the server certificate provided that  
+a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list maintained by the Digital and Population Data Services Agency  
 b) the serialNumber attribute of the subject of the certificate is “FI02454428” or “0245442-8”.
 
 ### 3.2 Protecting the connections
 
-The connections of the Account Register data updating interface must be protected with TLS encryption using version 1.2 or later of the TLS protocol. Both ends of the connection are identified with the server certificates described above, using two-way handshaking. The connection must be established using the ephemeral Diffie-Hellman (DHE) key exchange protocol where a new unique private encryption key is created for each session. The purpose of this procedure is to ensure that encryption has the forward secrecy feature so that possible discovery of the encryption key afterwards would not lead to a disclosure of the encrypted information.
+The connections of the Account Register data updating interface must be protected with TLS encryption using version 1.2 or later of the TLS protocol. Both ends of the connection are identified with the server certificates described above, using two-way handshaking. The connection must be established using the ephemeral Diffie-Hellman (DHE) key exchange protocol where a new unique private encryption key is created for each session. The purpose of this procedure is to ensure that encryption has the forward secrecy feature so that possible discovery of the encryption key would not subsequently lead to a disclosure of the encrypted information.
 
-The cryptographic algorithms used in TLS encryption must have a cryptographic strength at least equal to the cryptographic strengths the Finnish Transport and Communications Agency has specified for national protection level ST IV. The current strength requirements are described in document https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Record No.:190/651/2015).
+The cryptographic algorithms used in TLS encryption must have a cryptographic strength at least equal to the cryptographic strength requirements specified by the Finnish Transport and Communications Agency Traficom for national protection level ST IV. The current strength requirements are described (in Finnish) in the document https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
 ### 3.3 Permitted HTTP-version
 
@@ -138,16 +152,15 @@ The connections of the data updating interface use HTTP version 1.1.
 
 The data updating interface messages are signed using JWS signatures (PKI). The RS256 algorithm is used for JWS signatures, and they are done with the sender’s private key. The deployment and maintenance instructions for the Bank and Payment Account Register contain information on submitting certificates containing public keys to Customs.
 
-In terms of cryptographic strength, the cryptographic algorithms used in signatures must correspond at least with the cryptographic strength requirements set out by the Finnish Transport and Communications Agency as concerns national protection level ST IV. Current strength requirements are described in the Finnish-language document available
-at this link: https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Record No.:190/651/2015).
+The cryptographic algorithms used in signatures must have a cryptographic strength at least equal to the cryptographic strength requirements specified by the Finnish Transport and Communications Agency Traficom for national protection level ST IV. The current strength requirements are described (in Finnish) in the document https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
-The update message must have two separate JWS signatures (examples below):
-a) The Authorization header must have a Bearer token JWS in which the Business ID or the VAT ID of the sender can be found in a sub claim. 
-b) The Request body must have a JWS in which the “reportUpdate” property contains the update message in accordance with the [JSON Schema](schemas/information_update.json). 
+The updating message must have two separate JWS signatures (examples below):  
+a) Authorization header must have Bearer token JWS containing the sender’s Business ID or VAT number in the sub claim.  
+b) Request body must have JWS, where “reportUpdate” property contains the update message in accordance with [JSON Schema](schemas/information_update.json). 
 
-In the "sub" field of both JWS signatures are required to contain the sender's Business ID or VAT ID in the same form as in SERIALNUMBER field in sender's public certificate.
+The sub fields of both these JWS signatures must contain the sender’s Business ID or VAT number in the same format as in the SERIALNUMBER field of the sender’s public certificate.
 
-A report on a message as incorrect or suspected to be incorrect differs from an update message in that “reportUpdate” claim is completely left out and instead, either “reportDisputable” or “reportIncorrect” is used, depending on the situation ([see General description of the account register updating interface](#chapter4)).
+A report on a message as incorrect or suspected to be incorrect differs from an updating message in that “reportUpdate” claim is completely left out and instead, either “reportDisputable” or “reportIncorrect” is used, depending on the situation ([see General description of the account register updating interface](#chapter4)).
 
 a) Authorization header JWS:
 
@@ -187,7 +200,7 @@ JWT Payload
 
 The user of the interface is obliged to immediately report to both the party issuing the certificate and Customs any cases of the certificates or their secret keys having been compromised.
 
-The user of the interface is obliged to immediately report to Customs any information security deviations observed in the information system using the interface.
+The user of the interface is also obliged to immediately report to Customs any information security deviations observed in the information system using the interface.
 
 ### 3.6 Capacity of the interface
 
@@ -195,31 +208,21 @@ The maximum permissible size of messages to the interface is 50kB in JWT format.
 
 ## <a name="chapter4"></a> 4. General description of the account register updating interface
 
+### <a name="general"></a> 4.1 General
+
 The updating interface will be implemented using the REST/JSON method.
 
 Each message must include its date of creation.
 
-Each message must include the Business ID of the supplier of information in the senderBusinessId field.
+Each message must include the Business ID of the data supplier in the senderBusinessId field.
 
-In the message structure of the updating message, legal persons, customers, accounts and safety deposit boxes are indicated as key-value pairs where a unique UUIDv4 (Universally unique identifier) is used as the key for the data record. These identifiers are not issued by Customs; instead, they are identifiers created by the supplier of information for identifying customer details. This identifier allows the records to be identified, for example if the person’s name or personal identity code changes. An example of the message structure of an updating message is found in [Description of the message structure](#messagestructure).
+In the message structure of the updating message, legal persons, customers, accounts and safety deposit boxes are indicated as key-value pairs where a unique UUIDv4 (Universally unique identifier) is used as the key for the record. These identifiers are not issued by Customs; instead, they are identifiers created by the data suppliers for identifying customer details. This identifier allows the records to be identified, for example if the person’s name or personal identity code changes. An example of the message structure of an updating message is found [here](#examplemessages).
 
 The updating messages can be used to send whole records that refer to unique identifiers that have previously been sent for the record. For example, data can be sent concerning an account that contains references to roles in LegalPerson records that have previously been sent. It is also possible to send only a change of name as regards a LegalPerson record without having to send the role data concerning the LegalPerson record again in the message.
 
 However, it should be noted that when sending role lists for Account, for SafetyDepositBox or for the record Organisation, the role lists must always be complete. In other words, it is not possible to send only new roles in e.g. the Account.roles field; instead, all roles valid at that moment in time must be sent.
 
 The messages are identified by X-Correlation-IDs (UUIDv4) which are transmitted in the message headers. If it is not included in the message sent, it is generated automatically and returned in the reply message.
-
-Information provided can be reported as either incorrect or suspected to be incorrect using separate messages and endpoints. The above-mentioned UUIDv4 that is unique for the data record is used for this. Sample messages are found in [Description of the message structure](#messagestructure).
-
-The interface endpoints are listed in the table below.
-
-|HTTP-method|Path|Purpose and functionality|
-|---|---|---|
-POST|/report-update|The parties with an obligation to provide information (payment institutions, electronic money institutions, providers of electronic currency or credit institutions by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, customer accounts and safety deposit boxes to the Account Register.|
-POST|/report-disputable|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. This end point can also be used to cancel the disputable status, if the information is found to be correct. When disputable information reported as disputable is found to be incorrect, it is reported using POST /report-incorrect.|
-POST|/report-incorrect|Used for reporting a certain detail provided earlier as incorrect. When incorrect status is reported for information labelled as disputable, it is interpreted that the matter of disputability is solved and the information is found incorrect.|
-
-The endpoint is used for sending data to the Account Register. The message provides details of customers, accounts and safety deposit boxes.
 
 ### Notation
 
@@ -230,20 +233,68 @@ Object {
 }
 ```
 
-### <a name="messagestructure"></a>Description of the message structure
+### <a name="categories"></a> 4.2 Data supplier categories
 
-Sample messages can be found using the links shown below:
+The parties obliged to provide data are divided into two categories:
 
-[Data updating message](examples/report-update.json)
+Category 1: credit institutions  
+Category 2: payment institutions, electronic money institutions and virtual currency providers
+The content of the updating messages is described in the [JSON schemas](#JSONschemas).
 
-[Reporting information as disputable](examples/report-disputable.json)
+### <a name="incorrectdisputable"></a> 4.3 Reporting data as incorrect or disputable
 
-[Reporting information as incorrect](examples/report-incorrect.json)
+Records provided can be reported as either incorrect or suspected to be incorrect (disputable). The UUIDv4 that is unique for the record and the unique X-Correlation-ID of its updating message with which the record has been reported are used for this. The record to which the record identifier refers can be an account, a safety deposit box or a legal person. The example messages are listed [here](#examplemessages).
 
-[A scheme compliant with JSON Schema draft 7](schemas/information_update.json) has been produced for validation of the
-JSON structure of data updating messages.
+The data supplier in both categories use the same interfaces to report data as incorrect or disputable.
 
-#### HTTP responses
+The report of a record as disputable can be cancelled if it is found to be unnecessary, but the status of a record reported as incorrect can no longer be changed.
+
+![Changing the status of a record](diagrams/state_diagram_incorrect_disputed.png "Changing the status of a record")  
+*__Kuva 4.3.__ Changing the status of a record*
+
+### <a name="interfaces"></a> 4.4 Interfaces
+
+The interface endpoints are listed in the table below.
+
+|HTTP-method|Path|Purpose and functionality|
+|---|---|---|
+POST|/v1/report-update/|The parties obliged to provide data (payment institutions, electronic money institutions, virtual currency providers or, by exemption granted by the Financial Supervisory Authority, credit institutions) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
+POST|/v2/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
+POST|/v2/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
+POST|/v1/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v1/report-incorrect/.|
+POST|/v1/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
+
+### <a name="JSONschemas"></a> 4.5 JSON schemas
+
+Schemas in accordance with JSON Schema draft 7 have been created for message validation.
+
+Updating message v1 (all data suppliers) [schema](schemas/information_update-v1.json)
+
+Updating message v2 (credit institutions) [schema](schemas/information_update-v2-credit_institution.json)
+
+Updating message v2 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v2-other.json)
+
+Reporting a detail as disputable v2 [schema](schemas/report_disputable.json)
+
+Reporting a detail as incorrect v2 [schema](schemas/report_incorrect.json)
+
+### <a name="examplemessages"></a> 4.6 Example messages
+
+You can find the example messages via the links below:
+
+[Updating message v1 (all data suppliers)](examples/report-update-v1.json)
+
+[Updating message v2 (credit institutions)](examples/report-update-v2-credit_institution.json)
+
+[Updating message v2 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v2-other.json)
+
+[Reporting a detail as disputable v2](examples/report-disputable.json)
+
+[Reporting a detail as incorrect v2](examples/report-incorrect.json)
+
+### <a name="httpresponses"></a> 4.7 HTTP responses
+
+The system returns the following HTTP responses:
 
 200 OK
 
@@ -252,24 +303,37 @@ JSON structure of data updating messages.
 Body
 ```
 {
-  errorMessage              string
+  message              string
+  objectErrors         string-taulukko
+  fieldErrors          string-taulukko   
 }
 ```
 
-405 Method Not Allowed
+403 Forbidden
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
+
+404 Not Found
+
+Body
+```
+{
+  message              string
+}
+```
+
+405 Method Not Allowed
 
 500 Internal Server Error
 
 Body
 ```
 {
-  errorMessage              string
+  message              string
 }
 ```
