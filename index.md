@@ -288,9 +288,9 @@ Esimerkkisanomat löytyvät alla olevista linkeistä:
 
 [Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v2-other.json)
 
-[Tiedon ilmoittaminen kiistanalaiseksi v2](examples/report-disputable.json)
+[Tiedon ilmoittaminen kiistanalaiseksi](examples/report-disputable.json)
 
-[Tiedon ilmoittaminen virheelliseksi v2](examples/report-incorrect.json)
+[Tiedon ilmoittaminen virheelliseksi](examples/report-incorrect.json)
 
 ### <a name="InformationUpdate response"></a> 4.7 HTTP-vastaukset
 

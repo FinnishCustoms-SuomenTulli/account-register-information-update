@@ -288,9 +288,9 @@ You can find the example messages via the links below:
 
 [Updating message v2 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v2-other.json)
 
-[Reporting a detail as disputable v2](examples/report-disputable.json)
+[Reporting a detail as disputable](examples/report-disputable.json)
 
-[Reporting a detail as incorrect v2](examples/report-incorrect.json)
+[Reporting a detail as incorrect](examples/report-incorrect.json)
 
 ### <a name="httpresponses"></a> 4.7 HTTP responses
 

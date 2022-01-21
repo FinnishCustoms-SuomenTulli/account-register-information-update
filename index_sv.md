@@ -286,9 +286,9 @@ Exempelmeddelandena finns under länkarna nedan:
 
 [Uppdateringsmeddelande v2 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor)](examples/report-update-v2-other.json)
 
-[Anmälan om omtvistad uppgift v2](examples/report-disputable.json)
+[Anmälan om omtvistad uppgift](examples/report-disputable.json)
 
-[Anmälan om felaktig uppgift v2](examples/report-incorrect.json)
+[Anmälan om felaktig uppgift](examples/report-incorrect.json)
 
 ### <a name="HTTPsvar"></a> 4.7 HTTP-svar
 
