@@ -155,7 +155,7 @@ Allekirjoituksessa käytettyjen kryptografisten algoritmien on vastattava krypto
 
 Päivityssanomassa on oltava kaksi erillistä JWS-allekirjoitusta (esimerkit alempana):  
 a) Authorization headerissa on oltava Bearer token JWS josta löytyy sub-väitteessä (sub claim) lähettäjän Y-tunnus tai ALV-tunnus.  
-b) Request bodyssa on oltava JWS jossa "reportUpdate" property sisältää [JSON skeeman](schemas/information_update.json) mukaisen päivityssanoman. 
+b) Request bodyssa on oltava JWS jossa "reportUpdate" property sisältää [JSON skeeman](#JSONskeemat) mukaisen päivityssanoman. 
 
 Molempien JWS-allekirjoitusten sub-kentässä tulee olla lähettäjän Y-tunnus tai VAT-tunnus samassa muodossa kuin lähettäjän julkisessa varmenteessa SERIALNUMBER-kentässä.
 

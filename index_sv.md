@@ -152,7 +152,7 @@ De kryptografiska algoritmer som används i signaturen ska till sin kryptografis
 
 Uppdateringsmeddelandet ska ha två separata JWS-signaturer (exemplen nedan):  
 a) Authorization header ska ha Bearer token JWS av vilket i en sub claim framgår avsändarens FO-nummer eller momsnummer.  
-b) Request body ska ha JWS där “reportUpdate” property innehåller ett uppdateringsmeddelande enligt [JSON schemat](schemas/information_update.json). 
+b) Request body ska ha JWS där “reportUpdate” property innehåller ett uppdateringsmeddelande enligt [JSON schemat](#JSONscheman). 
 
 Sub-fältet i båda dessa JWS-signaturer ska innehålla avsändarens FO-nummer eller VAT-nummer i samma format som i SERIALNUMBER-fältet i avsändarens publika certifikat.
 

@@ -156,7 +156,7 @@ The cryptographic algorithms used in signatures must have a cryptographic streng
 
 The updating message must have two separate JWS signatures (examples below):  
 a) Authorization header must have Bearer token JWS containing the sender’s Business ID or VAT number in the sub claim.  
-b) Request body must have JWS, where “reportUpdate” property contains the update message in accordance with [JSON Schema](schemas/information_update.json). 
+b) Request body must have JWS, where “reportUpdate” property contains the update message in accordance with [JSON Schema](#JSONschemas). 
 
 The sub fields of both these JWS signatures must contain the sender’s Business ID or VAT number in the same format as in the SERIALNUMBER field of the sender’s public certificate.
 
