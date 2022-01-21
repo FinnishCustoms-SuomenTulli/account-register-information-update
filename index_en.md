@@ -61,9 +61,9 @@ Version|Date|Description|
 Abbreviation or term|Description
 ---|---
 Inteface|A standard practice or connection point that allows the transfer of information between devices, programmes and the user. 
-WS (Web Service)|Software operating in a network server, providing services for use by applications through standardised internet connection practices. The services provided by the Account Register include the provision of information,  nformation request and information query. The data retrieval system provides information queries as a service.
+WS (Web Service)|Software operating in a network server, providing services for use by applications through standardised internet connection practices. The services provided by the Account Register include the provision of information,  information request and information query. The data retrieval system provides information queries as a service.
 Endpoint|An interface service available at a certain network address.
-REST|(Representational State Transfer) an architecture model based on HTTP forimplementing programming interfaces.
+REST|(Representational State Transfer) an architecture model based on HTTP for implementing programming interfaces.
 JSON|(JavaScript Object Notation) open standard file format for conveying information.
 PKI|Public key infrastructure. An electronic signature based on PKI is created so that a hash is created of the information to be signed (using a hash algorithm), and the hash is encrypted using the private key of the key pair. The encrypted hash is stored together with the signed information or electronic document, or conveyed to the recipient of information in some other way. The recipient encrypts the hash using the public key of the key pair, forms again a hash of the information in the message or document and compares it with the hash appended to the signature. The contents of the message are unchanged if the two hashes match. (Guidelines on the Information Security of e-Services)
 
