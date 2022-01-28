@@ -274,9 +274,9 @@ Updating message v2 (credit institutions) [schema](schemas/information_update-v2
 
 Updating message v2 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v2-other.json)
 
-Reporting a detail as disputable v2 [schema](schemas/report_disputable.json)
+Reporting a detail as disputable [schema](schemas/report_disputable.json)
 
-Reporting a detail as incorrect v2 [schema](schemas/report_incorrect.json)
+Reporting a detail as incorrect [schema](schemas/report_incorrect.json)
 
 ### <a name="examplemessages"></a> 4.6 Example messages
 

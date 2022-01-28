@@ -272,9 +272,9 @@ Uppdateringsmeddelande v2 (kreditinstitut) [schema](schemas/information_update-v
 
 Uppdateringsmeddelande v2 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor) [schema](schemas/information_update-v2-other.json)
 
-Anmälan om omtvistad uppgift v2 [schema](schemas/report_disputable.json)
+Anmälan om omtvistad uppgift [schema](schemas/report_disputable.json)
 
-Anmälan om felaktig uppgift v2 [schema](schemas/information_update-v2-other.json)
+Anmälan om felaktig uppgift [schema](schemas/report_incorrect.json)
 
 ### <a name="exempelmeddelanden"></a> 4.6 Exempelmeddelanden
 

@@ -274,9 +274,9 @@ Päivityssanoma v2 (luottolaitokset) [skeema](schemas/information_update-v2-cred
 
 Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v2-other.json)
 
-Tiedon ilmoittaminen kiistanalaiseksi v2 [skeema](schemas/report_disputable.json)
+Tiedon ilmoittaminen kiistanalaiseksi [skeema](schemas/report_disputable.json)
 
-Tiedon ilmoittaminen virheelliseksi v2 [skeema](schemas/report_incorrect.json)
+Tiedon ilmoittaminen virheelliseksi [skeema](schemas/report_incorrect.json)
 
 ### <a name="Esimerkkisanomat"></a> 4.6 Esimerkkisanomat
 
