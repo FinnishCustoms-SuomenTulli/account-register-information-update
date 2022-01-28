@@ -34,21 +34,21 @@
     "6cd7cc3f-6de1-4583-a572-895613e71130": {
       "privatePerson": {
         "fullName": "Fredlund, Eeva-Sofia",
-        "hetu": "010659-1031",
+        "hetu": "010659-9744",
         "birthDate": "1959-06-01"
       }
     },
     "cc695a85-32a9-4cf7-88a3-9b635f5c03b5": {
       "privatePerson": {
         "fullName": "Heimlander, Raimond Ernst",
-        "hetu": "140368-2513",
+        "hetu": "100368-970P",
         "birthDate": "1968-03-14"
       }
     },
     "edfb750c-26e6-44fc-b857-bd0caa06b74e": {
       "privatePerson": {
         "fullName": "Suppala, Atsalea Achieng",
-        "hetu": "211156-312X",
+        "hetu": "211156-926R",
         "birthDate": "1956-11-21"
       }
     },
@@ -69,21 +69,21 @@
     "82911739-6f97-439e-b561-22fac327b774": {
       "privatePerson": {
         "fullName": "Tiiri, Lawrence Samuel",
-        "hetu": "070280-021E",
+        "hetu": "070280-9137",
         "birthDate": "1980-02-07"
       }
     },
     "3b153d44-4caa-4feb-bdd1-a91b6b1759ce": {
       "privatePerson": {
         "fullName": "Cooper, Anna-Roosa Vivika",
-        "hetu": "241100A505M",
+        "hetu": "241100A948X",
         "birthDate": "2000-11-24"
       }
     },
     "ebab0a47-00a7-4d56-aa63-028102d7a329": {
       "privatePerson": {
         "fullName": "Långfors, Pirjo-Kaarina Daniela",
-        "hetu": "020783-785N",
+        "hetu": "020783-900C",
         "birthDate": "1983-07-02"
       }
     },
@@ -113,14 +113,14 @@
     "a51b4ee8-1ec1-48ae-8d14-5948118a9659": {
       "privatePerson": {
         "fullName": "Ehnqvist, Taisa Annele",
-        "hetu": "180971-8952",
+        "hetu": "180971-9328",
         "birthDate": "1971-09-18"
       }
     },
     "1b420512-acad-4ce4-be24-f73f0e078e8b": {
       "privatePerson": {
         "fullName": "Järvenoja, Lise-Lott Herta",
-        "hetu": "250578-2080",
+        "hetu": "250578-980W",
         "birthDate": "1978-05-25"
       }
     }
@@ -128,22 +128,6 @@
   "customers": {
     "5d892fac-07f0-465f-ab6a-af88a1d922ba": {
       "startDate": "2000-12-31"
-    },
-    "e4a623ca-0ad7-4f3b-9b9e-81109b33da27": {
-      "startDate": "1990-10-10"
-    },
-    "a092893a-14e5-4b8d-adaf-80c1b7be95b6": {
-      "startDate": "2012-10-26"
-    },
-    "82911739-6f97-439e-b561-22fac327b774": {
-      "startDate": "2010-08-26"
-    },
-    "3b153d44-4caa-4feb-bdd1-a91b6b1759ce": {
-      "startDate": "2014-02-04",
-      "endDate": "2019-07-03"
-    },
-    "ebab0a47-00a7-4d56-aa63-028102d7a329": {
-      "startDate": "2012-12-30"
     },
     "279aeafc-528e-4f81-b79c-ecc8b0aafd4c": {
       "startDate": "2012-12-30"
