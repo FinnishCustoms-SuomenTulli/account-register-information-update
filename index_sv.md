@@ -256,17 +256,14 @@ I följande tabell finns en lista över gränssnittets endpoints.
 
 |HTTP-metod|Sökväg|Syfte och funktion|
 |---|---|---|
-POST|/v1/report-update/|De som är skyldiga att leverera uppgifter (betalningsinstitut, institut för elektroniska pengar, tillhandahållare av virtuell valuta eller kreditinstitut som erhållit undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
 POST|/v2/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
 POST|/v2/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.|
-POST|/v1/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status, om uppgiften visar sig vara riktig. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v1/report-incorrect/.|
-POST|/v1/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
+POST|/v2/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status, om uppgiften visar sig vara riktig. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/.|
+POST|/v2/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
 
 ### <a name="JSONscheman"></a> 4.5 JSON-scheman
 
 För validering av meddelanden har man skapat scheman enligt JSON Schema draft 7:
-
-Uppdateringsmeddelande v1 (alla uppgiftslämnare) [schema](schemas/information_update-v1.json)
 
 Uppdateringsmeddelande v2 (kreditinstitut) [schema](schemas/information_update-v2-credit_institution.json)
 
@@ -279,8 +276,6 @@ Anmälan om felaktig uppgift [schema](schemas/report_incorrect.json)
 ### <a name="exempelmeddelanden"></a> 4.6 Exempelmeddelanden
 
 Exempelmeddelandena finns under länkarna nedan:
-
-[Uppdateringsmeddelande v1 (alla uppgiftslämnare)](examples/report-update-v1.json)
 
 [Uppdateringsmeddelande v2 (kreditinstitut)](examples/report-update-v2-credit_institution.json)
 
