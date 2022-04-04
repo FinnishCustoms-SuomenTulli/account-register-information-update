@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 2.0.00*
+*Dokumentversion 2.0.1*
 
 ## Versionshistorik
 
@@ -29,6 +29,7 @@ Version|Datum|Beskrivning|
 1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av certifikat som innehåller en öppen nyckel.|
 1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid 4. Ersatt BRC -> MDB|
 2.0.00|25.1.2022|Nya uppdateringsgränssnitt, JSON-scheman och exempel­meddelanden har lagts till i enlighet med kategorierna för uppgiftslämnare (leverantörer av uppgifter). CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats.|
+2.0.1|4.4.2022|Borttag av referenser till v1-gränssnitt i avsnitt 4.4 och 4.5. |
 
 ## Innehåll
 
