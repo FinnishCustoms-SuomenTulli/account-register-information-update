@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 2.0.00*
+*Document version 2.0.1*
 
 ## Version history
 
@@ -29,6 +29,7 @@ Version|Date|Description|
 1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
 1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
+2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5. |
 
 ## Table of contents
 
