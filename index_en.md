@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 2.0.00*
+*Document version 2.0.1*
 
 ## Version history
 
@@ -30,6 +30,7 @@ Version|Date|Description|
 1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
 1.0.16|16.8.2021|Specified the use of senderBusinessId.|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
+2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5. |
 
 
 ## Table of contents
@@ -260,17 +261,14 @@ The interface endpoints are listed in the table below.
 
 |HTTP-method|Path|Purpose and functionality|
 |---|---|---|
-POST|/v1/report-update/|The parties obliged to provide data (payment institutions, electronic money institutions, virtual currency providers or, by exemption granted by the Financial Supervisory Authority, credit institutions) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
 POST|/v2/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
 POST|/v2/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
-POST|/v1/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v1/report-incorrect/.|
-POST|/v1/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
+POST|/v2/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v2/report-incorrect/.|
+POST|/v2/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
 
 ### <a name="JSONschemas"></a> 4.5 JSON schemas
 
 Schemas in accordance with JSON Schema draft 7 have been created for message validation.
-
-Updating message v1 (all data suppliers) [schema](schemas/information_update-v1.json)
 
 Updating message v2 (credit institutions) [schema](schemas/information_update-v2-credit_institution.json)
 
@@ -283,8 +281,6 @@ Reporting a detail as incorrect [schema](schemas/report_incorrect.json)
 ### <a name="examplemessages"></a> 4.6 Example messages
 
 You can find the example messages via the links below:
-
-[Updating message v1 (all data suppliers)](examples/report-update-v1.json)
 
 [Updating message v2 (credit institutions)](examples/report-update-v2-credit_institution.json)
 
