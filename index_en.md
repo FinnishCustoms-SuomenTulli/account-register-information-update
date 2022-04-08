@@ -28,7 +28,9 @@ Version|Date|Description|
 1.0.13|2.9.2020|A mention that the sub field of the signatures must correspond to the contents of the serialnumber field of the certificate was added to section 3.4.|
 1.0.14|1.10.2020|Specified information on submitting certificates containing public keys to Customs in section 3.4.|
 1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
+1.0.16|16.8.2021|Specified the use of senderBusinessId.|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
+
 
 ## Table of contents
 
@@ -100,7 +102,7 @@ The figure shows that the updating interface is synchronous. The body of the HTT
 
 #### Signature certificate of outgoing messages
 
-The outgoing messages must be automatically signed using x.509 (version 3) server certificate showing the Business ID or VAT number of the data supplier concerned. Acceptance of the signature requires that
+The outgoing messages must be automatically signed using x.509 (version 3) server certificate showing the Business ID or VAT identifier of the data supplier concerned. Acceptance of the signature requires that
 
 either
 
@@ -116,7 +118,7 @@ Please note: For the message signatures to meet the information security require
 
 Data traffic must be protected (encryption and counterpart identification) using x.509 (version 3) certificates.
 
-Connections must be established using a server certificate showing the Business ID or VAT number of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
+Connections must be established using a server certificate showing the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
 
 Acceptance of the signature requires that
 
@@ -214,7 +216,7 @@ The updating interface will be implemented using the REST/JSON method.
 
 Each message must include its date of creation.
 
-Each message must include the Business ID of the data supplier in the senderBusinessId field.
+Each message must include the Business ID or VAT identifier of the supplier of information in the senderBusinessId field.
 
 In the message structure of the updating message, legal persons, customers, accounts and safety deposit boxes are indicated as key-value pairs where a unique UUIDv4 (Universally unique identifier) is used as the key for the record. These identifiers are not issued by Customs; instead, they are identifiers created by the data suppliers for identifying customer details. This identifier allows the records to be identified, for example if the person’s name or personal identity code changes. An example of the message structure of an updating message is found [here](#examplemessages).
 
