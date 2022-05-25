@@ -123,6 +123,13 @@
         "hetu": "250578-980W",
         "birthDate": "1978-05-25"
       }
+    },
+    "70904e2d-87b8-4e3b-8421-b0907a62dd96": {
+      "privatePerson": {
+        "fullName": "Miettinen, Matti Pekka",
+        "hetu": "030289-1179",
+        "birthDate": "1989-03-02"
+      }
     }
   },
   "customers": {
@@ -137,6 +144,9 @@
     },
     "a092893a-14e5-4b8d-adaf-80c1b7be95b6": {
       "startDate": "2011-11-22"
+    },
+    "70904e2d-87b8-4e3b-8421-b0907a62dd96": {
+      "startDate": "2017-01-05"
     }
   },
   "accounts": {
@@ -173,6 +183,18 @@
           "type": "access"
         }
       ]
+    },
+    "116f9e18-2ba5-45de-9b88-ab5767c4e6e7": {
+      "id": {
+        "iban": "FI3749321479839355"
+      },
+      "openingDate": "2018-10-11",
+      "roles": [{
+        "legalPersonReference": "70904e2d-87b8-4e3b-8421-b0907a62dd96",
+        "startDate": "2018-10-11",
+        "type": "owner"
+      }],
+      "accountPurpose": "customer_asset_account"
     }
   },
   "safetyDepositBoxes": {

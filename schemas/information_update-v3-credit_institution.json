@@ -32,6 +32,11 @@
           "items": {
             "$ref": "#/definitions/role"
           }
+        },
+        "accountPurpose": {
+          "type": "string",
+          "description": "The purpose of the account, if applicable.",
+          "enum": ["customer_asset_account"]
         }
       }
     },
