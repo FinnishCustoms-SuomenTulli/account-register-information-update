@@ -1,0 +1,336 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "required": [
+    "creationDateTime",
+    "senderBusinessId"
+  ],
+  "definitions": {
+    "account": {
+      "type": "object",
+      "description": "Account",
+      "required": [
+        "id",
+        "openingDate",
+        "roles"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/accountIdentification"
+        },
+        "openingDate": {
+          "description": "Account opening date.",
+          "$ref": "#/definitions/date"
+        },
+        "closingDate": {
+          "description": "Account closing date.",
+          "$ref": "#/definitions/date"
+        },
+        "roles": {
+          "type": "array",
+          "description": "Account related roles.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/role"
+          }
+        },
+        "accountPurpose": {
+          "type": "string",
+          "description": "The purpose of the account, if applicable.",
+          "enum": ["customer_asset_account"]
+        }
+      }
+    },
+    "accountIdentification": {
+      "type": "object",
+      "description": "Account identification.",
+      "oneOf": [{
+          "required": [
+            "iban"
+          ]
+        },
+        {
+          "required": [
+            "other"
+          ]
+        }
+      ],
+      "properties": {
+        "iban": {
+          "type": "string",
+          "description": "IBAN account number.",
+          "examples": [
+            "FI2753564444694907"
+          ]
+        },
+        "other": {
+          "$ref": "#/definitions/otherAccountIdentification"
+        }
+      }
+    },
+    "businessId": {
+      "type": "string",
+      "description": "Business id or VAT number",
+      "examples": [
+        "0245442-8",
+        "FI02454428",
+        "SE999999999901",
+        "NL999999999B01"
+      ],
+      "minLength": 4,
+      "maxLength": 20,
+      "pattern": "[A-Z|0-9|-]+"
+    },
+    "customer": {
+      "type": "object",
+      "description": "Customer",
+      "required": [
+        "startDate"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "Customer start date.",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Customer end date.",
+          "$ref": "#/definitions/date"
+        }
+      }
+    },
+    "date": {
+      "type": "string",
+      "examples": [
+        "2019-08-17"
+      ]
+    },
+    "legalPerson": {
+      "type": "object",
+      "description": "Legal person which is always either a natural person (privatePerson) or a juridical person (organisation).",
+      "properties": {
+        "organisation": {
+          "$ref": "#/definitions/organisation"
+        },
+        "privatePerson": {
+          "$ref": "#/definitions/privatePerson"
+        }
+      },
+      "oneOf": [{
+          "required": [
+            "organisation"
+          ]
+        },
+        {
+          "required": [
+            "privatePerson"
+          ]
+        }
+      ]
+    },
+    "organisation": {
+      "type": "object",
+      "description": "Juridical person.",
+      "required": [
+        "name",
+        "registrationNumber"
+      ],
+      "properties": {
+        "registrationNumber": {
+          "type": "object",
+          "required": [
+            "number",
+            "type"
+          ],
+          "properties": {
+            "number": {
+              "type": "string",
+              "description": "Organisation registration number"
+            },
+            "type": {
+              "$ref": "#/definitions/registrationNumberType"
+            }
+          }
+        },
+        "registrationAuthority": {
+          "type": "string",
+          "description": "Registration authority."
+        },
+        "registrationDate": {
+          "description": "Registration date.",
+          "$ref": "#/definitions/date"
+        },
+        "name": {
+          "type": "string",
+          "description": "Organisation name."
+        }
+      }
+    },
+    "otherAccountIdentification": {
+      "type": "object",
+      "description": "Other than IBAN account number.",
+      "required": [
+        "id",
+        "description"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Account identification."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the used account identification type."
+        }
+      }
+    },
+    "privatePerson": {
+      "type": "object",
+      "description": "Natural person.",
+      "anyOf": [{
+          "required": [
+            "fullName",
+            "birthDate",
+            "hetu"
+          ]
+        },
+        {
+          "required": [
+            "fullName",
+            "birthDate",
+            "nationalities"
+          ]
+        },
+          {
+          "required": [
+            "fullName",
+            "birthDate",
+            "hetu",
+            "nationalities"
+          ]
+        }
+      ],
+      "properties": {
+        "fullName": {
+          "type": "string",
+          "description": "Full name.",
+          "examples": [
+            "Korhonen, Juhani Antti"
+          ]
+        },
+        "birthDate": {
+          "description": "Date of birth.",
+          "$ref": "#/definitions/date"
+        },
+        "nationalities": {
+          "description": "Nationalities",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 2
+          },
+          "examples": [
+            ["FI", "RU"]
+          ]
+        },
+        "hetu": {
+          "type": "string",
+          "description": "Personal identity code (Finnish hetu).",
+          "examples": [
+            "151080-999L"
+          ]
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "description": "Role",
+      "required": [
+        "startDate",
+        "type",
+        "legalPersonReference"
+      ],
+      "properties": {
+        "startDate": {
+          "description": "Role start date",
+          "$ref": "#/definitions/date"
+        },
+        "endDate": {
+          "description": "Role end date.",
+          "$ref": "#/definitions/date"
+        },
+        "type": {
+          "type": "string",
+          "description": "Role type.",
+          "enum": ["owner", "access"]
+        },
+        "legalPersonReference": {
+          "description": "Legal person identifier",
+          "$ref": "#/definitions/uuidv4"
+        }
+      }
+    },
+    "registrationNumberType": {
+      "type": "string",
+      "oneOf": [
+        {
+          "description": "Finnish business id (Y-tunnus)",
+          "type": "string",
+          "const": "businessId"
+        },
+        {
+          "description": "Registration number of a Finnish association",
+          "type": "string",
+          "const": "associationRegistrationNumber"
+        },
+        {
+          "description": "Generic registration number",
+          "type": "string",
+          "const": "registrationNumber"
+        }
+      ]
+    },
+    "uuidv4": {
+      "type": "string",
+      "description": "Unambiguous identifier used for record. UUIDv4.",
+      "examples": [
+        "91e8c532-71e1-4c4f-bf30-ceec6160ece0"
+      ]
+    }
+  },
+  "properties": {
+    "creationDateTime": {
+      "$id": "#/properties/creationDateTime",
+      "description": "Creation date and time of the message.",
+      "$ref": "#/definitions/date"
+    },
+    "senderBusinessId": {
+      "$id": "#/properties/senderBusinessId",
+      "description": "Sender business id or VAT number.",
+      "$ref": "#/definitions/businessId"
+    },
+    "legalPersons": {
+      "$id": "#/properties/legalPersons",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/legalPerson"
+      },
+      "description": "Legal persons."
+    },
+    "customers": {
+      "$id": "#/properties/customers",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/customer"
+      },
+      "description": "Customers"
+    },
+    "accounts": {
+      "$id": "#/properties/accounts",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/account"
+      },
+      "description": "Accounts"
+    }
+  }
+}
