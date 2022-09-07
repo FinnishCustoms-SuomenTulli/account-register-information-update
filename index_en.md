@@ -56,7 +56,10 @@
   4.4 Interfaces  
   4.5 JSON schemas  
   4.6 Example messages  
-  4.7 HTTP responses
+  4.7 HTTP responses  
+5. [Clarifications to definitions](#chapter5)  
+  5.1 Customership  
+  5.2 Lawyer's customer asset account  
 
 ## 1. Introduction <a name="chapter1"></a>
 
@@ -348,3 +351,11 @@ Body
   message              string
 }
 ```
+
+## <a name="chapter5"></a> 5. Clarifications to definitions
+
+### <a name="customership"></a> 5.1 Customership
+Customership refers to the whole time period a legal person has been the customer of the data supplier. Customership begins for example when the first account is opened. Respectively customership would end when the customer's last account is closed.
+
+### <a name="customerassetaccount"></a> 5.2 Lawyer's customer asset account
+Accounts that are lawyer's customer asset accounts are separated from other accounts by using the account purpose (AcctPurp) field with value "customer_asset_account". Lawyer's customer asset account has at least one legal person as the account owner. The legal person can be a natural person (for example the lawyer) or an organisation (for example a lawyer's office). In addition a lawyer's customer asset account can have legal persons who have access to the account. Legal persons who only have a right for example to obtain information about the account are not reported to the account register.
