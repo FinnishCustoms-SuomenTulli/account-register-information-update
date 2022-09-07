@@ -56,7 +56,7 @@
   4.5 JSON-skeemat  
   4.6 Esimerkkisanomat  
   4.7 HTTP-vastaukset
-5. [Käsitteiden tarkennuksia](#käsitteet)
+5. [Käsitteiden tarkennuksia](#käsitteet)  
   5.1 Asiakkuus
   5.2 Asianajajan asiakasvaratili
 
