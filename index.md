@@ -346,4 +346,10 @@ Body
 }
 ```
 
+## <a name="käsitteet"></a> 5. Käsitteiden tarkennuksia
 
+### <a name="asiakkuus"></a> 5.1 Asiakkuus
+Asiakkuus tarkoittaa koko sitä ajanjaksoa, jonka ajan oikeushenkilö on ollut tiedon luovuttajan asiakkaana. Asiakkuus alkaa esimerkiksi ensimmäisen tilin avaamisesta. Vastaavasti asiakkuus päättyisi, kun asiakkaan viimeinen tili suljetaan.
+
+### <a name="asiakasvaratili"></a> 5.2 Asianajajan asiakasvaratili
+Tilit, jotka ovat asianajajan asiakasvaratilejä, erotetaan muista tileistä käyttämällä niille tilin käyttötarkoitus (AcctPurp) -kentässä arvoa "customer_asset_account". Asianajajan asiakasvaratilillä on omistajana vähintään yksi oikeushenkilö, joka voi olla luonnollinen henkilö (esimerkiksi lakimies) tai organisaatio (esimerkiksi asianajotoimisto). Lisäksi asianajajan asiakasvaratilillä voi olla oikeushenkilöitä käyttöoikeudenhaltijoina. Tahoja, joilla on tiliin vain esimerkiksi tiedonsaantioikeus, ei ilmoiteta tilirekisteriin.
