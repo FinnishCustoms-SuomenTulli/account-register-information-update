@@ -12,24 +12,26 @@
 
 Versio|Päivämäärä|Kuvaus|
 ---|---|---
-1.0|21.10.2019|Versio 1.0|1.0.1|29.1.2020|JSON skeeman privatePerson objektin firstName ja lastName propertyt yhdistetty fullName propertyksi|
+1.0|21.10.2019|Versio 1.0|
+1.0.1|29.1.2020|JSON skeeman privatePerson objektin firstName ja lastName propertyt yhdistetty fullName propertyksi|
 1.0.2|3.2.2020|luonnollisen henkilön kansalaisuus muutettu kansalaisuudet-listaksi|
 1.0.3|3.2.2020|Organisaation ominaisuuksista muutettu businessId -> registrationNumber ja poistettu businessIdCountryCode|
 1.0.4|5.3.2020|Päivitty sanomatason allekirjoituksen vaatimuksia. Lisätty PKI selite. Päivitetty rajapinnan maksimaalista sanomakokoa ja päivitetty kuvausta tietojen toimittamisesta Tilirekisteriin. Tarkennettu kiistanalaisten/virheellisten tietojen ilmoittamista.|
 1.0.5|12.5.2020|Lisätty request/response esimerkki selventämään JWT tokenien ja HTTP headerien käyttöä.|
 1.0.6|13.5.2020|Poistettu kappaleesta 3.1 kohta Saapuvan sanoman allekirjoitusvarmenne.|
-1.0.7|13.5.2020|Poistettu skeemasta roolin alkupäivän pakollisuus edunsaajan osalta.|1.0.8|5.6.2020|Lisätty skeemaan tilin ja talletuslokeron roolien vähimmäismääräksi 1.|
+1.0.7|13.5.2020|Poistettu skeemasta roolin alkupäivän pakollisuus edunsaajan osalta.|
+1.0.8|5.6.2020|Lisätty skeemaan tilin ja talletuslokeron roolien vähimmäismääräksi 1.|
 1.0.9|11.6.2020|Päivitetty JWS-allekirjoituksen kuvaus kappaleessa 3.4.|
 1.0.10|20.8.2020|Päivitetty sanoman maksimikoko ja maininta peräkkäisestä lähetyksestä kappaleessa 3.6.|
 1.0.11|24.8.2020|Lisätty tarkentava huomautus liittyen tietoliikenteessä ja sanomien allekirjoituksissa käytettävien avainten pituuksista.|
 1.0.12|1.9.2020|Lisätty kappaleeseen 4 tarkennus että roolilistoissa on toimitettava kaikki ajan hetkellä voimassa olevat roolit. Päivitetty sisällysluettelo.|
 1.0.13|2.9.2020|Lisätty kappaleeseen 3.4 maininta, että allekirjoitusten sub-kentän on vastattava varmenteen serialnumber-kentän sisältöä.|
-1.0.14|1.10.2020 |Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
-1.0.15|18.3.2021 |Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
-1.0.16|16.8.2021 |Lisätty tarkennus senderBusinessId käytöstä.|
-2.0.00|25.1.2022 |Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.|
-2.0.1 |4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5.|
-3.0.0 |23.5.2022 |Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
+1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
+1.0.15|18.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
+1.0.16|16.8.2021|Lisätty tarkennus senderBusinessId käytöstä.|
+2.0.00|25.1.2022|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.|
+2.0.1|4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5.|
+3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
 
 ## Sisällysluettelo
 
@@ -66,7 +68,7 @@ Lyhenne tai termi|Selite
 ---|---
 Rajapinta|Standardin mukainen käytäntö tai yhtymäkohta, joka mahdollistaa tietojen siirron laitteiden, ohjelmien tai käyttäjän välillä.
 WS (Web Service)|Verkkopalvelimessa toimiva ohjelmisto, joka tarjoaa standardoitujen internetyhteyskäytäntöjen avulla palveluja sovellusten käytettäväksi. Tilirekisterin tarjoamia palveluja ovat tietojen toimittaminen, tietopyyntö ja tietojen kysely. Tiedonhakujärjestelmä tarjoaa palveluna tietojen kyselyn.
-Endpoint|Rajapintapalvelu, joka on saatavilla tietyssä verkko-osoitteessa|
+Endpoint|Rajapintapalvelu, joka on saatavilla tietyssä verkko-osoitteessa
 REST|(Representational State Transfer) HTTP-protokollaan perustuva arkkitehtuurimalli ohjelmointirajapintojen toteuttamiseen.
 JSON|(JavaScript Object Notation) avoimen standardin tiedostomuoto tiedonvälitykseen.
 PKI|Julkisen avaimen tekniikka. Julkisen avaimen tekniikkaan perustuva sähköinen allekirjoitus luodaan siten, että allekirjoitettavasta tiedosta muodostetaan (tiivistealgoritmilla) tiiviste, joka salataan avainparin yksityisellä avaimella. Salattu tiiviste tallennetaan allekirjoitetun tiedon tai sähköisen asiakirjan yhteyteen tai välitetään muulla tavoin tiedon vastaanottajalle. Vastaanottaja purkaa tiivisteen salauksen avainparin julkisella avaimella, muodostaa uudelleen viestin tai asiakirjan tiedoista tiivisteen ja vertaa sitä allekirjoitukseen liitettyyn tiivisteeseen. Viestin sisältö on muuttumaton, mikäli tiivisteet ovat samat. (Sähköisen asioinnin tietoturvallisuus -ohje)
