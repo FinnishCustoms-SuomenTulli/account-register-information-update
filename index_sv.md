@@ -20,10 +20,10 @@ Version|Datum|Beskrivning|
 1.0.5|12.5.2020|Ett exempel på request/response har lagts till för att förtydliga användning av JWT token och HTTP header.|
 1.0.6|13.5.2020|I avsnitt 3.1 har punkten Signeringscertifikat för inkommande meddelanden raderats.|
 1.0.7|13.5.2020|Kravet på obligatoriskt startdatum för rollen som förmånstagare har slopats i schemat.|
-1.0.8||5.6.2020|Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.|
+1.0.8|5.6.2020|Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.|
 1.0.9|11.6.2020|Beskrivningen av JWS-signaturen har uppdaterats i avsnitt 3.4.|
 1.0.10|20.8.2020|Maximistorleken på ett meddelande och angivandet av att meddelandena ska skickas efter varandra har uppdaterats i avsnitt 3.6.|
-1.0.11|24.8.2020 |En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikationen och i meddelandenas signaturer har lagts till.|
+1.0.11|24.8.2020|En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikationen och i meddelandenas signaturer har lagts till.|
 1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.|
 1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.|
 1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av ett certifikat som innehåller en öppen nyckel.|
