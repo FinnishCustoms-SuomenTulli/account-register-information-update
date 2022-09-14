@@ -12,10 +12,10 @@
 
 Version|Date|Description|
 ---|---|---
-1.0|21.10.2019 |Version 1.0|
+1.0|21.10.2019|Version 1.0|
 1.0.1|29.1.2020|JSON schema’s privatePerson object’s firstName and lastName properties were combined into fullName property|
 1.0.2|3.2.2020|Nationality of a natural person was changed to a list of nationalities|
-1.0.3|3.2.2020|In the organisation characteristics, businessId was changed to registrationNumber and businessIdCountryCode was deleted.|
+1.0.3|3.2.2020|In the organisation characteristics, businessId was changed to registrationNumber and businessIdCountryCode was deleted|
 1.0.4|5.3.2020|Requirements for message level signature were updated. PKI and its description were added. The maximum message size for the interface was updated and the description of the provision of information to the Account Register was updated. Reporting on disputable/incorrect details was specified.|
 1.0.5|12.5.2020|An example concerning request/response was added to clarify the use of JWT tokens and HTTP headers.|
 1.0.6|13.5.2020|“Signature certificate of incoming messages” was removed from section 3.1.|
