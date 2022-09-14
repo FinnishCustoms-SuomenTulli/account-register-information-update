@@ -12,27 +12,26 @@
 
 Version|Datum|Beskrivning|
 ---|---|---
-1.0|21.10.2019|Version 1.0
-1.0.1|29.1.2020|firstName- och lastName-properties i JSON-schemats privatePerson-objekt har förenats till ett fullName-property.
-1.0.2|3.2.2020|En juridisk persons medborgarskap har ändrats till en medborgarskapslista.
-1.0.3|3.2.2020|Av organisationens egenskaper har businessId ändrats till registrationNumber och businessIdCountryCode har tagits bort.
-1.0.4|5.3.2020|Kraven gällande signaturen på meddelandenivå har uppdaterats. En PKI-förklaring har lagts till. Gränssnittets maximala meddelandestorlek och beskrivningen av hur uppgifter lämnas till Kontoregistret har uppdaterats. Precisering av hur omtvistade/felaktiga uppgifter anmäls.
-1.0.5|12.5.2020|Ett exempel på request/response har lagts till för att förtydliga användning av JWT token och HTTP header.
-1.0.6|13.5.2020|I avsnitt 3.1 har punkten Signeringscertifikat för inkommande meddelanden raderats.
-1.0.7|13.5.2020|Kravet på obligatoriskt startdatum för rollen som förmånstagare har slopats i schemat.
-1.0.8||5.6.2020|Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.
-1.0.9|11.6.2020|Beskrivningen av JWS-signaturen har uppdaterats i avsnitt 3.4.
-1.0.10|20.8.2020|Maximistorleken på ett meddelande och angivandet av att meddelandena ska skickas efter varandra har uppdaterats i avsnitt 3.6.
-1.0.11|24.8.2020 |En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikationen och i meddelandenas signaturer har lagts till.
-1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.
-1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.
-1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av ett certifikat som innehåller en öppen nyckel.
-1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid. Ersättning: VRK-> DVV
-1.0.16|16.8.2021|Angav användningen av senderBusinessId.
-2.0.00|25.1.2022|Nya uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till i enlighet med kategorierna för leverantörer av uppgifter. CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats.
-2.0.1|4.4.2022|Hänvisningarna till v1-gränssnittet har tagits bort i styckena 4.4 och 4.5
-3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.
-
+1.0|21.10.2019|Version 1.0|
+1.0.1|29.1.2020|firstName- och lastName-properties i JSON-schemats privatePerson-objekt har förenats till ett fullName-property.|
+1.0.2|3.2.2020|En juridisk persons medborgarskap har ändrats till en medborgarskapslista.|
+1.0.3|3.2.2020|Av organisationens egenskaper har businessId ändrats till registrationNumber och businessIdCountryCode har tagits bort.|
+1.0.4|5.3.2020|Kraven gällande signaturen på meddelandenivå har uppdaterats. En PKI-förklaring har lagts till. Gränssnittets maximala meddelandestorlek och beskrivningen av hur uppgifter lämnas till Kontoregistret har uppdaterats. Precisering av hur omtvistade/felaktiga uppgifter anmäls.|
+1.0.5|12.5.2020|Ett exempel på request/response har lagts till för att förtydliga användning av JWT token och HTTP header.|
+1.0.6|13.5.2020|I avsnitt 3.1 har punkten Signeringscertifikat för inkommande meddelanden raderats.|
+1.0.7|13.5.2020|Kravet på obligatoriskt startdatum för rollen som förmånstagare har slopats i schemat.|
+1.0.8||5.6.2020|Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.|
+1.0.9|11.6.2020|Beskrivningen av JWS-signaturen har uppdaterats i avsnitt 3.4.|
+1.0.10|20.8.2020|Maximistorleken på ett meddelande och angivandet av att meddelandena ska skickas efter varandra har uppdaterats i avsnitt 3.6.|
+1.0.11|24.8.2020 |En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikationen och i meddelandenas signaturer har lagts till.|
+1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.|
+1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.|
+1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av ett certifikat som innehåller en öppen nyckel.|
+1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid. Ersättning: VRK-> DVV|
+1.0.16|16.8.2021|Angav användningen av senderBusinessId.|
+2.0.00|25.1.2022|Nya uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till i enlighet med kategorierna för leverantörer av uppgifter. CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats.|
+2.0.1|4.4.2022|Hänvisningarna till v1-gränssnittet har tagits bort i styckena 4.4 och 4.5.|
+3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.|
 
 ## Innehåll
 
@@ -144,7 +143,7 @@ b) attributet serialNumber för certifikatets objekt är ”FI02454428” eller 
 
 Förbindelserna i Kontoregistrets uppdateringsgränssnitt är skyddade med TLS-kryptering med TLS-protokollets version 1.2 eller högre. Båda ändarna av förbindelsen identifieras med ovan beskrivna servercertifikat genom ömsesidig TLS-autentisering. Förbindelsen ska bildas med hjälp av ett ephemeral Diffie-Hellman (DHE) -nyckelbyte där det för varje session skapas en ny unik privat krypteringsnyckel. Syftet med detta förfarande är att säkerställa krypteringens forward secrecy-egenskap så att ett röjande av krypteringsnyckeln inte leder till att den krypterade informationen röjs.
 
-De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015)."
+De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
 
 ### 3.3 Tillåten HTTP-version
 
@@ -156,7 +155,7 @@ Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS
 
 De kryptografiska algoritmer som används i signaturen ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
 
-Uppdateringsmeddelandet ska ha två separata JWS-signaturer (exemplen nedan):   
+Uppdateringsmeddelandet ska ha två separata JWS-signaturer (exemplen nedan):  
 a) Authorization header ska ha Bearer token JWS av vilket avsändarens FO-nummer eller momsnummer framgår i en sub claim.  
 b) Request body ska ha JWS där “reportUpdate” property innehåller ett uppdateringsmeddelande enligt JSON-schemat.
 
@@ -262,14 +261,14 @@ I följande tabell finns en lista över gränssnittets endpoints.
 
 |HTTP-metod|Sökväg|Syfte och funktion|
 |---|---|---|
-POST|/v2/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.
-POST|/v2/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.
-POST|/v2/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/.
-POST|/v2/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.
-POST|/v3/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.
-POST|/v3/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.
-POST|/v3/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad. Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/.
-POST|/v3/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.
+POST|/v2/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
+POST|/v2/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.|
+POST|/v2/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/.|
+POST|/v2/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
+POST|/v3/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
+POST|/v3/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.|
+POST|/v3/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad. Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/.|
+POST|/v3/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
 
 ### <a name="JSONscheman"></a> 4.5 JSON-scheman
 
