@@ -10,27 +10,29 @@
 
 ## Versionshistorik
 
-| Version | Datum      | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|---------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.0     | 21.10.2019 | Version 1.0                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| 1.0.1   | 29.1.2020  | firstName- och lastName-properties i JSON-schemats privatePerson-objekt har förenats till ett fullName-property                                                                                                                                                                                                                                                                                                                                                  |
-| 1.0.2   | 3.2.2020   | En juridisk persons medborgarskap har ändrats till en medborgarskapslista.                                                                                                                                                                                                                                                                                                                                                                                       |
-| 1.0.3   | 3.2.2020   | Av organisationens egenskaper har businessId ändrats till registrationNumber och businessIdCountryCode har tagits bort.                                                                                                                                                                                                                                                                                                                                          |
-| 1.0.4   | 5.3.2020   | Kraven gällande signaturen på meddelandenivå har uppdaterats. PKI och dess förklaring har lagts till. Gränssnittets högsta meddelandestorlek och beskrivningen av hur uppgifter lämnas till Kontoregistret har uppdaterats. Precisering av hur omtvistade/felaktiga uppgifter anmäls.                                                                                                                                                                            |
-| 1.0.5   | 12.5.2020  | Ett exempel på request/response har lagts till för att förtydliga användning av JWT token och HTTP header.                                                                                                                                                                                                                                                                                                                                                       |
-| 1.0.6   | 13.5.2020  | I avsnitt 3.1 har punkten Signeringscertifikat för inkommande meddelanden raderats.                                                                                                                                                                                                                                                                                                                                                                              |
-| 1.0.7   | 13.5.2020  | Kravet på obligatoriskt startdatum för rollen som förmånstagare har slopats i schemat.                                                                                                                                                                                                                                                                                                                                                                           |
-| 1.0.8   | 5.6.2020   | Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.                                                                                                                                                                                                                                                                                                                                                                     |
-| 1.0.9   | 11.6.2020  | Beskrivningen av JWS-signaturen har uppdaterats i avsnitt 3.4.                                                                                                                                                                                                                                                                                                                                                                                                   |
-| 1.0.10  | 20.8.2020  | Maximistorleken på ett meddelande och angivandet av att meddelandena ska skickas efter varandra har uppdaterats i avsnitt 3.6.                                                                                                                                                                                                                                                                                                                                   |
-| 1.0.11  | 24.8.2020  | En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikation och i meddelandenas signaturer har lagts till.                                                                                                                                                                                                                                                                                                                    |
-| 1.0.12  | 1.9.2020   | Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.                                                                                                                                                                                                                                                                                                     |
-| 1.0.13  | 2.9.2020   | Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.                                                                                                                                                                                                                                                                                                                                |
-| 1.0.14  | 1.10.2020  | Precisering i punkt 3.4. gällande inlämning till Tullen av certifikat som innehåller en öppen nyckel.                                                                                                                                                                                                                                                                                                                                                            |
-| 1.0.15  | 18.3.2021  | Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid 4. Ersatt BRC -> MDB                                                                                                                                                                                                                                                                                                                         |
-| 2.0.00  | 25.1.2022  | Nya uppdateringsgränssnitt, JSON-scheman och exempel­meddelanden har lagts till i enlighet med kategorierna för uppgiftslämnare (leverantörer av uppgifter). CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats. |
-| 2.0.1   | 4.4.2022   | Borttag av referenser till v1-gränssnitt i avsnitt 4.4 och 4.5.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 3.0.0   | 23.5.2022  | Nya v3 uppdateringsgränssnitt, JSON-scheman och exempel­meddelanden.                                                                                                                                                                                                                                                                                                                                                                                             |
+Version|Datum|Beskrivning|
+---|---|---
+1.0|21.10.2019|Version 1.0
+1.0.1|29.1.2020|firstName- och lastName-properties i JSON-schemats privatePerson-objekt har förenats till ett fullName-property.
+1.0.2|3.2.2020|En juridisk persons medborgarskap har ändrats till en medborgarskapslista.
+1.0.3|3.2.2020|Av organisationens egenskaper har businessId ändrats till registrationNumber och businessIdCountryCode har tagits bort.
+1.0.4|5.3.2020|Kraven gällande signaturen på meddelandenivå har uppdaterats. En PKI-förklaring har lagts till. Gränssnittets maximala meddelandestorlek och beskrivningen av hur uppgifter lämnas till Kontoregistret har uppdaterats. Precisering av hur omtvistade/felaktiga uppgifter anmäls.
+1.0.5|12.5.2020|Ett exempel på request/response har lagts till för att förtydliga användning av JWT token och HTTP header.
+1.0.6|13.5.2020|I avsnitt 3.1 har punkten Signeringscertifikat för inkommande meddelanden raderats.
+1.0.7|13.5.2020|Kravet på obligatoriskt startdatum för rollen som förmånstagare har slopats i schemat.
+1.0.8||5.6.2020|Ett minimiantal på 1 har lagts till i schemat vad gäller rollerna för kontot och bankfacket.
+1.0.9|11.6.2020|Beskrivningen av JWS-signaturen har uppdaterats i avsnitt 3.4.
+1.0.10|20.8.2020|Maximistorleken på ett meddelande och angivandet av att meddelandena ska skickas efter varandra har uppdaterats i avsnitt 3.6.
+1.0.11|24.8.2020 |En preciserande anmärkning beträffande längderna på de nycklar som används i datakommunikationen och i meddelandenas signaturer har lagts till.
+1.0.12|1.9.2020|Tillägg till kapitel 4: en precisering om att alla roller som är giltiga vid tidpunkten ska skickas med rollistorna. Innehållsförteckningen har uppdaterats.
+1.0.13|2.9.2020|Tillägg till avsnitt 3.4: en notering om att sub-fältet i signaturerna ska motsvara innehållet i certifikatets serialnumber-fält.
+1.0.14|1.10.2020|Precisering i punkt 3.4. gällande inlämning till Tullen av ett certifikat som innehåller en öppen nyckel.
+1.0.15|18.3.2021|Borttag av kravet i punkt 4 på att användaren av gränssnittet ska skicka minst ett minimimeddelande inom utsatt tid. Ersättning: VRK-> DVV
+1.0.16|16.8.2021|Angav användningen av senderBusinessId.
+2.0.00|25.1.2022|Nya uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till i enlighet med kategorierna för leverantörer av uppgifter. CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats.
+2.0.1|4.4.2022|Hänvisningarna till v1-gränssnittet har tagits bort i styckena 4.4 och 4.5
+3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.
+
 
 ## Innehåll
 
@@ -40,7 +42,7 @@
   1.3 Allmän beskrivning  
 2. [Aktivitetsbeskrivning](#kapitel2)  
   2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret
-3. [Dataskydd](#kapitel3)  
+3. [Datasäkerhet](#kapitel3)  
   3.1 Identifiering  
   3.2 Skydd för förbindelser
   3.3 Tillåten HTTP-version
@@ -49,25 +51,29 @@
   3.6 Gränssnittets kapacitet
 4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#kapitel4)  
   4.1 Allmänt  
-  4.2 Kategorier av uppgiftslämnare, dvs. leverantörer av uppgifter  
+  4.2 Kategorier av leverantörer av uppgifter 
   4.3 Anmälan av uppgifter som felaktig eller omtvistad  
   4.4 Gränssnitt  
   4.5 JSON-scheman  
   4.6 Exempelmeddelanden  
   4.7 HTTP-svar
+5. [Preciseringar av begrepp](#kapitel5)  
+  5.1 Kundrelation  
+  5.2 Gemensamt konto som förvaltas av en advokat
 
 ## 1. Inledning <a name="kapitel1"></a>
 
 ### 1.1 Termer och förkortningar
 
-| Förkortning eller term | Förklaring                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Gränssnitt             | Standardenlig praxis eller kontaktyta som möjliggör överföring av information mellan enheter, programvaror eller användare.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| WS (Web Service)       | Webbaserat datorprogram som med hjälp av standardiserade internetprotokoll ställer tjänster till förfogande för applikationerna. De tjänster som kontoregistret tillhandahåller är leverans av uppgifter samt begäran och förfrågan om uppgifter. Tjänsten som datasöksystemet tillhandahåller är förfrågan om uppgifter.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Endpoint               | Gränssnittstjänst som finns tillgänglig på en viss webbadress.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| REST                   | (Representational State Transfer) En arkitekturmodell som bygger på en HTTP-protokoll för genomförande av programmeringsgränssnitt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| JSON                   | (JavaScript Object Notation) Filformat för dataöverföring enligt öppen standard.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| PKI                    | Teknik med öppen nyckel. En elektronisk signatur som bygger på teknik med öppen nyckel skapas så att det av den uppgift som signeras skapas ett kondensat (med en hash-algoritm), som krypteras med nyckelparets privata nyckel.  Det krypterade kondensatet sparas i anslutning till den signerade uppgiften eller det elektroniska dokumentet, eller så förmedlas uppgiften på annat sätt till mottagaren. Mottagaren dekrypterar kondensatets kryptering med nyckelparets öppna nyckel, återskapar ett kondensat av meddelandets eller dokumentets uppgifter och jämför det med kondensatet som kopplats till signaturen. Meddelandets innehåll förblir oförändrat, såvida kondensaten är lika. (Anvisning om informationssäkerheten inom elektronisk ärendehantering) |
+Förkortning eller term|Förklaring
+---|---
+Gränssnitt|Standardenlig praxis eller kontaktyta som möjliggör överföring av information mellan enheter, programvaror eller användare.
+WS (Web Service)|Webbaserat datorprogram som med hjälp av standardiserade internetprotokoll ställer tjänster till förfogande för applikationerna. De tjänster som kontoregistret tillhandahåller är leverans av uppgifter samt begäran och förfrågan om uppgifter. Tjänsten som datasöksystemet tillhandahåller är förfrågan om uppgifter.
+Endpoint|Gränssnittstjänst som finns tillgänglig på en viss webbadress.
+REST|(Representational State Transfer) En arkitekturmodell som bygger på en HTTP-protokoll för genomförande av programmeringsgränssnitt.
+JSON|(JavaScript Object Notation) Filformat för dataöverföring enligt öppen standard.
+PKI|Teknik med öppen nyckel. En elektronisk signatur som bygger på teknik med öppen nyckel skapas så att det av den uppgift som signeras skapas ett kondensat (med en hash-algoritm), som krypteras med nyckelparets privata nyckel.  Det krypterade kondensatet sparas i anslutning till den signerade uppgiften eller det elektroniska dokumentet, eller så förmedlas uppgiften på ett annat sätt till mottagaren. Mottagaren dekrypterar kondensatets kryptering med nyckelparets öppna nyckel, återskapar kondensatet av meddelandets eller dokumentets uppgifter och jämför det med kondensatet som kopplats till signaturen. Meddelandets innehåll förblir oförändrat, såvida kondensaten är lika. (Anvisning om informationssäkerheten inom elektronisk ärendehantering)
+
 
 ### 1.2 Dokumentets syfte och omfattning
 
@@ -75,7 +81,7 @@ Detta dokument är en gränssnittsbeskrivning av uppdateringsgränssnittet för 
 
 ### 1.3 Allmän beskrivning
 
-Detta dokument ingår i Tullens föreskrift om ett övervakningssystem för bank- och betalkonton. Dokumentets syfte är att instruera uppgiftslämnare, dvs. leverantörer av uppgifter, om genomförandet av uppdateringsgränssnittet för bank- och betalkontoregistret (härefter Kontoregistret). Detta dokument kompletteras av Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret.
+Detta dokument ingår i Tullens föreskrift om ett övervakningssystem för bank- och betalkonton. Dokumentets syfte är att instruera leverantörer av uppgifter om genomförandet av uppdateringsgränssnittet för bank- och betalkontoregistret (härefter Kontoregistret). Detta dokument kompletteras av Instruktioner för ibruktagande och underhåll av bank- och betalkontoregistret.
 
 Systemet består av två delar: registret över bank- och betalkonton och datasöksystemet.
 
@@ -83,11 +89,11 @@ I detta dokument beskrivs Kontoregistrets uppdateringsgränssnitt.
 
 ## 2. Aktivitetsbeskrivning <a name="kapitel2"></a>
 
-I detta kapitel beskrivs överföring av bank- och betalkontouppgifter i form av flödesscheman.
+I detta kapitel beskrivs i form av ett flödesschema hur bank- och betalkontouppgifter överförs till Kontoregistret.
 
 ### 2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret
 
-När uppgifter överförs till kontoregistret första gången ska alla berörda uppgifter överföras till registret.  Därefter överförs bara uppdaterade eller nya uppgifter dagligen.
+När uppgifter överförs till kontoregistret första gången ska alla berörda uppgifter överföras till registret. Därefter överförs bara uppdaterade eller nya uppgifter dagligen.
 
 På bild 2.1 visas överföring av bank- och betalkontouppgifter till Kontoregistret i form av ett flödesschema.
 
@@ -96,51 +102,49 @@ På bild 2.1 visas överföring av bank- och betalkontouppgifter till Kontoregis
 
 Av bilden framgår att uppdateringsgränssnittet är synkront. I brödtexten till ett HTTP-svar returneras antingen en uppgift om att uppdateringen lyckats eller en uppgift om fel vid exempelvis validering av meddelandet.
 
-## <a name="kapitel3"></a> 3. Dataskydd
+## <a name="kapitel3"></a> 3. Datasäkerhet
   
 ### 3.1 Identifiering
 
 #### Signeringscertifikat för utgående meddelanden
 
-Utgående meddelanden ska automatiskt signeras med servercertifikatet x.509 (version 3), av vilket uppgiftslämnarens FO-nummer eller momsnummer ska framgå. Godkännande av signaturen förutsätter
+Utgående meddelanden ska automatiskt signeras med servercertifikatet x.509 (version 3), av vilket uppgiftsleverantörens FO-nummer eller momsnummer ska framgå. Godkännande av signaturen förutsätter
 
 antingen  
-a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är uppgiftslämnarens FO-nummer eller momsnummer.
+a) att certifikatet har utfärdats av Myndigheten för digitalisering och befolkningsdata (MDB), är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är uppgiftsleverantörens FO-nummer eller momsnummer.
 
 eller  
-b) att certifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är uppgiftslämnarens FO-nummer eller momsnummer.
+b) att certifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är uppgiftsleverantörens FO-nummer eller momsnummer.
 
 Obs. För att meddelandenas signaturer ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används för signaturer ha minst 3072 bitar. Användningssyftena för ett certifikat som används för signaturer ska också omfatta ”digital signatur”. Man ska beakta dessa omständigheter när man beställer ett certifikat.
 
-#### Servercertifikat för uppgiftslämnaren eller en aktör som befullmäktigats av uppgiftslämnaren
+#### Servercertifikat för uppgiftsleverantören eller en aktör som befullmäktigats av uppgiftsleverantören
 
 Datakommunikationen ska skyddas (kryptering och identifiering av motpart) med x.509-certifikat (version 3).
 
-Ett servercertifikat ska användas för att bilda en förbindelse, och FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne ska framgå av certifikatet. Med en aktör som befullmäktigats av uppgiftslämnaren avses exempelvis en servicecentral som uppgiftslämnaren har befullmäktigat att upprätta och/eller skicka anmälningar. En fullmakt gällande detta ska lämnas in skriftligen till Tullen.
+Ett servercertifikat ska användas för att bilda en förbindelse, och FO-numret eller momsnumret för uppgiftsleverantören eller en aktör som befullmäktigats av denne ska framgå av certifikatet. Med en aktör som befullmäktigats av leverantören av uppgifter avses exempelvis en servicecentral som leverantören har befullmäktigat att upprätta och/eller skicka anmälningar. En fullmakt gällande detta ska lämnas in skriftligen till Tullen.
 
 Godkännande av signaturen förutsätter
 
 antingen  
-a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne.
+a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
 
 eller  
-b) att servercertifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är FO-numret eller momsnumret för uppgiftslämnaren eller en aktör som befullmäktigats av denne.
-
-Om uppgiftslämnarens servercertifikat och signeringscertifikat för utgående meddelanden har samma FO-nummer eller momsnummer, kan samma certifikat användas för båda ändamålen.
-
+b) att servercertifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
+Om uppgiftsleverantörens servercertifikat och signeringscertifikat för utgående meddelanden har samma FO-nummer eller momsnummer, kan samma certifikat användas för båda ändamålen.
 Obs. För att skyddet av datakommunikationen ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används ha minst 3072 bitar. Man ska beakta detta när man beställer ett certifikat.
 
 #### Kontoregistrets servercertifikat
 
-Uppgiftslämnaren identifierar förbindelsens motpart som Kontoregistret på basis av ett servercertifikat, förutsatt att  
+Leverantören av uppgifter identifierar förbindelsens motpart som Kontoregistret på basis av ett servercertifikat, förutsatt att   
 a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av MDB och inte finns med på MDB:s spärrlista  
-b) attributet serialNumber för objektet för certifikatet är ”FI02454428” eller ”0245442-8”
+b) attributet serialNumber för certifikatets objekt är ”FI02454428” eller ”0245442-8”
 
 ### 3.2 Skydd för förbindelser
 
 Förbindelserna i Kontoregistrets uppdateringsgränssnitt är skyddade med TLS-kryptering med TLS-protokollets version 1.2 eller högre. Båda ändarna av förbindelsen identifieras med ovan beskrivna servercertifikat genom ömsesidig TLS-autentisering. Förbindelsen ska bildas med hjälp av ett ephemeral Diffie-Hellman (DHE) -nyckelbyte där det för varje session skapas en ny unik privat krypteringsnyckel. Syftet med detta förfarande är att säkerställa krypteringens forward secrecy-egenskap så att ett röjande av krypteringsnyckeln inte leder till att den krypterade informationen röjs.
 
-De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
+De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015)."
 
 ### 3.3 Tillåten HTTP-version
 
@@ -148,15 +152,15 @@ Förbindelserna som används av uppdateringsgränssnittet använder version 1.1 
 
 ### 3.4 Signering på meddelandenivå
 
-Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS-signaturen används algoritmen RS256 och meddelandena signeras med avsändarens privata nyckel. Anvisningar om inlämning till Tullen av certifikat som innehåller den öppna nyckeln finns i Instruktioner för produktionssättning och underhåll av bank- och betalkontoregistret.
+Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS-signaturen används algoritmen RS256 och meddelandena signeras med avsändarens privata nyckel. Anvisningar om inlämning till Tullen av certifikat som innehåller den öppna nyckeln finns i Instruktioner för ibruktagande och underhåll av bank- och betalkontoregistret.
 
 De kryptografiska algoritmer som används i signaturen ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
 
-Uppdateringsmeddelandet ska ha två separata JWS-signaturer (exemplen nedan):  
-a) Authorization header ska ha Bearer token JWS av vilket i en sub claim framgår avsändarens FO-nummer eller momsnummer.  
-b) Request body ska ha JWS där “reportUpdate” property innehåller ett uppdateringsmeddelande enligt [JSON schemat](#JSONscheman). 
+Uppdateringsmeddelandet ska ha två separata JWS-signaturer (exemplen nedan):   
+a) Authorization header ska ha Bearer token JWS av vilket avsändarens FO-nummer eller momsnummer framgår i en sub claim.  
+b) Request body ska ha JWS där “reportUpdate” property innehåller ett uppdateringsmeddelande enligt JSON-schemat.
 
-Sub-fältet i båda dessa JWS-signaturer ska innehålla avsändarens FO-nummer eller VAT-nummer i samma format som i SERIALNUMBER-fältet i avsändarens publika certifikat.
+Sub-fältet i båda dessa JWS-signaturer ska innehålla avsändarens FO-nummer eller momsnummer i samma format som i SERIALNUMBER-fältet i avsändarens publika certifikat.
 
 Anmälan om ett felaktigt meddelande eller om ett meddelande som misstänks vara felaktigt skiljer sig från uppdateringsmeddelandet så att “reportUpdate” claim lämnas bort helt och hållet och ersätts av antingen “reportDisputable” eller “reportIncorrect” beroende på situationen ([se den allmänna beskrivningen av Kontoregistrets uppdateringsgränssnitt](#kapitel4)).
 
@@ -212,9 +216,9 @@ Uppdateringsgränssnittet implementeras med REST/JSON-metoden.
 
 Varje meddelande ska innehålla datum då det skapats.
 
-Varje meddelande ska innehålla uppgiftsleverantörens FO-nummer i senderBusinessId-fältet.
+Varje meddelande ska innehålla uppgiftsleverantörens FO-nummer eller momsnummer i senderBusinessId-fältet.
 
-I uppdateringsmeddelandets meddelandestruktur anmäls juridiska personer, kundrelationer, konton och bankfack som nyckel-värde-par, där nyckeln utgörs av ett individuellt id UUIDv4 (Universally unique identifier) för posten. Tullen utfärdar inte dessa id, utan de skapas av den som levererar uppgifterna och de kan användas för att specificera kunduppgifter. Utifrån detta id kan posterna identifieras, till exempel om personens namn eller personbeteckning ändras.  Exempel på uppdateringsmeddelandets meddelandestruktur finns [här](#exempelmeddelanden).
+I uppdateringsmeddelandets meddelandestruktur anmäls juridiska personer, kundrelationer, konton och bankfack som nyckel-värde-par, där nyckeln utgörs av ett individuellt id UUIDv4 (Universally unique identifier) för posten. Tullen utfärdar inte dessa id, utan de skapas av den som levererar uppgifterna och de kan användas för att specificera kunduppgifter. Utifrån detta id kan posterna identifieras, till exempel om personens namn eller personbeteckning ändras. Exempel på uppdateringsmeddelandets meddelandestruktur finns [här](#exempelmeddelanden).
 
 I uppdateringsmeddelandena är det möjligt att skicka hela poster som hänvisar till id som tidigare skickats och som är individuella för posten. Man kan till exempel skicka uppgifter om ett konto som innehåller rollhänvisningar till LegalPerson-poster som skickats tidigare. Dessutom kan man till exempel skicka enbart en namnändring angående en LegalPerson-post, och då behöver man inte skicka rolluppgifterna som hänför sig till LegalPerson-posten på nytt i meddelandet.
 
@@ -243,11 +247,11 @@ Uppdateringsmeddelandenas innehåll beskrivs i [JSON-scheman](#JSONscheman).
 
 ### <a name="felaktigaomtvistade"></a> 4.3 Anmälan om felaktiga eller omtvistade uppgifter
 
-Inlämnade poster kan anmälas som felaktiga eller som misstänkt felaktiga (omtvistade). För detta ändamål används identifikationen UUIDv4 som specificerar posten och uppdateringsmeddelandets unika identifikation X-Correlation-ID med vilken posten anmälts. Posten till vilken identifikationen hänvisar till kan vara ett konto, bankfack eller en juridisk person. Exempel på meddelanden finns [här](#exempelmeddelanden).
+Inlämnade poster kan anmälas som felaktiga eller som misstänkt felaktiga (omtvistade). För detta ändamål används identifikationen UUIDv4 som specificerar posten och uppdateringsmeddelandets unika identifikation X-Correlation-ID med vilken posten anmälts. Posten till vilken identifikationen hänvisar kan vara ett konto, bankfack eller en juridisk person. Exempel på meddelanden finns [här](#exempelmeddelanden).
 
-Uppgiftslämnare enligt båda kategorierna använder samma gränssnitt för anmälan av felaktiga eller omtvistade uppgifter.
+Uppgiftsleverantörerna enligt båda kategorierna använder samma gränssnitt för anmälan av felaktiga eller omtvistade uppgifter.
 
-Misstanken om felaktighet kan återkallas, om misstanken konstateras vara obefogad men statusen för den post som anmälts som felaktig kan inte längre ändras.
+Misstanken om felaktighet kan återkallas om misstanken konstateras vara obefogad men statusen för den post som anmälts som felaktig kan inte längre ändras.
 
 ![Ändring av postens status](diagrams/state_diagram_incorrect_disputed.png "Ändring av postens status")  
 *__Kuva 4.3.__ Ändring av postens status*
@@ -256,16 +260,16 @@ Misstanken om felaktighet kan återkallas, om misstanken konstateras vara obefog
 
 I följande tabell finns en lista över gränssnittets endpoints.
 
-| HTTP-metod | Sökväg                   | Syfte och funktion                                                                                                                                                                                                                                                                                      |
-|------------|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| POST       | /v2/report-update/cat-1/ | Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.                                                                                                                               |
-| POST       | /v2/report-update/cat-2/ | Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.                                                                                                        |
-| POST       | /v2/report-disputable/   | Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status, om uppgiften visar sig vara riktig. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/. |
-| POST       | /v2/report-incorrect/    | Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.                                                                    |
-| POST       | /v3/report-update/cat-1/ | Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.                                                                                                                               |
-| POST       | /v3/report-update/cat-2/ | Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.                                                                                                        |
-| POST       | /v3/report-disputable/   | Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status, om uppgiften visar sig vara riktig. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/. |
-| POST       | /v3/report-incorrect/    | Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.                                                                    |
+|HTTP-metod|Sökväg|Syfte och funktion|
+|---|---|---|
+POST|/v2/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.
+POST|/v2/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.
+POST|/v2/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/.
+POST|/v2/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.
+POST|/v3/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.
+POST|/v3/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.
+POST|/v3/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad. Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/.
+POST|/v3/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.
 
 ### <a name="JSONscheman"></a> 4.5 JSON-scheman
 
@@ -344,3 +348,13 @@ Body
   message              string
 }
 ```
+
+## <a name="kapitel5"></a> 5. Preciseringar av begrepp
+
+### <a name="kundrelation"></a> 5.1 Kundrelation
+
+Kundrelationen avser hela den period då en juridisk person varit kund hos en leverantör av uppgifter. Kundrelationen börjar till exempel när det första kontot öppnas. På motsvarande sätt upphör kundrelationen när kundens sista konto stängs.
+
+### <a name="klientmedelskonto"></a> 5.2 Gemensamt konto som förvaltas av en advokat (klientmedelskonto)
+
+Konton som är gemensamma konton som förvaltas av en advokat skiljs åt från andra konton genom att man i fältet för kontots användningsändamål (AcctPurp) använder värdet ”customer_asset_account". Ägaren till ett gemensamt konto som förvaltas av en advokat är minst en juridisk person som kan vara en fysisk person (t.ex. advokat) eller en organisation (t.ex. advokatbyrå). Därtill kan det finnas juridiska personer som har rätt att använda ett sådant konto. De som bara har t.ex. rätt att få uppgifter gällande kontot anmäls inte till Kontoregistret.
