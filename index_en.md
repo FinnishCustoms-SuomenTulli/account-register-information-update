@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 2.0.1*
+*Document version 3.0.0*
 
 ## Version history
 
@@ -30,7 +30,8 @@ Version|Date|Description|
 1.0.15|18.3.2021|Requirement that the user of the interface must send at least one minimal message during a specific time period was removed from chapter 4. Replaced Population Register Centre with Digital And Population Data Services Agency.|
 1.0.16|16.8.2021|Specified the use of senderBusinessId.|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
-2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5. |
+2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5.|
+3.0.0|23.5.2022|Added v3 update interfaces, JSON schemas and example messages.|
 
 
 ## Table of contents
@@ -55,7 +56,10 @@ Version|Date|Description|
   4.4 Interfaces  
   4.5 JSON schemas  
   4.6 Example messages  
-  4.7 HTTP responses
+  4.7 HTTP responses  
+5. [Clarifications to definitions](#chapter5)  
+  5.1 Customership  
+  5.2 Lawyer's customer asset account  
 
 ## 1. Introduction <a name="chapter1"></a>
 
@@ -63,7 +67,7 @@ Version|Date|Description|
 
 Abbreviation or term|Description
 ---|---
-Inteface|A standard practice or connection point that allows the transfer of information between devices, programmes and the user. 
+Inteface|A standard practice or connection point that allows the transfer of information between devices, programmes and the user.
 WS (Web Service)|Software operating in a network server, providing services for use by applications through standardised internet connection practices. The services provided by the Account Register include the provision of information,  information request and information query. The data retrieval system provides information queries as a service.
 Endpoint|An interface service available at a certain network address.
 REST|(Representational State Transfer) an architecture model based on HTTP for implementing programming interfaces.
@@ -265,6 +269,10 @@ POST|/v2/report-update/cat-1/|Credit institutions (by exemption granted by the F
 POST|/v2/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
 POST|/v2/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v2/report-incorrect/.|
 POST|/v2/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
+POST|/v3/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
+POST|/v3/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
+POST|/v3/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v3/report-incorrect/.|
+POST|/v3/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
 
 ### <a name="JSONschemas"></a> 4.5 JSON schemas
 
@@ -272,7 +280,11 @@ Schemas in accordance with JSON Schema draft 7 have been created for message val
 
 Updating message v2 (credit institutions) [schema](schemas/information_update-v2-credit_institution.json)
 
+Updating message v3 (credit institutions) [schema](schemas/information_update-v3-credit_institution.json)
+
 Updating message v2 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v2-other.json)
+
+Updating message v3 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v3-other.json)
 
 Reporting a detail as disputable [schema](schemas/report_disputable.json)
 
@@ -284,7 +296,11 @@ You can find the example messages via the links below:
 
 [Updating message v2 (credit institutions)](examples/report-update-v2-credit_institution.json)
 
+[Updating message v3 (credit institutions)](examples/report-update-v3-credit_institution.json)
+
 [Updating message v2 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v2-other.json)
+
+[Updating message v3 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v3-other.json)
 
 [Reporting a detail as disputable](examples/report-disputable.json)
 
@@ -335,3 +351,11 @@ Body
   message              string
 }
 ```
+
+## <a name="chapter5"></a> 5. Clarifications to definitions
+
+### <a name="customership"></a> 5.1 Customership
+Customership refers to the whole time period a legal person has been the customer of the data supplier. Customership begins for example when the first account is opened. Respectively customership would end when the customer's last account is closed.
+
+### <a name="customerassetaccount"></a> 5.2 Lawyer's customer asset account
+Accounts that are lawyer's customer asset accounts are separated from other accounts by using the account purpose (AcctPurp) field with value "customer_asset_account". Lawyer's customer asset account has at least one legal person as the account owner. The legal person can be a natural person (for example the lawyer) or an organisation (for example a lawyer's office). In addition a lawyer's customer asset account can have legal persons who have access to the account. Legal persons who only have a right for example to obtain information about the account are not reported to the account register.

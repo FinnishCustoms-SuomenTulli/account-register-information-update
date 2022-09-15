@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 2.0.1*
+*Dokumentin versio 3.0.0*
 
 ## Versiohistoria
 
@@ -29,8 +29,9 @@ Versio|Päivämäärä|Kuvaus|
 1.0.14|1.10.2020|Tarkennettu julkisen avaimen sisältävän varmenteen toimittamisesta Tullille kohdassa 3.4.|
 1.0.15|18.3.2021|Poistettu kappaleesta 4 vaatimus, jonka mukaan rajapinnan käyttäjän pitää lähettää vähintään yksi minimisanoma määritellyn ajanjakson kuluessa. Korvattu VRK -> DVV.|
 1.0.16|16.8.2021|Lisätty tarkennus senderBusinessId käytöstä.|
-2.0.00|25.1.2022|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.
-2.0.1|4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5. |
+2.0.00|25.1.2022|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.|
+2.0.1|4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5.|
+3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
 
 ## Sisällysluettelo
 
@@ -55,7 +56,9 @@ Versio|Päivämäärä|Kuvaus|
   4.5 JSON-skeemat  
   4.6 Esimerkkisanomat  
   4.7 HTTP-vastaukset  
-  
+5. [Käsitteiden tarkennuksia](#käsitteet)  
+  5.1 Asiakkuus  
+  5.2 Asianajajan asiakasvaratili  
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -63,7 +66,7 @@ Versio|Päivämäärä|Kuvaus|
 
 Lyhenne tai termi|Selite
 ---|---
-Rajapinta|Standardin mukainen käytäntö tai yhtymäkohta, joka mahdollistaa tietojen siirron laitteiden, ohjelmien tai käyttäjän välillä. 
+Rajapinta|Standardin mukainen käytäntö tai yhtymäkohta, joka mahdollistaa tietojen siirron laitteiden, ohjelmien tai käyttäjän välillä.
 WS (Web Service)|Verkkopalvelimessa toimiva ohjelmisto, joka tarjoaa standardoitujen internetyhteyskäytäntöjen avulla palveluja sovellusten käytettäväksi. Tilirekisterin tarjoamia palveluja ovat tietojen toimittaminen, tietopyyntö ja tietojen kysely. Tiedonhakujärjestelmä tarjoaa palveluna tietojen kyselyn.
 Endpoint|Rajapintapalvelu, joka on saatavilla tietyssä verkko-osoitteessa
 REST|(Representational State Transfer) HTTP-protokollaan perustuva arkkitehtuurimalli ohjelmointirajapintojen toteuttamiseen.
@@ -262,6 +265,10 @@ POST|/v2/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poik
 POST|/v2/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
 POST|/v2/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v2/report-incorrect/.|
 POST|/v2/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
+POST|/v3/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
+POST|/v3/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
+POST|/v3/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v3/report-incorrect/.|
+POST|/v3/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 
 ### <a name="JSONskeemat"></a> 4.5 JSON-skeemat
 
@@ -269,7 +276,11 @@ Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
 
 Päivityssanoma v2 (luottolaitokset) [skeema](schemas/information_update-v2-credit_institution.json)
 
+Päivityssanoma v3 (luottolaitokset) [skeema](schemas/information_update-v3-credit_institution.json)
+
 Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v2-other.json)
+
+Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v3-other.json)
 
 Tiedon ilmoittaminen kiistanalaiseksi [skeema](schemas/report_disputable.json)
 
@@ -281,7 +292,11 @@ Esimerkkisanomat löytyvät alla olevista linkeistä:
 
 [Päivityssanoma v2 (luottolaitokset)](examples/report-update-v2-credit_institution.json)
 
+[Päivityssanoma v3 (luottolaitokset)](examples/report-update-v3-credit_institution.json)
+
 [Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v2-other.json)
+
+[Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v3-other.json)
 
 [Tiedon ilmoittaminen kiistanalaiseksi](examples/report-disputable.json)
 
@@ -333,4 +348,10 @@ Body
 }
 ```
 
+## <a name="käsitteet"></a> 5. Käsitteiden tarkennuksia
 
+### <a name="asiakkuus"></a> 5.1 Asiakkuus
+Asiakkuus tarkoittaa koko sitä ajanjaksoa, jonka ajan oikeushenkilö on ollut tiedon luovuttajan asiakkaana. Asiakkuus alkaa esimerkiksi ensimmäisen tilin avaamisesta. Vastaavasti asiakkuus päättyisi, kun asiakkaan viimeinen tili suljetaan.
+
+### <a name="asiakasvaratili"></a> 5.2 Asianajajan asiakasvaratili
+Tilit, jotka ovat asianajajan asiakasvaratilejä, erotetaan muista tileistä käyttämällä niille tilin käyttötarkoitus (AcctPurp) -kentässä arvoa "customer_asset_account". Asianajajan asiakasvaratilillä on omistajana vähintään yksi oikeushenkilö, joka voi olla luonnollinen henkilö (esimerkiksi asianajaja) tai organisaatio (esimerkiksi asianajotoimisto). Lisäksi asianajajan asiakasvaratilillä voi olla oikeushenkilöitä käyttöoikeudenhaltijoina. Tahoja, joilla on tiliin vain esimerkiksi tiedonsaantioikeus, ei ilmoiteta tilirekisteriin.
