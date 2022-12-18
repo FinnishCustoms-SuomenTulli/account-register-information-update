@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.0*
+*Document version 3.0.1*
 
 ## Version history
 
@@ -32,6 +32,7 @@ Version|Date|Description|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
 2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5.|
 3.0.0|23.5.2022|Added v3 update interfaces, JSON schemas and example messages.|
+3.0.1|16.12.2022|Added information about limitations to subchapter 4.8.|
 
 
 ## Table of contents
@@ -57,6 +58,7 @@ Version|Date|Description|
   4.5 JSON schemas  
   4.6 Example messages  
   4.7 HTTP responses  
+  4.8 Limitations  
 5. [Clarifications to definitions](#chapter5)  
   5.1 Customership  
   5.2 Lawyer's customer asset account  
@@ -351,6 +353,10 @@ Body
   message              string
 }
 ```
+
+### <a name="Limitations"></a> 4.8 Limitations
+
+Data about accounts or safe deposit boxes closed or customer relationships ended before 1 September 2020 should not be transmitted through the Account Register. Similarly, data about beneficiaries and other roles related to the aforementioned should not be transmitted if the role ended before 1 September 2020.
 
 ## <a name="chapter5"></a> 5. Clarifications to definitions
 

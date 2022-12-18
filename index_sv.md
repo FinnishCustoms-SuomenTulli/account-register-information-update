@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.0*
+*Dokumentversion 3.0.1*
 
 ## Versionshistorik
 
@@ -32,6 +32,7 @@ Version|Datum|Beskrivning|
 2.0.00|25.1.2022|Nya uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till i enlighet med kategorierna för leverantörer av uppgifter. CorrelationId har lagts till i meddelanden om anmälan av felaktig och omtvistad uppgift, då en viss version av uppgiften kan anmälas som felaktig eller omtvistad. JSON-scheman har lagts till för meddelanden om anmälan av felaktig och omtvistad uppgift. Listan över HTTP-svar har preciserats.|
 2.0.1|4.4.2022|Hänvisningarna till v1-gränssnittet har tagits bort i styckena 4.4 och 4.5.|
 3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.|
+3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8.|
 
 ## Innehåll
 
@@ -55,7 +56,8 @@ Version|Datum|Beskrivning|
   4.4 Gränssnitt  
   4.5 JSON-scheman  
   4.6 Exempelmeddelanden  
-  4.7 HTTP-svar
+  4.7 HTTP-svar  
+  4.8 Begränsningar  
 5. [Preciseringar av begrepp](#kapitel5)  
   5.1 Kundrelation  
   5.2 Gemensamt konto som förvaltas av en advokat
@@ -347,6 +349,10 @@ Body
   message              string
 }
 ```
+
+### <a name="Begränsningar"></a> 4.8 Begränsningar
+
+Uppgifter om konton och bankfack som har spärrats före den 1 september 2020 och uppgifter om kundrelationer som upphört före denna dag ska inte lämnas via kontoregistret. Detsamma gäller för uppgifter om förmånstagare och andra roller som har anknytning till de ovannämnda, om rollen har upphört före den 1 september 2020.
 
 ## <a name="kapitel5"></a> 5. Preciseringar av begrepp
 

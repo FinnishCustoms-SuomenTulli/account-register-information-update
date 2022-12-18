@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 3.0.0*
+*Dokumentin versio 3.0.1*
 
 ## Versiohistoria
 
@@ -32,6 +32,7 @@ Versio|Päivämäärä|Kuvaus|
 2.0.00|25.1.2022|Lisätty uudet, tiedonluovuttajien kategorian mukaiset päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat. Lisätty CorrelationId virheelliseksi ja kiistanalaiseksi ilmoittamissanomiin, jolloin tiedon tietty versio voidaan ilmoittaa virheelliseksi tai kiistanalaiseksi. Lisätty JSON-skeemat virheelliseksi ja kiistanalaiseksi ilmoittamisanomille. Tarkennettu HTTP-vastaukset -listaa.|
 2.0.1|4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5.|
 3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
+3.0.1|16.12.2022|Lisätty tarkennus rajoituksista alilukuun 4.8.|
 
 ## Sisällysluettelo
 
@@ -56,6 +57,7 @@ Versio|Päivämäärä|Kuvaus|
   4.5 JSON-skeemat  
   4.6 Esimerkkisanomat  
   4.7 HTTP-vastaukset  
+  4.8 Rajoitukset  
 5. [Käsitteiden tarkennuksia](#käsitteet)  
   5.1 Asiakkuus  
   5.2 Asianajajan asiakasvaratili  
@@ -347,6 +349,10 @@ Body
   message              string
 }
 ```
+
+### <a name="Rajoitukset"></a> 4.8 Rajoitukset
+
+Ennen 1.9.2020 suljetuista tileistä ja tallelokeroista tai päättyneistä asiakkuuksista ei tule luovuttaa tietoja tilirekisteriin. Samaten edellä mainittuihin liittyvistä edunsaajista ja muista rooleista ei tule toimittaa tietoja, jos rooli on päättynyt ennen 1.9.2020.
 
 ## <a name="käsitteet"></a> 5. Käsitteiden tarkennuksia
 
