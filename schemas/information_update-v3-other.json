@@ -152,7 +152,8 @@
         },
         "registrationAuthority": {
           "type": "string",
-          "description": "Registration authority."
+          "description": "Registration authority.",
+          "maxLength": 70
         },
         "registrationDate": {
           "description": "Registration date.",
@@ -160,7 +161,8 @@
         },
         "name": {
           "type": "string",
-          "description": "Organisation name."
+          "description": "Organisation name.",
+          "maxLength": 300
         }
       }
     },
@@ -174,11 +176,13 @@
       "properties": {
         "id": {
           "type": "string",
-          "description": "Account identification."
+          "description": "Account identification.",
+          "maxLength": 200
         },
         "description": {
           "type": "string",
-          "description": "Description of the used account identification type."
+          "description": "Description of the used account identification type.",
+          "maxLength": 200
         }
       }
     },
@@ -214,7 +218,8 @@
           "description": "Full name.",
           "examples": [
             "Korhonen, Juhani Antti"
-          ]
+          ],
+          "maxLength": 140
         },
         "birthDate": {
           "description": "Date of birth.",

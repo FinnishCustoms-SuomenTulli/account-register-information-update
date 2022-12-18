@@ -32,7 +32,7 @@ Version|Date|Description|
 2.0.00|25.1.2022|New updating interfaces, JSON schemas and example messages in accordance with the data supplier categories were added. CorrelationId was added to messages for reporting data as incorrect or disputable, so that a certain version of a detail can be reported as incorrect or disputable. JSON schemas were added to messages for reporting data as incorrect or disputable. The list of HTTP responses was specified.|
 2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5.|
 3.0.0|23.5.2022|Added v3 update interfaces, JSON schemas and example messages.|
-3.0.1|16.12.2022|Added information about limitations to subchapter 4.8.|
+3.0.1|16.12.2022|Added information about limitations to subchapter 4.8. Added max length limitations to a few fields in the schema.|
 
 
 ## Table of contents
