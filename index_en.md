@@ -33,7 +33,7 @@ Version|Date|Description|
 2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5.|
 3.0.0|23.5.2022|Added v3 update interfaces, JSON schemas and example messages.|
 3.0.1|16.12.2022|Added information about limitations to subchapter 4.8. Added max length limitations to a few fields in the schema.|
-3.0.2|XX.6.2023|Removed references to interface version 2.|
+3.0.2|XX.6.2023|Removed references to interface version 2 in chapters 4.4, 4.5 and 4.6.|
 
 
 ## Table of contents
