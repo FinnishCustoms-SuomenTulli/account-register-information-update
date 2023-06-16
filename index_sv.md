@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.1*
+*Dokumentversion 3.0.2*
 
 ## Versionshistorik
 
@@ -33,6 +33,7 @@ Version|Datum|Beskrivning|
 2.0.1|4.4.2022|Hänvisningarna till v1-gränssnittet har tagits bort i styckena 4.4 och 4.5.|
 3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.|
 3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8. Lade till maxlängdsbegränsningar i några få fält i schemat.|
+3.0.2|XX.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
 
 ## Innehåll
 
@@ -263,10 +264,6 @@ I följande tabell finns en lista över gränssnittets endpoints.
 
 |HTTP-metod|Sökväg|Syfte och funktion|
 |---|---|---|
-POST|/v2/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
-POST|/v2/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.|
-POST|/v2/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad.  Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v2/report-incorrect/.|
-POST|/v2/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
 POST|/v3/report-update/cat-1/|Kreditinstitut (med undantagstillstånd av Finansinspektionen) använder denna endpoint för att lämna uppgifter om kundrelationer, konton och bankfack till Kontoregistret.|
 POST|/v3/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor använder denna endpoint för att lämna uppgifter om kundrelationer och konton till Kontoregistret.|
 POST|/v3/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad. Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/.|
@@ -276,11 +273,7 @@ POST|/v3/report-incorrect/|Används för att anmäla att en viss, tidigare lämn
 
 För validering av meddelanden har man skapat scheman enligt JSON Schema draft 7:
 
-Uppdateringsmeddelande v2 (kreditinstitut) [schema](schemas/information_update-v2-credit_institution.json)
-
 Uppdateringsmeddelande v3 (kreditinstitut) [schema](schemas/information_update-v3-credit_institution.json)
-
-Uppdateringsmeddelande v2 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor) [schema](schemas/information_update-v2-other.json)
 
 Uppdateringsmeddelande v3 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor) [schema](schemas/information_update-v3-other.json)
 
@@ -292,11 +285,7 @@ Anmälan om felaktig uppgift [schema](schemas/report_incorrect.json)
 
 Exempelmeddelandena finns under länkarna nedan:
 
-[Uppdateringsmeddelande v2 (kreditinstitut)](examples/report-update-v2-credit_institution.json)
-
 [Uppdateringsmeddelande v3 (kreditinstitut)](examples/report-update-v3-credit_institution.json)
-
-[Uppdateringsmeddelande v2 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor)](examples/report-update-v2-other.json)
 
 [Uppdateringsmeddelande v3 (betalningsinstitut, institut för elektroniska pengar och tillhandahållare av virtuella valutor)](examples/report-update-v3-other.json)
 
