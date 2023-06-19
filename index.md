@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 3.0.1*
+*Dokumentin versio 3.0.2*
 
 ## Versiohistoria
 
@@ -33,6 +33,7 @@ Versio|Päivämäärä|Kuvaus|
 2.0.1|4.4.2022|Poistettu viittaukset v1-rajapintaan kappaleissa 4.4 ja 4.5.|
 3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
 3.0.1|16.12.2022|Lisätty tarkennus rajoituksista alilukuun 4.8. Lisätty skeemaan pituusrajoituksia muutamalle kentälle.|
+3.0.2|19.6.2023|Poistettu viittaukset rajapinnan versioon 2 luvuista 4.4, 4.5 ja 4.6.|
 
 ## Sisällysluettelo
 
@@ -263,10 +264,6 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
-POST|/v2/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
-POST|/v2/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
-POST|/v2/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v2/report-incorrect/.|
-POST|/v2/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 POST|/v3/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/v3/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
 POST|/v3/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v3/report-incorrect/.|
@@ -276,11 +273,7 @@ POST|/v3/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun t
 
 Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
 
-Päivityssanoma v2 (luottolaitokset) [skeema](schemas/information_update-v2-credit_institution.json)
-
 Päivityssanoma v3 (luottolaitokset) [skeema](schemas/information_update-v3-credit_institution.json)
-
-Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v2-other.json)
 
 Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v3-other.json)
 
@@ -292,11 +285,7 @@ Tiedon ilmoittaminen virheelliseksi [skeema](schemas/report_incorrect.json)
 
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
-[Päivityssanoma v2 (luottolaitokset)](examples/report-update-v2-credit_institution.json)
-
 [Päivityssanoma v3 (luottolaitokset)](examples/report-update-v3-credit_institution.json)
-
-[Päivityssanoma v2 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v2-other.json)
 
 [Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v3-other.json)
 

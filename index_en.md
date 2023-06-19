@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.1*
+*Document version 3.0.2*
 
 ## Version history
 
@@ -33,6 +33,7 @@ Version|Date|Description|
 2.0.1|4.4.2022|Removed references to interface v1 in chapters 4.4 ja 4.5.|
 3.0.0|23.5.2022|Added v3 update interfaces, JSON schemas and example messages.|
 3.0.1|16.12.2022|Added information about limitations to subchapter 4.8. Added max length limitations to a few fields in the schema.|
+3.0.2|19.6.2023|Removed references to interface version 2 in chapters 4.4, 4.5 and 4.6.|
 
 
 ## Table of contents
@@ -267,10 +268,6 @@ The interface endpoints are listed in the table below.
 
 |HTTP-method|Path|Purpose and functionality|
 |---|---|---|
-POST|/v2/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
-POST|/v2/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
-POST|/v2/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v2/report-incorrect/.|
-POST|/v2/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
 POST|/v3/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
 POST|/v3/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
 POST|/v3/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v3/report-incorrect/.|
@@ -280,11 +277,7 @@ POST|/v3/report-incorrect/|Used for reporting a certain detail provided earlier 
 
 Schemas in accordance with JSON Schema draft 7 have been created for message validation.
 
-Updating message v2 (credit institutions) [schema](schemas/information_update-v2-credit_institution.json)
-
 Updating message v3 (credit institutions) [schema](schemas/information_update-v3-credit_institution.json)
-
-Updating message v2 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v2-other.json)
 
 Updating message v3 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v3-other.json)
 
@@ -296,11 +289,7 @@ Reporting a detail as incorrect [schema](schemas/report_incorrect.json)
 
 You can find the example messages via the links below:
 
-[Updating message v2 (credit institutions)](examples/report-update-v2-credit_institution.json)
-
 [Updating message v3 (credit institutions)](examples/report-update-v3-credit_institution.json)
-
-[Updating message v2 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v2-other.json)
 
 [Updating message v3 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v3-other.json)
 
