@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.2*
+*Dokumentversion 3.0.3*
 
 ## Versionshistorik
 
@@ -34,6 +34,7 @@ Version|Datum|Beskrivning|
 3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.|
 3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8. Lade till maxlängdsbegränsningar i några få fält i schemat.|
 3.0.2|19.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
+3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
 
 ## Innehåll
 
@@ -134,7 +135,8 @@ a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s 
 eller  
 b) att servercertifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
 Om uppgiftsleverantörens servercertifikat och signeringscertifikat för utgående meddelanden har samma FO-nummer eller momsnummer, kan samma certifikat användas för båda ändamålen.
-Obs. För att skyddet av datakommunikationen ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används ha minst 3072 bitar. Man ska beakta detta när man beställer ett certifikat.
+
+Obs. För att meddelandenas signaturer ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används för signaturer ha minst 3072 bitar. Användningssyftena för ett certifikat som används för signaturer ska också omfatta ”digital signatur”. Dessutom måste servercertifikatet vara av typen QWAC (Qualified Website Authentication Certificate), som innehåller tillägg (X509v3 Extended Key Usage: TLS Web Client Authentication, TLS Web Server Authentication). Man ska beakta dessa omständigheter när man beställer ett certifikat.
 
 #### Kontoregistrets servercertifikat
 
