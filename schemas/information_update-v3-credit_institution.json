@@ -27,7 +27,7 @@
         },
         "roles": {
           "type": "array",
-          "description": "Account related roles.",
+          "description": "Account related roles. Role type has to be either owner or access.",
           "minItems": 1,
           "items": {
             "$ref": "#/definitions/role"
@@ -327,7 +327,7 @@
         },
         "roles": {
           "type": "array",
-          "description": "Safety deposit box related roles.",
+          "description": "Safety deposit box related roles. Role type has to be either owner or access.",
           "minItems": 1,
           "items": {
             "$ref": "#/definitions/role"
