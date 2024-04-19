@@ -39,34 +39,34 @@ Versio|Päivämäärä|Kuvaus|
 ## Sisällysluettelo
 
 1. [Johdanto](#luku1)  
-  1.1 Termit ja lyhenteet  
-  1.2 Dokumentin tarkoitus ja kattavuus  
-  1.3 Yleiskuvaus  
+  1.1 [Termit ja lyhenteet](#1-1)  
+  1.2 [Dokumentin tarkoitus ja kattavuus](#1-2)  
+  1.3 [Yleiskuvaus](#1-3)  
 2. [Aktiviteettien kuvaus](#luku2)  
-  2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin 
+  2.1 [Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin](#2-1) 
 3. [Tietoturva](#tietoturva)  
-  3.1 Tunnistaminen  
-  3.2 Yhteyksien suojaaminen  
-  3.3 Sallittu HTTP-versio  
-  3.4 Sanomatason allekirjoitus  
-  3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus  
-  3.6 Rajapinnan kapasiteetti  
+  3.1 [Tunnistaminen](#3-1)  
+  3.2 [Yhteyksien suojaaminen](#3-2)  
+  3.3 [Sallittu HTTP-versio](#3-3)  
+  3.4 [Sanomatason allekirjoitus](#3-4)  
+  3.5 [Tietoturvapoikkeamien ilmoitusvelvollisuus](#3-5)  
+  3.6 [Rajapinnan kapasiteetti](#3-6)  
 4. [Tilirekisterin päivitysrajapinnan yleiskuvaus](#päivitysrajapinta)  
-  4.1 Yleistä  
-  4.2 Tiedonluovuttajien kategoriat  
-  4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi  
-  4.4 Rajapinnat  
-  4.5 JSON-skeemat  
-  4.6 Esimerkkisanomat  
-  4.7 HTTP-vastaukset  
-  4.8 Rajoitukset  
+  4.1 [Yleistä](#4-1)  
+  4.2 [Tiedonluovuttajien kategoriat](#4-2)  
+  4.3 [Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi](#4-3)  
+  4.4 [Rajapinnat](#4-4)  
+  4.5 [JSON-skeemat](#4-5)  
+  4.6 [Esimerkkisanomat](#4-6)  
+  4.7 [HTTP-vastaukset](#4-7)  
+  4.8 [Rajoitukset](#4-8)  
 5. [Käsitteiden tarkennuksia](#käsitteet)  
-  5.1 Asiakkuus  
-  5.2 Asianajajan asiakasvaratili  
+  5.1 [Asiakkuus](#5-1)  
+  5.2 [Asianajajan asiakasvaratili](#5-2)  
 
 ## 1. Johdanto <a name="luku1"></a>
 
-### 1.1 Termit ja lyhenteet
+### 1.1 Termit ja lyhenteet <a name="1-1"></a>
 
 Lyhenne tai termi|Selite
 ---|---
@@ -77,11 +77,11 @@ REST|(Representational State Transfer) HTTP-protokollaan perustuva arkkitehtuuri
 JSON|(JavaScript Object Notation) avoimen standardin tiedostomuoto tiedonvälitykseen.
 PKI|Julkisen avaimen tekniikka. Julkisen avaimen tekniikkaan perustuva sähköinen allekirjoitus luodaan siten, että allekirjoitettavasta tiedosta muodostetaan (tiivistealgoritmilla) tiiviste, joka salataan avainparin yksityisellä avaimella. Salattu tiiviste tallennetaan allekirjoitetun tiedon tai sähköisen asiakirjan yhteyteen tai välitetään muulla tavoin tiedon vastaanottajalle. Vastaanottaja purkaa tiivisteen salauksen avainparin julkisella avaimella, muodostaa uudelleen viestin tai asiakirjan tiedoista tiivisteen ja vertaa sitä allekirjoitukseen liitettyyn tiivisteeseen. Viestin sisältö on muuttumaton, mikäli tiivisteet ovat samat. (Sähköisen asioinnin tietoturvallisuus -ohje)
 
-### 1.2 Dokumentin tarkoitus ja kattavuus
+### 1.2 Dokumentin tarkoitus ja kattavuus <a name="1-2"></a>
 
 Tämä dokumentti on pankki- ja maksutilirekisterin päivitysrajapinnan rajapintakuvaus.
 
-### 1.3 Yleiskuvaus
+### 1.3 Yleiskuvaus <a name="1-3"></a>
 
 Tämä dokumentti on osa Tullin määräystä pankki- ja maksutilien valvontajärjestelmästä. Dokumentin tarkoitus on antaa ohjeet tiedon luovuttajille pankki- ja maksutilirekisterin (myöhemmin Tilirekisteri) päivitysrajapinnan toteuttamiseen. Tätä dokumenttia täydentää Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohje.
 
@@ -93,7 +93,7 @@ Tässä dokumentissa kuvataan Tilirekisterin päivitysrajapinta.
 
 Tässä luvussa on esitetty pankki- ja maksutilitietojen toimittaminen vuokaavioina.
 
-### 2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin
+### 2.1 Pankki- ja maksutilitietojen toimittaminen Tilirekisteriin <a name="2-1"></a>
 
 Tilirekisteriin toimitetaan ensimmäisellä päivityskerralla kaikki tiedot. Tämän jälkeen seuraavilla päivityskerroilla toimitetaan vain päivittyneet tai uudet tiedot päivittäin.
 
@@ -106,7 +106,7 @@ Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bod
 
 ## <a name="tietoturva"></a> 3. Tietoturva
   
-### 3.1 Tunnistaminen
+### <a name="3-1"></a> 3.1 Tunnistaminen
 
 #### Lähtevän sanoman allekirjoitusvarmenne
 
