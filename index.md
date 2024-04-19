@@ -34,7 +34,8 @@ Versio|Päivämäärä|Kuvaus|
 3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
 3.0.1|16.12.2022|Lisätty tarkennus rajoituksista alilukuun 4.8. Lisätty skeemaan pituusrajoituksia muutamalle kentälle.|
 3.0.2|19.6.2023|Poistettu viittaukset rajapinnan versioon 2 luvuista 4.4, 4.5 ja 4.6.|
-3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.|
+3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.| 
+3.0.4|19.4.2024|Luvussa 4.1 tarkennettu ohjeistusta, että toimitetaan vain uudet ja muuttuneet tiedot.|
 
 ## Sisällysluettelo
 
@@ -222,9 +223,11 @@ Jokaisessa sanomassa tulee olla mukana luontipäivämäärä.
 
 Jokaisen sanoman tulee sisältää tietojen toimittajan Y-tunnus tai ALV-tunnus senderBusinessId kentässä.
 
-Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#Esimerkkisanomat).
+Päivityssanoman sanomarakenteessa oikeushenkilöt, asiakkuudet, tilit ja tallelokerot ilmoitetaan avain-arvo-pareina, joissa avaimena käytetään tietueelle yksilöllistä UUIDv4 (Universally unique identifier) tunnistetta. Tulli ei myönnä näitä tunnisteita, vaan ne ovat tietojen toimittajan luomia tunnisteita, joilla asiakastiedot voidaan yksilöidä toisistaan. Tämän tunnisteen perusteella tietueet pystytään tunnistamaan esimerkiksi henkilön nimen tai hetun vaihtuessa. Esimerkki päivityssanoman sanomarakenteesta löytyy [täältä](#Esimerkkisanomat).
 
 Päivityssanomissa on mahdollista toimittaa kokonaisia tietueita, jotka viittaavat aiemmin toimitettuihin tietueelle yksilöllisiin tunnisteisiin. Esimerkiksi voidaan toimittaa tiedot tilistä, joka sisältää rooliviittauksia aiemmin toimitettuihin LegalPerson-tietueisiin. Lisäksi voidaan esimerkiksi toimittaa LegalPerson-tietueesta pelkkä nimen muutos, jolloin LegalPerson-tietueeseen liittyviä roolitietoja ei tarvitse toimittaa sanomalla uudestaan.
+
+Tilirekisteriin tietoja päivittäessä tulee toimittaa vain päivittyneet tai uudet tietueet (legalPersons, customers, accounts, safetyDepositBoxes). Jos muuttuneita tietoja toimittaessa viitataan toiseen elementtiin (esim. legalPersonReference), niin silloin viitattua tietuetta ei tule toimittaa, ellei se ole uusi tai siihen on tullut muutoksia aiemmasta päivityksestä. Viitteet kuitenkin tulee sisällyttää sanomaan.
 
 Kuitenkin on huomioitava, että kun toimitetaan Account, SafetyDepositBox roolilistoja tai Organisation-tietueen roolilistoja, on roolilistojen oltava tällöin aina täydellisiä, ts. ei ole mahdollista toimittaa esimerkiksi Account.roles-kentässä vain uusia rooleja, vaan on toimitettava kaikki sillä ajan hetkellä voimassaolevat roolit.
 
