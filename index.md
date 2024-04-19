@@ -144,17 +144,17 @@ Tiedon luovuttaja tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmen
 a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt DVV, varmenne on voimassa eikä esiinny DVV:n ylläpitämällä sulkulistalla  
 b) varmenteen kohteen serialNumber attributti on “FI02454428” tai “0245442-8”.
 
-### 3.2 Yhteyksien suojaaminen
+### <a name="3-2"></a> 3.2 Yhteyksien suojaaminen
 
 Tilirekisterin päivitysrajapinnan yhteydet on suojattava TLS-salauksella käyttäen TLS-protokollan versiota 1.2 tai korkeampaa. Yhteyden molemmat päät tunnistetaan yllä kuvatuilla palvelinvarmenteilla käyttäen kaksisuuntaista kättelyä. Yhteys on muodostettava käyttäen ephemeral Diffie-Hellman (DHE) avaintenvaihtoa, jossa jokaiselle sessiolle luodaan uusi uniikki yksityinen salausavain. Tämän menettelyn tarkoituksena on taata salaukselle forward secrecy -ominaisuus, jotta salausavaimen paljastuminen ei jälkikäteen johtaisi salattujen tietojen paljastumiseen.
 
 TLS-salauksessa käytettyjen kryptografisten algoritmien on vastattava kryptografiselta vahvuudeltaan vähintään Traficomin määrittelemiä kryptografisia vahvuusvaatimuksia kansalliselle suojaustasolle ST IV. Tämänhetkiset vahvuusvaatimukset on kuvattu dokumentissa https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
-### 3.3 Sallittu HTTP-versio
+### <a name="3-3"></a> 3.3 Sallittu HTTP-versio
 
 Päivitysrajapinnan yhteydet käyttävät HTTP-protokollan versiota 1.1.
 
-### 3.4 Sanomatason allekirjoitus
+### <a name="3-4"></a> 3.4 Sanomatason allekirjoitus
 
 Päivitysrajapinnan sanomat allekirjoitetaan JWS-allekirjoituksella (PKI). JWS-allekirjoitukseen käytetään RS256 algoritmia ja ne allekirjoitetaan lähettäjän yksityisellä avaimella. Julkisen avaimen sisältävän varmenteen toimittamisesta Tullille ohjeistetaan Pankki- ja maksutilirekisterin käyttöönoton ja ylläpidon ohjeessa.
 
@@ -202,19 +202,19 @@ JWT Payload
   "reportUpdate": "[JSON OBJECT]"
 }
 ```
-### 3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
+### <a name="3-5"></a> 3.5 Tietoturvapoikkeamien ilmoitusvelvollisuus
 
 Rajapinnan käyttäjä on velvollinen ilmoittamaan viivytyksettä käyttämiensä varmenteiden tai näiden salaisten avainten vaarantumisesta sekä varmenteen myöntäjälle että Tullille.
 
 Rajapinnan käyttäjä on myös velvollinen ilmoittamaan viivytyksettä Tullille mikäli rajapintaa käyttävässä tietojärjestelmässä havaitaan tietoturvapoikkeama.
 
-### 3.6 Rajapinnan kapasiteetti
+### <a name="3-6"></a> 3.6 Rajapinnan kapasiteetti
 
 Rajapinnan sallittu maksimaalinen sanomakoko on 50kB JWT-muodossa. Sanomat tulee lähettää peräkkäin niin, että odotetaan edellisen pyynnön OK-kuittausta ennen seuraavan lähetystä.
 
 ## <a name="päivitysrajapinta"></a> 4. Tilirekisterin päivitysrajapinnan yleiskuvaus
 
-### <a name="Yleista"></a> 4.1 Yleistä
+### <a name="4-1"></a> 4.1 Yleistä
 
 Päivitysrajapinta toteutetaan REST/JSON-menetelmällä.
 
@@ -239,7 +239,7 @@ Objekti {
 }
 ```
 
-### <a name="Kategoriat"></a> 4.2 Tiedonluovuttajien kategoriat
+### <a name="4-2"></a> 4.2 Tiedonluovuttajien kategoriat
 
 Tietojen toimitusvelvolliset on jaettu kahteen kategoriaan:
 
@@ -248,7 +248,7 @@ Kategoria 2: maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat
 
 Päivityssanomien sisältö on kuvattu [JSON skeemoissa](#JSONskeemat).
 
-### <a name="VirheellinenKiistanalainen"></a> 4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi
+### <a name="4-3"></a> 4.3 Tietojen ilmoittaminen virheelliseksi tai kiistanalaiseksi
 
 Toimitettuja tietueita voidaan ilmoittaa joko virheellisiksi tai virheelliseksi epäillyiksi (kiistanalaiseksi). Tähän käytetään tietueen yksilöivää UUIDv4 tunnistetta ja sen päivityssanoman yksilöllistä X-Correlation-ID tunnistetta, jolla tietue on ilmoitettu. Tietue, johon tietueen tunnisteella viitataan, voi olla joko tili, tallelokero tai oikeudellinen henkilö. Esimerkit sanomista löytyvät [täältä](#Esimerkkisanomat).
 
@@ -259,7 +259,7 @@ Virheelliseksi epäily voidaan perua jos epäily todetaan aiheettomaksi mutta vi
 ![Tietueen tilan muuttaminen](diagrams/state_diagram_incorrect_disputed.png "Tietueen tilan muuttaminen")  
 *__Kuva 4.3.__ Tietueen tilan muuttaminen*
 
-### <a name="Rajapinnat"></a> 4.4 Rajapinnat
+### <a name="4-4"></a> 4.4 Rajapinnat
 
 Seuraavassa taulukossa on listattu rajapinnan endpointit.
 
@@ -270,7 +270,7 @@ POST|/v3/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaaliv
 POST|/v3/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v3/report-incorrect/.|
 POST|/v3/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
 
-### <a name="JSONskeemat"></a> 4.5 JSON-skeemat
+### <a name="4-5"></a> 4.5 JSON-skeemat
 
 Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
 
@@ -282,7 +282,7 @@ Tiedon ilmoittaminen kiistanalaiseksi [skeema](schemas/report_disputable.json)
 
 Tiedon ilmoittaminen virheelliseksi [skeema](schemas/report_incorrect.json)
 
-### <a name="Esimerkkisanomat"></a> 4.6 Esimerkkisanomat
+### <a name="4-6"></a> 4.6 Esimerkkisanomat
 
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
@@ -294,7 +294,7 @@ Esimerkkisanomat löytyvät alla olevista linkeistä:
 
 [Tiedon ilmoittaminen virheelliseksi](examples/report-incorrect.json)
 
-### <a name="InformationUpdate response"></a> 4.7 HTTP-vastaukset
+### <a name="4-7"></a> 4.7 HTTP-vastaukset
 
 Järjestelmä palauttaa seuraavia HTTP vastauksia:
 
@@ -340,14 +340,14 @@ Body
 }
 ```
 
-### <a name="Rajoitukset"></a> 4.8 Rajoitukset
+### <a name="4-8"></a> 4.8 Rajoitukset
 
 Ennen 1.9.2020 suljetuista tileistä ja tallelokeroista tai päättyneistä asiakkuuksista ei tule luovuttaa tietoja tilirekisteriin. Samaten edellä mainittuihin liittyvistä edunsaajista ja muista rooleista ei tule toimittaa tietoja, jos rooli on päättynyt ennen 1.9.2020.
 
 ## <a name="käsitteet"></a> 5. Käsitteiden tarkennuksia
 
-### <a name="asiakkuus"></a> 5.1 Asiakkuus
+### <a name="5-1"></a> 5.1 Asiakkuus
 Asiakkuus tarkoittaa koko sitä ajanjaksoa, jonka ajan oikeushenkilö on ollut tiedon luovuttajan asiakkaana. Asiakkuus alkaa esimerkiksi ensimmäisen tilin avaamisesta. Vastaavasti asiakkuus päättyisi, kun asiakkaan viimeinen tili suljetaan.
 
-### <a name="asiakasvaratili"></a> 5.2 Asianajajan asiakasvaratili
+### <a name="5-2"></a> 5.2 Asianajajan asiakasvaratili
 Tilit, jotka ovat asianajajan asiakasvaratilejä, erotetaan muista tileistä käyttämällä niille tilin käyttötarkoitus (AcctPurp) -kentässä arvoa "customer_asset_account". Asianajajan asiakasvaratilillä on omistajana vähintään yksi oikeushenkilö, joka voi olla luonnollinen henkilö (esimerkiksi asianajaja) tai organisaatio (esimerkiksi asianajotoimisto). Lisäksi asianajajan asiakasvaratilillä voi olla oikeushenkilöitä käyttöoikeudenhaltijoina. Tahoja, joilla on tiliin vain esimerkiksi tiedonsaantioikeus, ei ilmoiteta tilirekisteriin.
