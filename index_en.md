@@ -231,7 +231,7 @@ In the message structure of the updating message, legal persons, customers, acco
 
 The updating messages can be used to send whole records that refer to unique identifiers that have previously been sent for the record. For example, data can be sent concerning an account that contains references to roles in LegalPerson records that have previously been sent. It is also possible to send only a change of name as regards a LegalPerson record without having to send the role data concerning the LegalPerson record again in the message.
 
-When updating data to account register only updated or new records should be sent (legalPersons, customers, accounts, safetyDepositBoxes). If the updated data being sent refers to another element (e.g. legalPersonReference), the referenced record should not be sent unless it is new or has changed after the previous update. References, however, must be included in the message. 
+When updating data to account register only modified or new records should be sent (legalPersons, customers, accounts, safetyDepositBoxes). If the modified data being sent refers to another element (e.g. legalPersonReference), the referenced record should not be sent unless it is new or has changed after the previous update. References, however, must be included in the message. 
 
 However, it should be noted that when sending role lists for Account, for SafetyDepositBox or for the record Organisation, the role lists must always be complete. In other words, it is not possible to send only new roles in e.g. the Account.roles field; instead, all roles valid at that moment in time must be sent.
 
