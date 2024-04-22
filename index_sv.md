@@ -40,8 +40,8 @@ Version|Datum|Beskrivning|
 ## Innehåll
 
 1. [Inledning](#kapitel1)  
-  1.1 [Termer och förkortningar](#1-1)
-  1.2 [Dokumentets syfte och omfattning](#1-2)
+  1.1 [Termer och förkortningar](#1-1)  
+  1.2 [Dokumentets syfte och omfattning](#1-2)  
   1.3 [Allmän beskrivning](#1-3)  
 2. [Aktivitetsbeskrivning](#kapitel2)  
   2.1 [Överföring av bank- och betalkontouppgifter till Kontoregistret](#2-1)
@@ -54,7 +54,7 @@ Version|Datum|Beskrivning|
   3.6 [Gränssnittets kapacitet](#3-6)  
 4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#kapitel4)  
   4.1 [Allmänt](#4-1)  
-  4.2 [Kategorier av leverantörer av uppgifter](#4-2) 
+  4.2 [Kategorier av leverantörer av uppgifter](#4-2)  
   4.3 [Anmälan av uppgifter som felaktig eller omtvistad](#4-3)  
   4.4 [Gränssnitt](#4-4)  
   4.5 [JSON-scheman](#4-5)  
