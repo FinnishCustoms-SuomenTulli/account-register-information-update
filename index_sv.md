@@ -35,7 +35,7 @@ Version|Datum|Beskrivning|
 3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8. Lade till maxlängdsbegränsningar i några få fält i schemat.|
 3.0.2|19.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
 3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
-3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 XXXXXXX.|
+3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|
 
 ## Innehåll
 
@@ -47,11 +47,11 @@ Version|Datum|Beskrivning|
   2.1 [Överföring av bank- och betalkontouppgifter till Kontoregistret](#2-1)
 3. [Datasäkerhet](#kapitel3)  
   3.1 [Identifiering](#3-1)  
-  3.2 [Skydd för förbindelser](#3-2)
-  3.3 [Tillåten HTTP-version](#3-3)
-  3.4 [Signering på meddelandenivå](#3-4)
-  3.5 [Skyldighet att anmäla informationssäkerhetsincidenter](#3-5)
-  3.6 [Gränssnittets kapacitet](#3-6)
+  3.2 [Skydd för förbindelser](#3-2)  
+  3.3 [Tillåten HTTP-version](#3-3)  
+  3.4 [Signering på meddelandenivå](#3-4)  
+  3.5 [Skyldighet att anmäla informationssäkerhetsincidenter](#3-5)  
+  3.6 [Gränssnittets kapacitet](#3-6)  
 4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#kapitel4)  
   4.1 [Allmänt](#4-1)  
   4.2 [Kategorier av leverantörer av uppgifter](#4-2) 
