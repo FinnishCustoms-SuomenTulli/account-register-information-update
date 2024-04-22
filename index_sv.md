@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.3*
+*Dokumentversion 3.0.4*
 
 ## Versionshistorik
 
@@ -35,38 +35,39 @@ Version|Datum|Beskrivning|
 3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8. Lade till maxlängdsbegränsningar i några få fält i schemat.|
 3.0.2|19.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
 3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
+3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|
 
 ## Innehåll
 
 1. [Inledning](#kapitel1)  
-  1.1 Termer och förkortningar
-  1.2 Dokumentets syfte och omfattning
-  1.3 Allmän beskrivning  
+  1.1 [Termer och förkortningar](#1-1)  
+  1.2 [Dokumentets syfte och omfattning](#1-2)  
+  1.3 [Allmän beskrivning](#1-3)  
 2. [Aktivitetsbeskrivning](#kapitel2)  
-  2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret
+  2.1 [Överföring av bank- och betalkontouppgifter till Kontoregistret](#2-1)
 3. [Datasäkerhet](#kapitel3)  
-  3.1 Identifiering  
-  3.2 Skydd för förbindelser
-  3.3 Tillåten HTTP-version
-  3.4 Signering på meddelandenivå
-  3.5 Skyldighet att anmäla informationssäkerhetsincidenter
-  3.6 Gränssnittets kapacitet
+  3.1 [Identifiering](#3-1)  
+  3.2 [Skydd för förbindelser](#3-2)  
+  3.3 [Tillåten HTTP-version](#3-3)  
+  3.4 [Signering på meddelandenivå](#3-4)  
+  3.5 [Skyldighet att anmäla informationssäkerhetsincidenter](#3-5)  
+  3.6 [Gränssnittets kapacitet](#3-6)  
 4. [Allmän beskrivning av kontoregistrets uppdateringsgränssnitt](#kapitel4)  
-  4.1 Allmänt  
-  4.2 Kategorier av leverantörer av uppgifter 
-  4.3 Anmälan av uppgifter som felaktig eller omtvistad  
-  4.4 Gränssnitt  
-  4.5 JSON-scheman  
-  4.6 Exempelmeddelanden  
-  4.7 HTTP-svar  
-  4.8 Begränsningar  
+  4.1 [Allmänt](#4-1)  
+  4.2 [Kategorier av leverantörer av uppgifter](#4-2)  
+  4.3 [Anmälan av uppgifter som felaktig eller omtvistad](#4-3)  
+  4.4 [Gränssnitt](#4-4)  
+  4.5 [JSON-scheman](#4-5)  
+  4.6 [Exempelmeddelanden](#4-6)  
+  4.7 [HTTP-svar](#4-7)  
+  4.8 [Begränsningar](#4-8)  
 5. [Preciseringar av begrepp](#kapitel5)  
-  5.1 Kundrelation  
-  5.2 Gemensamt konto som förvaltas av en advokat
+  5.1 [Kundrelation](#5-1)  
+  5.2 [Gemensamt konto som förvaltas av en advokat](#5-2)
 
 ## 1. Inledning <a name="kapitel1"></a>
 
-### 1.1 Termer och förkortningar
+### 1.1 Termer och förkortningar <a name="1-1"></a>
 
 Förkortning eller term|Förklaring
 ---|---
@@ -78,11 +79,11 @@ JSON|(JavaScript Object Notation) Filformat för dataöverföring enligt öppen 
 PKI|Teknik med öppen nyckel. En elektronisk signatur som bygger på teknik med öppen nyckel skapas så att det av den uppgift som signeras skapas ett kondensat (med en hash-algoritm), som krypteras med nyckelparets privata nyckel.  Det krypterade kondensatet sparas i anslutning till den signerade uppgiften eller det elektroniska dokumentet, eller så förmedlas uppgiften på ett annat sätt till mottagaren. Mottagaren dekrypterar kondensatets kryptering med nyckelparets öppna nyckel, återskapar kondensatet av meddelandets eller dokumentets uppgifter och jämför det med kondensatet som kopplats till signaturen. Meddelandets innehåll förblir oförändrat, såvida kondensaten är lika. (Anvisning om informationssäkerheten inom elektronisk ärendehantering)
 
 
-### 1.2 Dokumentets syfte och omfattning
+### 1.2 Dokumentets syfte och omfattning <a name="1-2"></a>
 
 Detta dokument är en gränssnittsbeskrivning av uppdateringsgränssnittet för registret över bank- och betalkonton.
 
-### 1.3 Allmän beskrivning
+### 1.3 Allmän beskrivning <a name="1-3"></a>
 
 Detta dokument ingår i Tullens föreskrift om ett övervakningssystem för bank- och betalkonton. Dokumentets syfte är att instruera leverantörer av uppgifter om genomförandet av uppdateringsgränssnittet för bank- och betalkontoregistret (härefter Kontoregistret). Detta dokument kompletteras av Instruktioner för ibruktagande och underhåll av bank- och betalkontoregistret.
 
@@ -94,7 +95,7 @@ I detta dokument beskrivs Kontoregistrets uppdateringsgränssnitt.
 
 I detta kapitel beskrivs i form av ett flödesschema hur bank- och betalkontouppgifter överförs till Kontoregistret.
 
-### 2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret
+### 2.1 Överföring av bank- och betalkontouppgifter till Kontoregistret <a name="2-1"></a>
 
 När uppgifter överförs till kontoregistret första gången ska alla berörda uppgifter överföras till registret. Därefter överförs bara uppdaterade eller nya uppgifter dagligen.
 
@@ -107,7 +108,7 @@ Av bilden framgår att uppdateringsgränssnittet är synkront. I brödtexten til
 
 ## <a name="kapitel3"></a> 3. Datasäkerhet
   
-### 3.1 Identifiering
+### 3.1 Identifiering <a name="3-1"></a>
 
 #### Signeringscertifikat för utgående meddelanden
 
@@ -144,17 +145,17 @@ Leverantören av uppgifter identifierar förbindelsens motpart som Kontoregistre
 a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av MDB och inte finns med på MDB:s spärrlista  
 b) attributet serialNumber för certifikatets objekt är ”FI02454428” eller ”0245442-8”
 
-### 3.2 Skydd för förbindelser
+### 3.2 Skydd för förbindelser <a name="3-2"></a>
 
 Förbindelserna i Kontoregistrets uppdateringsgränssnitt är skyddade med TLS-kryptering med TLS-protokollets version 1.2 eller högre. Båda ändarna av förbindelsen identifieras med ovan beskrivna servercertifikat genom ömsesidig TLS-autentisering. Förbindelsen ska bildas med hjälp av ett ephemeral Diffie-Hellman (DHE) -nyckelbyte där det för varje session skapas en ny unik privat krypteringsnyckel. Syftet med detta förfarande är att säkerställa krypteringens forward secrecy-egenskap så att ett röjande av krypteringsnyckeln inte leder till att den krypterade informationen röjs.
 
 De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
 
-### 3.3 Tillåten HTTP-version
+### 3.3 Tillåten HTTP-version <a name="3-3"></a>
 
 Förbindelserna som används av uppdateringsgränssnittet använder version 1.1 av HTTP-protokollet.
 
-### 3.4 Signering på meddelandenivå
+### 3.4 Signering på meddelandenivå <a name="3-4"></a>
 
 Meddelanden i uppdateringsgränssnittet förses med JWS-signatur (PKI). För JWS-signaturen används algoritmen RS256 och meddelandena signeras med avsändarens privata nyckel. Anvisningar om inlämning till Tullen av certifikat som innehåller den öppna nyckeln finns i Instruktioner för ibruktagande och underhåll av bank- och betalkontoregistret.
 
@@ -202,19 +203,19 @@ JWT Payload
   "reportUpdate": "[JSON OBJECT]"
 }
 ```
-### 3.5 Skyldighet att anmäla informationssäkerhetsincidenter
+### 3.5 Skyldighet att anmäla informationssäkerhetsincidenter <a name="3-5"></a>
 
 Den som använder gränssnittet är skyldig att utan dröjsmål underrätta såväl den som utfärdat certifikatet som Tullen om att certifikaten eller deras hemliga nycklar har äventyrats.
 
 Den som använder gränssnittet är även skyldig att utan dröjsmål anmäla till Tullen om det observeras informationssäkerhetsincidenter i datasystemet som använder gränssnittet.
 
-### 3.6 Gränssnittets kapacitet
+### 3.6 Gränssnittets kapacitet <a name="3-6"></a>
 
 Den maximala tillåtna meddelandestorleken i gränssnittet är 50kB i JWT-format. Man ska skicka meddelandena efter varandra så att man väntar tills föregående begäran kvitterats med OK innan man skickar nästa.
 
 ## <a name="kapitel4"></a> 4. Allmän beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-### <a name="allmänt"></a> 4.1 Allmänt
+### <a name="4-1"></a> 4.1 Allmänt
 
 Uppdateringsgränssnittet implementeras med REST/JSON-metoden.
 
@@ -225,6 +226,8 @@ Varje meddelande ska innehålla uppgiftsleverantörens FO-nummer eller momsnumme
 I uppdateringsmeddelandets meddelandestruktur anmäls juridiska personer, kundrelationer, konton och bankfack som nyckel-värde-par, där nyckeln utgörs av ett individuellt id UUIDv4 (Universally unique identifier) för posten. Tullen utfärdar inte dessa id, utan de skapas av den som levererar uppgifterna och de kan användas för att specificera kunduppgifter. Utifrån detta id kan posterna identifieras, till exempel om personens namn eller personbeteckning ändras. Exempel på uppdateringsmeddelandets meddelandestruktur finns [här](#exempelmeddelanden).
 
 I uppdateringsmeddelandena är det möjligt att skicka hela poster som hänvisar till id som tidigare skickats och som är individuella för posten. Man kan till exempel skicka uppgifter om ett konto som innehåller rollhänvisningar till LegalPerson-poster som skickats tidigare. Dessutom kan man till exempel skicka enbart en namnändring angående en LegalPerson-post, och då behöver man inte skicka rolluppgifterna som hänför sig till LegalPerson-posten på nytt i meddelandet.
+
+När man uppdaterar uppgifter till kontoregistret, man ska skicka bara nya eller ändrade posten (legalPersons, customers, accounts, safetyDepositBoxes). Om man hänvisar till en annan element (t.ex. legalPersonReference) när man skickar ändrade uppgifter, man ska inte skicka den hänvisade posten om den inte är ny eller om den inte har ändrats efter en tidigare uppdatering. Meddelandet måste dock innehålla hänvisningar.
 
 Dock bör man beakta att när man skickar rollförteckningar som gäller Account, SafetyDepositBox eller posten Organisation, ska rollförteckningarna alltid vara fullständiga, dvs. det är inte möjligt att skicka enbart nya roller i t.ex. Account.roles-fältet, utan alla roller som är giltiga vid den tidpunkten ska skickas.
 
@@ -240,7 +243,7 @@ Objekt {
 }
 ```
 
-### <a name="kategorier"></a> 4.2 Kategorier av uppgiftslämnare, dvs. leverantörer av uppgifter
+### <a name="4-2"></a> 4.2 Kategorier av uppgiftslämnare, dvs. leverantörer av uppgifter
 
 De som är skyldiga att lämna uppgifter har indelats i två kategorier:
 
@@ -249,7 +252,7 @@ Kategori 2: Betalningsinstitut, institut för elektroniska pengar och tillhandah
 
 Uppdateringsmeddelandenas innehåll beskrivs i [JSON-scheman](#JSONscheman).
 
-### <a name="felaktigaomtvistade"></a> 4.3 Anmälan om felaktiga eller omtvistade uppgifter
+### <a name="4-3"></a> 4.3 Anmälan om felaktiga eller omtvistade uppgifter
 
 Inlämnade poster kan anmälas som felaktiga eller som misstänkt felaktiga (omtvistade). För detta ändamål används identifikationen UUIDv4 som specificerar posten och uppdateringsmeddelandets unika identifikation X-Correlation-ID med vilken posten anmälts. Posten till vilken identifikationen hänvisar kan vara ett konto, bankfack eller en juridisk person. Exempel på meddelanden finns [här](#exempelmeddelanden).
 
@@ -260,7 +263,7 @@ Misstanken om felaktighet kan återkallas om misstanken konstateras vara obefoga
 ![Ändring av postens status](diagrams/state_diagram_incorrect_disputed.png "Ändring av postens status")  
 *__Kuva 4.3.__ Ändring av postens status*
 
-### <a name="gränssnitt"></a> 4.4 Gränssnitt
+### <a name="4-4"></a> 4.4 Gränssnitt
 
 I följande tabell finns en lista över gränssnittets endpoints.
 
@@ -271,7 +274,7 @@ POST|/v3/report-update/cat-2/|Betalningsinstitut, institut för elektroniska pen
 POST|/v3/report-disputable/|Används för att anmäla att en viss, tidigare lämnad uppgift eventuellt är felaktig/omtvistad. Med denna endpoint kan man även häva uppgiftens omtvistade status om uppgiften visar sig vara korrekt. En uppgift som anmälts som omtvistad anmäls som faktiskt felaktig med POST /v3/report-incorrect/.|
 POST|/v3/report-incorrect/|Används för att anmäla att en viss, tidigare lämnad uppgift är felaktig. När en felaktighet anmäls i en uppgift som anmälts som omtvistad, tolkas frågan om uppgiftens omtvistade status som löst och uppgiften tolkas som felaktig.|
 
-### <a name="JSONscheman"></a> 4.5 JSON-scheman
+### <a name="4-5"></a> 4.5 JSON-scheman
 
 För validering av meddelanden har man skapat scheman enligt JSON Schema draft 7:
 
@@ -283,7 +286,7 @@ Anmälan om omtvistad uppgift [schema](schemas/report_disputable.json)
 
 Anmälan om felaktig uppgift [schema](schemas/report_incorrect.json)
 
-### <a name="exempelmeddelanden"></a> 4.6 Exempelmeddelanden
+### <a name="4-6"></a> 4.6 Exempelmeddelanden
 
 Exempelmeddelandena finns under länkarna nedan:
 
@@ -295,7 +298,7 @@ Exempelmeddelandena finns under länkarna nedan:
 
 [Anmälan om felaktig uppgift](examples/report-incorrect.json)
 
-### <a name="HTTPsvar"></a> 4.7 HTTP-svar
+### <a name="4-7"></a> 4.7 HTTP-svar
 
 Systemet returnerar följande HTTP-svar:
 
@@ -341,16 +344,16 @@ Body
 }
 ```
 
-### <a name="Begränsningar"></a> 4.8 Begränsningar
+### <a name="4-8"></a> 4.8 Begränsningar
 
 Uppgifter om konton och bankfack som har spärrats före den 1 september 2020 och uppgifter om kundrelationer som upphört före denna dag ska inte lämnas via kontoregistret. Detsamma gäller för uppgifter om förmånstagare och andra roller som har anknytning till de ovannämnda, om rollen har upphört före den 1 september 2020.
 
 ## <a name="kapitel5"></a> 5. Preciseringar av begrepp
 
-### <a name="kundrelation"></a> 5.1 Kundrelation
+### <a name="5-1"></a> 5.1 Kundrelation
 
 Kundrelationen avser hela den period då en juridisk person varit kund hos en leverantör av uppgifter. Kundrelationen börjar till exempel när det första kontot öppnas. På motsvarande sätt upphör kundrelationen när kundens sista konto stängs.
 
-### <a name="klientmedelskonto"></a> 5.2 Gemensamt konto som förvaltas av en advokat (klientmedelskonto)
+### <a name="5-2"></a> 5.2 Gemensamt konto som förvaltas av en advokat (klientmedelskonto)
 
 Konton som är gemensamma konton som förvaltas av en advokat skiljs åt från andra konton genom att man i fältet för kontots användningsändamål (AcctPurp) använder värdet ”customer_asset_account". Ägaren till ett gemensamt konto som förvaltas av en advokat är minst en juridisk person som kan vara en fysisk person (t.ex. advokat) eller en organisation (t.ex. advokatbyrå). Därtill kan det finnas juridiska personer som har rätt att använda ett sådant konto. De som bara har t.ex. rätt att få uppgifter gällande kontot anmäls inte till Kontoregistret.

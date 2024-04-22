@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.3*
+*Document version 3.0.4*
 
 ## Version history
 
@@ -35,38 +35,39 @@ Version|Date|Description|
 3.0.1|16.12.2022|Added information about limitations to subchapter 4.8. Added max length limitations to a few fields in the schema.|
 3.0.2|19.6.2023|Removed references to interface version 2 in chapters 4.4, 4.5 and 4.6.|
 3.0.3|1.11.2023|In chapter 3.1 clarified instructions about server certificate to data suppliers.|
+3.0.4|20.4.2024|In chapter 4.1 clarified instructions that only new and modified data should be delivered.|
 
 ## Table of contents
 
 1. [Introduction](#chapter1)  
-  1.1 Terms and abbreviations  
-  1.2 Purpose and scope of the document  
-  1.3 General description  
+  1.1 [Terms and abbreviations](#1-1)  
+  1.2 [Purpose and scope of the document](#1-2)  
+  1.3 [General description](#1-3)  
 2. [Description of activities](#chapter2)  
-  2.1 Provision of bank and payment account details to the Account Register 
+  2.1 [Provision of bank and payment account details to the Account Register](#2-1) 
 3. [Information security](#chapter3)  
-  3.1 Identification  
-  3.2 Protecting the connections  
-  3.3 Permitted HTTP-version  
-  3.4 Message-level signature  
-  3.5 Duty to report information security deviations  
-  3.6 Capacity of the interface  
+  3.1 [Identification](#3-1)  
+  3.2 [Protecting the connections](#3-2)  
+  3.3 [Permitted HTTP-version](#3-3)  
+  3.4 [Message-level signature](#3-4)  
+  3.5 [Duty to report information security deviations](#3-5)  
+  3.6 [Capacity of the interface](#3-6)  
 4. [General description of the account register updating interface](#chapter4)  
-  4.1 General  
-  4.2 Data supplier categories  
-  4.3 Reporting data as incorrect or disputable  
-  4.4 Interfaces  
-  4.5 JSON schemas  
-  4.6 Example messages  
-  4.7 HTTP responses  
-  4.8 Limitations  
+  4.1 [General](#4-1)  
+  4.2 [Data supplier categories](#4-2)  
+  4.3 [Reporting data as incorrect or disputable](#4-3)  
+  4.4 [Interfaces](#4-4)  
+  4.5 [JSON schemas](#4-5)  
+  4.6 [Example messages](#4-6)  
+  4.7 [HTTP responses](#4-7)  
+  4.8 [Limitations](#4-8)  
 5. [Clarifications to definitions](#chapter5)  
-  5.1 Customership  
-  5.2 Lawyer's customer asset account  
+  5.1 [Customership](#5-1)  
+  5.2 [Lawyer's customer asset account](#5-2)  
 
 ## 1. Introduction <a name="chapter1"></a>
 
-### 1.1 Terms and abbreviations
+### 1.1 Terms and abbreviations <a name="1-1"></a>
 
 Abbreviation or term|Description
 ---|---
@@ -77,11 +78,11 @@ REST|(Representational State Transfer) an architecture model based on HTTP for i
 JSON|(JavaScript Object Notation) open standard file format for conveying information.
 PKI|Public key infrastructure. An electronic signature based on PKI is created so that a hash is created of the information to be signed (using a hash algorithm), and the hash is encrypted using the private key of the key pair. The encrypted hash is stored together with the signed information or electronic document, or conveyed to the recipient of information in some other way. The recipient encrypts the hash using the public key of the key pair, forms again a hash of the information in the message or document and compares it with the hash appended to the signature. The contents of the message are unchanged if the two hashes match. (Guidelines on the Information Security of e-Services)
 
-### 1.2 Purpose and scope of the document
+### 1.2 Purpose and scope of the document <a name="1-2"></a>
 
 This document is the interface description of the data updating interface of the bank and payment account register.
 
-### 1.3 General description
+### 1.3 General description <a name="1-3"></a>
 
 This document is part of the regulation issued by Finnish Customs regarding a bank and payment account monitoring system. The purpose of the document is to issue instructions to data suppliers regarding implementation of the data updating interface of the Bank and Payment Account Register (hereinafter “the Account Register”). This document is supplemented by the Deployment and maintenance instructions for the Bank and Payment Account Register.
 
@@ -93,7 +94,7 @@ This document describes the data updating interface of the Account Register.
 
 This chapter presents the provision of bank and payment account details as a flow diagram.
 
-### 2.1 Provision of bank and payment account details to the Account Register
+### 2.1 Provision of bank and payment account details to the Account Register <a name="2-1"></a>
 
 Upon first update, all details are provided to the Account Register. After this, upon following updates, only the updated or new details are provided daily.
 
@@ -106,7 +107,7 @@ The figure shows that the updating interface is synchronous. The body of the HTT
 
 ## <a name="chapter3"></a> 3. Information security
   
-### 3.1 Identification
+### 3.1 Identification <a name="3-1"></a>
 
 #### Signature certificate of outgoing messages
 
@@ -148,17 +149,17 @@ The data supplier will identify the counterpart of the connection as the Account
 a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list maintained by the Digital and Population Data Services Agency  
 b) the serialNumber attribute of the subject of the certificate is “FI02454428” or “0245442-8”.
 
-### 3.2 Protecting the connections
+### 3.2 Protecting the connections <a name="3-2"></a>
 
 The connections of the Account Register data updating interface must be protected with TLS encryption using version 1.2 or later of the TLS protocol. Both ends of the connection are identified with the server certificates described above, using two-way handshaking. The connection must be established using the ephemeral Diffie-Hellman (DHE) key exchange protocol where a new unique private encryption key is created for each session. The purpose of this procedure is to ensure that encryption has the forward secrecy feature so that possible discovery of the encryption key would not subsequently lead to a disclosure of the encrypted information.
 
 The cryptographic algorithms used in TLS encryption must have a cryptographic strength at least equal to the cryptographic strength requirements specified by the Finnish Transport and Communications Agency Traficom for national protection level ST IV. The current strength requirements are described (in Finnish) in the document https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
-### 3.3 Permitted HTTP-version
+### 3.3 Permitted HTTP-version <a name="3-3"></a>
 
 The connections of the data updating interface use HTTP version 1.1.
 
-### 3.4 Message-level signature
+### 3.4 Message-level signature <a name="3-4"></a>
 
 The data updating interface messages are signed using JWS signatures (PKI). The RS256 algorithm is used for JWS signatures, and they are done with the sender’s private key. The deployment and maintenance instructions for the Bank and Payment Account Register contain information on submitting certificates containing public keys to Customs.
 
@@ -206,19 +207,19 @@ JWT Payload
   "reportUpdate": "[JSON OBJECT]"
 }
 ```
-### 3.5 Duty to report information security deviations
+### 3.5 Duty to report information security deviations <a name="3-5"></a>
 
 The user of the interface is obliged to immediately report to both the party issuing the certificate and Customs any cases of the certificates or their secret keys having been compromised.
 
 The user of the interface is also obliged to immediately report to Customs any information security deviations observed in the information system using the interface.
 
-### 3.6 Capacity of the interface
+### 3.6 Capacity of the interface <a name="3-6"></a>
 
 The maximum permissible size of messages to the interface is 50kB in JWT format. The messages shall be sent consecutively, so that the sender waits for the acknowledgement (OK) of the previous request before sending the next one.
 
 ## <a name="chapter4"></a> 4. General description of the account register updating interface
 
-### <a name="general"></a> 4.1 General
+### <a name="4-1"></a> 4.1 General
 
 The updating interface will be implemented using the REST/JSON method.
 
@@ -229,6 +230,8 @@ Each message must include the Business ID or VAT identifier of the supplier of i
 In the message structure of the updating message, legal persons, customers, accounts and safety deposit boxes are indicated as key-value pairs where a unique UUIDv4 (Universally unique identifier) is used as the key for the record. These identifiers are not issued by Customs; instead, they are identifiers created by the data suppliers for identifying customer details. This identifier allows the records to be identified, for example if the person’s name or personal identity code changes. An example of the message structure of an updating message is found [here](#examplemessages).
 
 The updating messages can be used to send whole records that refer to unique identifiers that have previously been sent for the record. For example, data can be sent concerning an account that contains references to roles in LegalPerson records that have previously been sent. It is also possible to send only a change of name as regards a LegalPerson record without having to send the role data concerning the LegalPerson record again in the message.
+
+When updating data to account register only modified or new records should be sent (legalPersons, customers, accounts, safetyDepositBoxes). If the modified data being sent refers to another element (e.g. legalPersonReference), the referenced record should not be sent unless it is new or has changed after the previous update. References, however, must be included in the message. 
 
 However, it should be noted that when sending role lists for Account, for SafetyDepositBox or for the record Organisation, the role lists must always be complete. In other words, it is not possible to send only new roles in e.g. the Account.roles field; instead, all roles valid at that moment in time must be sent.
 
@@ -243,7 +246,7 @@ Object {
 }
 ```
 
-### <a name="categories"></a> 4.2 Data supplier categories
+### <a name="4-2"></a> 4.2 Data supplier categories
 
 The parties obliged to provide data are divided into two categories:
 
@@ -251,7 +254,7 @@ Category 1: credit institutions
 Category 2: payment institutions, electronic money institutions and virtual currency providers
 The content of the updating messages is described in the [JSON schemas](#JSONschemas).
 
-### <a name="incorrectdisputable"></a> 4.3 Reporting data as incorrect or disputable
+### <a name="4-3"></a> 4.3 Reporting data as incorrect or disputable
 
 Records provided can be reported as either incorrect or suspected to be incorrect (disputable). The UUIDv4 that is unique for the record and the unique X-Correlation-ID of its updating message with which the record has been reported are used for this. The record to which the record identifier refers can be an account, a safety deposit box or a legal person. The example messages are listed [here](#examplemessages).
 
@@ -262,7 +265,7 @@ The report of a record as disputable can be cancelled if it is found to be unnec
 ![Changing the status of a record](diagrams/state_diagram_incorrect_disputed.png "Changing the status of a record")  
 *__Kuva 4.3.__ Changing the status of a record*
 
-### <a name="interfaces"></a> 4.4 Interfaces
+### <a name="4-4"></a> 4.4 Interfaces
 
 The interface endpoints are listed in the table below.
 
@@ -273,7 +276,7 @@ POST|/v3/report-update/cat-2/|Payment institutions, electronic money institution
 POST|/v3/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v3/report-incorrect/.|
 POST|/v3/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
 
-### <a name="JSONschemas"></a> 4.5 JSON schemas
+### <a name="4-5"></a> 4.5 JSON schemas
 
 Schemas in accordance with JSON Schema draft 7 have been created for message validation.
 
@@ -285,7 +288,7 @@ Reporting a detail as disputable [schema](schemas/report_disputable.json)
 
 Reporting a detail as incorrect [schema](schemas/report_incorrect.json)
 
-### <a name="examplemessages"></a> 4.6 Example messages
+### <a name="4-6"></a> 4.6 Example messages
 
 You can find the example messages via the links below:
 
@@ -297,7 +300,7 @@ You can find the example messages via the links below:
 
 [Reporting a detail as incorrect](examples/report-incorrect.json)
 
-### <a name="httpresponses"></a> 4.7 HTTP responses
+### <a name="4-7"></a> 4.7 HTTP responses
 
 The system returns the following HTTP responses:
 
@@ -343,14 +346,14 @@ Body
 }
 ```
 
-### <a name="Limitations"></a> 4.8 Limitations
+### <a name="4-8"></a> 4.8 Limitations
 
 Data about accounts or safe deposit boxes closed or customer relationships ended before 1 September 2020 should not be transmitted through the Account Register. Similarly, data about beneficiaries and other roles related to the aforementioned should not be transmitted if the role ended before 1 September 2020.
 
 ## <a name="chapter5"></a> 5. Clarifications to definitions
 
-### <a name="customership"></a> 5.1 Customership
+### <a name="5-1"></a> 5.1 Customership
 Customership refers to the whole time period a legal person has been the customer of the data supplier. Customership begins for example when the first account is opened. Respectively customership would end when the customer's last account is closed.
 
-### <a name="customerassetaccount"></a> 5.2 Lawyer's customer asset account
+### <a name="5-2"></a> 5.2 Lawyer's customer asset account
 Accounts that are lawyer's customer asset accounts are separated from other accounts by using the account purpose (AcctPurp) field with value "customer_asset_account". Lawyer's customer asset account has at least one legal person as the account owner. The legal person can be a natural person (for example the lawyer) or an organisation (for example a lawyer's office). In addition a lawyer's customer asset account can have legal persons who have access to the account. Legal persons who only have a right for example to obtain information about the account are not reported to the account register.
