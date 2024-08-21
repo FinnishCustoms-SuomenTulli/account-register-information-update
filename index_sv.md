@@ -34,9 +34,9 @@ Version|Datum|Beskrivning|
 3.0.0|23.5.2022|v3-uppdateringsgränssnitt, JSON-scheman och exempelmeddelanden har lagts till.|
 3.0.1|16.12.2022|Lade till information om begränsningar i underkapitel 4.8. Lade till maxlängdsbegränsningar i några få fält i schemat.|
 3.0.2|19.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
-3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|  
-3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|    
-3.0.5|27.8.2024|Anmälning av allmän intressebevakarens information har lagts till i avsnitt 5, schema och exempel.| 
+3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
+3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|
+3.0.5|27.8.2024|Instruktioner för anmälandet av uppgifter gällande almänna intressebevakare har lagts till i avsnitt5 samt i schemat och exempel.| 
 
 
 ## Innehåll
