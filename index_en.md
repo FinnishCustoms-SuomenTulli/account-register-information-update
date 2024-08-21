@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.4*
+*Document version 3.0.5*
 
 ## Version history
 
@@ -35,7 +35,9 @@ Version|Date|Description|
 3.0.1|16.12.2022|Added information about limitations to subchapter 4.8. Added max length limitations to a few fields in the schema.|
 3.0.2|19.6.2023|Removed references to interface version 2 in chapters 4.4, 4.5 and 4.6.|
 3.0.3|1.11.2023|In chapter 3.1 clarified instructions about server certificate to data suppliers.|
-3.0.4|20.4.2024|In chapter 4.1 clarified instructions that only new and modified data should be delivered.|
+3.0.4|20.4.2024|In chapter 4.1 clarified instructions that only new and modified data should be delivered.|  
+3.0.5|27.8.2024|Reporting public guardian's information added to schemas, example files and chapter 5.|
+
 
 ## Table of contents
 
@@ -64,6 +66,7 @@ Version|Date|Description|
 5. [Clarifications to definitions](#chapter5)  
   5.1 [Customership](#5-1)  
   5.2 [Lawyer's customer asset account](#5-2)  
+  5.3 [Public guardian](#5-3)
 
 ## 1. Introduction <a name="chapter1"></a>
 
@@ -357,3 +360,6 @@ Customership refers to the whole time period a legal person has been the custome
 
 ### <a name="5-2"></a> 5.2 Lawyer's customer asset account
 Accounts that are lawyer's customer asset accounts are separated from other accounts by using the account purpose (AcctPurp) field with value "customer_asset_account". Lawyer's customer asset account has at least one legal person as the account owner. The legal person can be a natural person (for example the lawyer) or an organisation (for example a lawyer's office). In addition a lawyer's customer asset account can have legal persons who have access to the account. Legal persons who only have a right for example to obtain information about the account are not reported to the account register.
+
+### <a name="5-3"></a> 5.3 Public guardian
+Information about a public guardian (see https://oikeus.fi/edunvalvonta/en/index.html) must be reported to the account register if they have access rights to an account or a safety deposit box. A public guardian is reported as an organization that has a role related to an account or a safety deposit box. The account register needs the following information about the public guardian: identification (registration number), title (name) and if applicable, sequence number (orderNumber). A sequence number needs to be reported only in situations where the service provider has more than one public guardian. The information to be reported to account register corresponds with anti-money laundering act chapter 3, section 3, subsection 2, paragraph 2 (see https://www.finlex.fi/fi/laki/ajantasa/2017/20170444).
