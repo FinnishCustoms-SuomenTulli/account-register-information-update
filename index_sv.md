@@ -65,8 +65,9 @@ Version|Datum|Beskrivning|
   4.8 [Begränsningar](#4-8)  
 5. [Preciseringar av begrepp](#kapitel5)  
   5.1 [Kundrelation](#5-1)  
-  5.2 [Gemensamt konto som förvaltas av en advokat](#5-2)
-  5.3 [Allmän intressebevakare](#5-3) 
+  5.2 [Gemensamt konto som förvaltas av en advokat](#5-2)  
+  5.3 [Allmän intressebevakare](#5-3)
+
 
 ## 1. Inledning <a name="kapitel1"></a>
 
