@@ -31,6 +31,20 @@
         ]
       }
     },
+    "e12bb4e6-eb8b-48c4-b297-95e38dd0d776": {
+      "organisation": {
+        "registrationAuthority": "PRH",
+        "registrationNumber": 
+        {
+        	"number": "4448861-8",
+        	"type": "businessId"
+        },
+        "registrationDate": "2001-02-03",
+        "name": "Interest Representative",
+        "roles": [],
+        "orderNumber": 1
+      }
+    },
     "6cd7cc3f-6de1-4583-a572-895613e71130": {
       "privatePerson": {
         "fullName": "Fredlund, Eeva-Sofia",
@@ -186,6 +200,22 @@
         "type": "owner"
       }],
       "accountPurpose": "customer_asset_account"
+    },
+    "6b1688d7-e2d4-49f8-bc29-e6d5e49ee8de": {
+      "id": {
+        "iban": "FI0234394530008496"
+      },
+      "openingDate": "2010-08-26",
+      "roles": [{
+        "legalPersonReference": "82911739-6f97-439e-b561-22fac327b774",
+        "startDate": "2010-08-26",
+        "type": "owner"
+      },
+      {
+        "legalPersonReference": "e12bb4e6-eb8b-48c4-b297-95e38dd0d776",
+        "startDate": "2020-01-26",
+        "type": "access"
+      }]
     }
   },
   "safetyDepositBoxes": {

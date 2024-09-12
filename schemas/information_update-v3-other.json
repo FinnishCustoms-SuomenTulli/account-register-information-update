@@ -171,6 +171,12 @@
           "type": "string",
           "description": "Organisation name.",
           "maxLength": 300
+        },
+        "orderNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255,
+          "description": "Interest representative organisation order number, if applicable."
         }
       }
     },
