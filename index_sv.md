@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.4*
+*Dokumentversion 3.0.5*
 
 ## Versionshistorik
 
@@ -36,6 +36,8 @@ Version|Datum|Beskrivning|
 3.0.2|19.6.2023|Hänvisningarna till v2-gränssnittet har tagits bort i styckena 4.4, 4.5 och 4.6.|
 3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
 3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|
+3.0.5|27.8.2024|Instruktioner för anmälandet av uppgifter gällande almänna intressebevakare har lagts till i avsnitt5 samt i schemat och exempel.| 
+
 
 ## Innehåll
 
@@ -63,7 +65,9 @@ Version|Datum|Beskrivning|
   4.8 [Begränsningar](#4-8)  
 5. [Preciseringar av begrepp](#kapitel5)  
   5.1 [Kundrelation](#5-1)  
-  5.2 [Gemensamt konto som förvaltas av en advokat](#5-2)
+  5.2 [Gemensamt konto som förvaltas av en advokat](#5-2)  
+  5.3 [Allmän intressebevakare](#5-3)
+
 
 ## 1. Inledning <a name="kapitel1"></a>
 
@@ -357,3 +361,6 @@ Kundrelationen avser hela den period då en juridisk person varit kund hos en le
 ### <a name="5-2"></a> 5.2 Gemensamt konto som förvaltas av en advokat (klientmedelskonto)
 
 Konton som är gemensamma konton som förvaltas av en advokat skiljs åt från andra konton genom att man i fältet för kontots användningsändamål (AcctPurp) använder värdet ”customer_asset_account". Ägaren till ett gemensamt konto som förvaltas av en advokat är minst en juridisk person som kan vara en fysisk person (t.ex. advokat) eller en organisation (t.ex. advokatbyrå). Därtill kan det finnas juridiska personer som har rätt att använda ett sådant konto. De som bara har t.ex. rätt att få uppgifter gällande kontot anmäls inte till Kontoregistret.
+
+### <a name="5-3"></a> 5.3 Allmän intressebevakare
+Allmänna intressebevakarens (se https://oikeus.fi/edunvalvonta/sv/index.html) information måste anmälas till kontoregistret om allmänna intressebevakaren har fullmakt att använda kontot eller bankfacket. En allmän intressebevakare anmäls som en organisation och som har en anknytning till kontot eller bankfacket. Informationen som anmäls om en allmän intressebevakare består av serviceproducentens identifieringsuppgifter (registation number), intressebevakarens titel (name) och vid behov intressebevakarens ordningsnummer (orderNumber). Ordningsnummer anmäls om serviceproducenten har fler än en allmän intressebevakare. Informationen som anmäls till kontoregistret motsvarar lagen om förhindrande av penningtvätt och finansiering av terrorism kapitel 3, paragraf 3, moment 2, punkt 2 (se https://www.finlex.fi/sv/laki/ajantasa/2017/20170444).

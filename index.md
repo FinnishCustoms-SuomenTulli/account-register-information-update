@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 3.0.4*
+*Dokumentin versio 3.0.5*
 
 ## Versiohistoria
 
@@ -34,8 +34,9 @@ Versio|Päivämäärä|Kuvaus|
 3.0.0|23.5.2022|Lisätty v3 päivitysrajapinnat, JSON-skeemat ja esimerkkisanomat|
 3.0.1|16.12.2022|Lisätty tarkennus rajoituksista alilukuun 4.8. Lisätty skeemaan pituusrajoituksia muutamalle kentälle.|
 3.0.2|19.6.2023|Poistettu viittaukset rajapinnan versioon 2 luvuista 4.4, 4.5 ja 4.6.|
-3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.| 
-3.0.4|22.4.2024|Luvussa 4.1 tarkennettu ohjeistusta, että toimitetaan vain uudet ja muuttuneet tiedot.|
+3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.|  
+3.0.4|22.4.2024|Luvussa 4.1 tarkennettu ohjeistusta, että toimitetaan vain uudet ja muuttuneet tiedot.|  
+3.0.5|27.8.2024|Lisätty yleisen edunvalvojan tietojen ilmoitus skeemoihin, esimerkkitiedostoihin ja lukuun 5.|
 
 ## Sisällysluettelo
 
@@ -64,6 +65,8 @@ Versio|Päivämäärä|Kuvaus|
 5. [Käsitteiden tarkennuksia](#käsitteet)  
   5.1 [Asiakkuus](#5-1)  
   5.2 [Asianajajan asiakasvaratili](#5-2)  
+  5.3 [Yleinen edunvalvoja](#5-3)
+
 
 ## 1. Johdanto <a name="luku1"></a>
 
@@ -354,3 +357,6 @@ Asiakkuus tarkoittaa koko sitä ajanjaksoa, jonka ajan oikeushenkilö on ollut t
 
 ### <a name="5-2"></a> 5.2 Asianajajan asiakasvaratili
 Tilit, jotka ovat asianajajan asiakasvaratilejä, erotetaan muista tileistä käyttämällä niille tilin käyttötarkoitus (AcctPurp) -kentässä arvoa "customer_asset_account". Asianajajan asiakasvaratilillä on omistajana vähintään yksi oikeushenkilö, joka voi olla luonnollinen henkilö (esimerkiksi asianajaja) tai organisaatio (esimerkiksi asianajotoimisto). Lisäksi asianajajan asiakasvaratilillä voi olla oikeushenkilöitä käyttöoikeudenhaltijoina. Tahoja, joilla on tiliin vain esimerkiksi tiedonsaantioikeus, ei ilmoiteta tilirekisteriin.
+
+### <a name="5-3"></a> 5.3 Yleinen edunvalvoja
+Jos yleisellä edunvalvojalla (ks. https://oikeus.fi/edunvalvonta/fi/index.html) on tilin tai tallelokeron käyttöoikeus, yleisen edunvalvojan tiedot tulee ilmoittaa tilirekisteriin. Yleinen edunvalvoja ilmoitetaan organisaationa, jolla on tiliin tai tallelokeroon liittyvä rooli. Yleisestä edunvalvojasta ilmoitetaan tilirekisteriin palveluntuottajan yksiöintitunniste (registration number), nimike (name) ja tarvittaessa järjestysnumero (orderNumber). Järjestysnumero ilmoitetaan vain, jos palveluntuottajalla on enemmän kuin yksi yleinen edunvalvoja. Tilirekisteriin ilmoitettavat tiedot vastaavat lain rahanpesun ja terrorismin rahoittamisen estämisestä luvun 3, pykälän 3, momentin 2 kohdan 2 mukaisia tietoja (ks. https://www.finlex.fi/fi/laki/ajantasa/2017/20170444).
