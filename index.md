@@ -37,6 +37,7 @@ Versio|Päivämäärä|Kuvaus|
 3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.|  
 3.0.4|22.4.2024|Luvussa 4.1 tarkennettu ohjeistusta, että toimitetaan vain uudet ja muuttuneet tiedot.|  
 3.0.5|27.8.2024|Lisätty yleisen edunvalvojan tietojen ilmoitus skeemoihin, esimerkkitiedostoihin ja lukuun 5.|
+3.0.6|27.10.2025|Lisätty uusi luottolaitosten päivitysrajapintaversio. Muutoksena yksityishenkilöiden asiakkuuksien raportointi.|
 
 ## Sisällysluettelo
 
@@ -272,6 +273,7 @@ Seuraavassa taulukossa on listattu rajapinnan endpointit.
 |HTTP-metodi|Polku|Tarkoitus ja toiminnallisuus|
 |---|---|---|
 POST|/v3/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
+POST|/v4/report-update/cat-1/|Luottolaitokset (Finanssivalvonnalta saadulla poikkeusluvalla) käyttävät tätä endpointia asiakkuuksien, tilitietojen sekä tallelokeroiden tietojen toimittamiseen Tilirekisteriin.|
 POST|/v3/report-update/cat-2/|Maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat käyttävät tätä endpointia asiakkuuksien ja tilitietojen toimittamiseen Tilirekisteriin.|
 POST|/v3/report-disputable/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon oikeellisuus mahdollisesti virheellisiksi/kiistanalaisiksi. Tällä endpointilla voidaan myös poistaa kiistanalaisuus mikäli tieto havaitaan oikeaksi. Kiistanalaiseksi ilmoitettu tieto ilmoitetaan todetun virheelliseksi käyttäen POST /v3/report-incorrect/.|
 POST|/v3/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun tiedon virheelliseksi. Kun virheellisyys ilmoitetaan kiistanalaiseksi merkittyyn tietoon, tulkitaan kiistanalaisuus ratkaistuksi, ja tieto virheelliseksi todetuksi.|
@@ -281,6 +283,8 @@ POST|/v3/report-incorrect/|Käytetään ilmoittamaan tietyn aiemmin toimitetun t
 Sanomien validointia varten on tehty JSON Schema draft 7 mukaiset skeemat:
 
 Päivityssanoma v3 (luottolaitokset) [skeema](schemas/information_update-v3-credit_institution.json)
+
+Päivityssanoma v4 (luottolaitokset) [skeema](schemas/information_update-v4-credit_institution.json)
 
 Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat) [skeema](schemas/information_update-v3-other.json)
 
@@ -293,6 +297,8 @@ Tiedon ilmoittaminen virheelliseksi [skeema](schemas/report_incorrect.json)
 Esimerkkisanomat löytyvät alla olevista linkeistä:
 
 [Päivityssanoma v3 (luottolaitokset)](examples/report-update-v3-credit_institution.json)
+
+[Päivityssanoma v4 (luottolaitokset)](examples/report-update-v4-credit_institution.json)
 
 [Päivityssanoma v3 (maksulaitokset, sähkörahayhteisöt ja virtuaalivaluutan tarjoajat)](examples/report-update-v3-other.json)
 
