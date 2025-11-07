@@ -37,7 +37,7 @@ Version|Date|Description|
 3.0.3|1.11.2023|In chapter 3.1 clarified instructions about server certificate to data suppliers.|
 3.0.4|20.4.2024|In chapter 4.1 clarified instructions that only new and modified data should be delivered.|  
 3.0.5|27.8.2024|Reporting public guardian's information added to schemas, example files and chapter 5.|  
-3.0.6|10.11.2025|Added new update interface version for credit institutions. Starting 1.12.2025 account related customership information (customership start and possible end date) must be reported to account register for all legal and natural persons.|
+3.0.6|10.11.2025|Added new update interface version for credit institutions. From 1.12.2025 onwards credit institutions must report customership start and possible end dates for both natural persons and organisations who own or have access right to the account.|
 
 
 ## Table of contents
