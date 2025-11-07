@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 3.0.5*
+*Dokumentin versio 3.0.6*
 
 ## Versiohistoria
 
@@ -37,7 +37,7 @@ Versio|Päivämäärä|Kuvaus|
 3.0.3|1.11.2023|Luvussa 3.1 tarkennettu ohjeistusta palvelinvarmenteista tiedon luovuttajalle.|  
 3.0.4|22.4.2024|Luvussa 4.1 tarkennettu ohjeistusta, että toimitetaan vain uudet ja muuttuneet tiedot.|  
 3.0.5|27.8.2024|Lisätty yleisen edunvalvojan tietojen ilmoitus skeemoihin, esimerkkitiedostoihin ja lukuun 5.|
-3.0.6|27.10.2025|Lisätty uusi luottolaitosten päivitysrajapintaversio. Muutoksena yksityishenkilöiden asiakkuuksien raportointi.|
+3.0.6|10.11.2025|Lisätty uusi luottolaitosten päivitysrajapintaversio. Muutoksena yksityishenkilöiden asiakkuuksien raportointi.|
 
 ## Sisällysluettelo
 
