@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.5*
+*Document version 3.0.6*
 
 ## Version history
 
@@ -36,7 +36,8 @@ Version|Date|Description|
 3.0.2|19.6.2023|Removed references to interface version 2 in chapters 4.4, 4.5 and 4.6.|
 3.0.3|1.11.2023|In chapter 3.1 clarified instructions about server certificate to data suppliers.|
 3.0.4|20.4.2024|In chapter 4.1 clarified instructions that only new and modified data should be delivered.|  
-3.0.5|27.8.2024|Reporting public guardian's information added to schemas, example files and chapter 5.|
+3.0.5|27.8.2024|Reporting public guardian's information added to schemas, example files and chapter 5.|  
+3.0.6|10.11.2025|Added new update interface version for credit institutions. From 1.12.2025 onwards credit institutions must report customership start and possible end dates for both natural persons and organisations who own or have access right to the account.|
 
 
 ## Table of contents
@@ -275,6 +276,7 @@ The interface endpoints are listed in the table below.
 |HTTP-method|Path|Purpose and functionality|
 |---|---|---|
 POST|/v3/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
+POST|/v4/report-update/cat-1/|Credit institutions (by exemption granted by the Financial Supervisory Authority) use this endpoint for sending the details of customers, accounts and safety deposit boxes to the Account Register.|
 POST|/v3/report-update/cat-2/|Payment institutions, electronic money institutions and virtual currency providers use this endpoint for sending the details of customers and accounts to the Account Register.|
 POST|/v3/report-disputable/|Used for reporting a certain detail provided earlier as possibly incorrect/disputable. Using this endpoint, a disputability can also be removed, if the detail is found to be correct. If a detail reported as disputable is found to be incorrect, this will be reported using POST /v3/report-incorrect/.|
 POST|/v3/report-incorrect/|Used for reporting a certain detail provided earlier as incorrect. When a detail marked as disputable is reported as incorrect, the disputability will be interpreted as solved, and the detail will be interpreted as incorrect.|
@@ -284,6 +286,8 @@ POST|/v3/report-incorrect/|Used for reporting a certain detail provided earlier 
 Schemas in accordance with JSON Schema draft 7 have been created for message validation.
 
 Updating message v3 (credit institutions) [schema](schemas/information_update-v3-credit_institution.json)
+
+Updating message v4 (credit institutions) [schema](schemas/information_update-v4-credit_institution.json)
 
 Updating message v3 (payment institutions, electronic money institutions and virtual currency providers) [schema](schemas/information_update-v3-other.json)
 
@@ -296,6 +300,8 @@ Reporting a detail as incorrect [schema](schemas/report_incorrect.json)
 You can find the example messages via the links below:
 
 [Updating message v3 (credit institutions)](examples/report-update-v3-credit_institution.json)
+
+[Updating message v4 (credit institutions)](examples/report-update-v4-credit_institution.json)
 
 [Updating message v3 (payment institutions, electronic money institutions and virtual currency providers)](examples/report-update-v3-other.json)
 
