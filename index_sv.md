@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.6*
+*Dokumentversion 3.0.7*
 
 ## Versionshistorik
 
@@ -37,7 +37,8 @@ Version|Datum|Beskrivning|
 3.0.3|1.11.2023|Preciseringar i avsnitt 3.1 i anvisningar om servercertifikat för uppgiftsleverantören.|
 3.0.4|20.4.2024|Preciseringar i avsnitt 4.1 att man ska skicka bara nya och ändrade uppgifter.|
 3.0.5|27.8.2024|Instruktioner för anmälandet av uppgifter gällande almänna intressebevakare har lagts till i avsnitt5 samt i schemat och exempel.|  
-3.0.6|10.11.2025|Nya uppdateringsgränssnitt för kreditinstitut har lagts till. Från och med 1.12.2025 ska kreditinstitut anmäla startdatum och eventuellt slutdatum för kundrelation för både fysiska personer och organisationer som är kontoinnehavare eller innehavare av användningsrätt till ett konto.| 
+3.0.6|10.11.2025|Nya uppdateringsgränssnitt för kreditinstitut har lagts till. Från och med 1.12.2025 ska kreditinstitut anmäla startdatum och eventuellt slutdatum för kundrelation för både fysiska personer och organisationer som är kontoinnehavare eller innehavare av användningsrätt till ett konto.|  
+3.0.7|1.6.2026|Uppdaterade nya instruktioner för produktionssättning och underhåll.|  
 
 ## Innehåll
 
