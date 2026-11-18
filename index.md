@@ -124,7 +124,7 @@ joko
 a) varmenne on DVV:n myöntämä, voimassa, eikä esiinny DVV:n ylläpitämällä sulkulistalla ja varmenteen kohteen serialNumber attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus
 
 tai  
-b) varmenne on eIDAS-hyväksytty asiakkaan tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen serialNumber -attribuuttina on, tai jos sitä ei ole, niin organizationIdentifier -attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus.
+b) varmenne on eIDAS-hyväksytty asiakkaan tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen serialNumber -attribuuttina on, tai jos sitä ei ole, niin organizationIdentifier -attribuuttina on kyseisen tiedon luovuttajan suomalainen Y-tunnus tai ALV-tunnus.
 
 Huom. Jotta sanomien allekirjoitukset täyttävät alla viitatut kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee allekirjoituksiin käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Allekirjoituksiin käytettävän varmenteen käyttötarkoituksiin täytyy myös kuulua ”digitaalinen allekirjoitus”. Nämä seikat tulee huomioida varmennetta tilattaessa.
 
