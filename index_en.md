@@ -142,7 +142,7 @@ a) the customer certificate was issued by the Digital and Population Data Servic
 
 or
 
-b) the customer certificate is an eIDAS-approved customer (OID identifier: 1.3.6.1.5.5.7.3.2) identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the the serialNumber attribute or, if it is missing, organizationIdentifier attribute of the subject of the certificate consists of the Finnish Business ID or VAT identifier of the data supplier or the party authorised by the data supplier.
+b) the customer certificate is an eIDAS-approved customer (OID identifier: 1.3.6.1.5.5.7.3.2) identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the serialNumber attribute or, if it is missing, the organizationIdentifier attribute of the subject of the certificate consists of the Finnish Business ID or VAT identifier of the data supplier or the party authorised by the data supplier.
 
 If the same Business ID or VAT number is used in the data traffic certificate and outgoing message signature certificate of the data supplier, the same certificate can be used for both purposes.
 
