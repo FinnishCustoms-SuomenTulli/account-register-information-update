@@ -6,7 +6,7 @@
 
 # Tilirekisterin päivitysrajapintakuvaus
 
-*Dokumentin versio 3.0.7*
+*Dokumentin versio 3.0.8*
 
 ## Versiohistoria
 
@@ -39,6 +39,8 @@ Versio|Päivämäärä|Kuvaus|
 3.0.5|27.8.2024|Lisätty yleisen edunvalvojan tietojen ilmoitus skeemoihin, esimerkkitiedostoihin ja lukuun 5.|
 3.0.6|10.11.2025|Lisätty uusi luottolaitosten päivitysrajapintaversio. 1.12.2025 alkaen luottolaitosten tulee ilmoittaa tilinhaltijan ja tilin käyttöoikeudenhaltijan asiakkuuden alkamis- ja mahdollinen päättymispäivämäärä sekä luonnollisille henkilöille että organisaatioille. |  
 3.0.7|1.6.2026|Lisätty uudet käyttöönoton- ja ylläpidon ohjeet. |
+3.0.8|19.11.2026|Luvuissa 3.1 ja 3.2 päivitetty ohjeistusta varmenteista tiedonluovuttajalle. |
+
 
 ## Sisällysluettelo
 
@@ -116,43 +118,43 @@ Kuvasta nähdään, että päivitysrajapinta on synkroninen. HTTP-vastauksen bod
 
 #### Lähtevän sanoman allekirjoitusvarmenne
 
-Lähtevät sanomat on automaattisesti allekirjoitettava käyttäen x.509 (versio 3) palvelinvarmennetta, josta käy ilmi ko. tiedon luovuttajan Y-tunnus tai ALV-tunnus. Allekirjoituksen hyväksyminen edellyttää, että
+Lähtevät sanomat on automaattisesti allekirjoitettava käyttäen x.509 (versio 3) asiakasvarmennetta, josta käy ilmi ko. tiedon luovuttajan Y-tunnus tai ALV-tunnus. Allekirjoituksen hyväksyminen edellyttää, että
 
 joko  
 a) varmenne on DVV:n myöntämä, voimassa, eikä esiinny DVV:n ylläpitämällä sulkulistalla ja varmenteen kohteen serialNumber attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus
 
 tai  
-b) varmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus.
+b) varmenne on eIDAS-hyväksytty asiakkaan tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen serialNumber -attribuuttina on, tai jos sitä ei ole, niin organizationIdentifier -attribuuttina on kyseisen tiedon luovuttajan Y-tunnus tai ALV-tunnus.
 
 Huom. Jotta sanomien allekirjoitukset täyttävät alla viitatut kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee allekirjoituksiin käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Allekirjoituksiin käytettävän varmenteen käyttötarkoituksiin täytyy myös kuulua ”digitaalinen allekirjoitus”. Nämä seikat tulee huomioida varmennetta tilattaessa.
 
-#### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon palvelinvarmenne
+#### Tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon asiakasvarmenne
 
 Tietoliikenne on suojattava (salaus ja vastapuolen tunnistus) x.509 (versio 3) varmenteita käyttäen.
 
-Yhteyden muodostukseen on käytettävä palvelinvarmennetta, josta käy ilmi ko. tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus. Tiedon luovuttajan valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka tiedon luovuttaja on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
+Yhteyden muodostukseen on käytettävä asiakasvarmennetta, josta käy ilmi ko. tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus. Tiedon luovuttajan valtuuttamalla taholla tarkoitetaan esim. palvelukeskusta, jonka tiedon luovuttaja on valtuuttanut puolestaan huolehtimaan ilmoitusten muodostamisesta ja/tai lähettämisestä. Tätä koskeva valtuutus on toimitettava Tullille kirjallisesti.
 
 Allekirjoituksen hyväksyminen edellyttää, että
 
 joko  
-a) palvelinvarmenteen on myöntänyt DVV, varmenne on voimassa, eikä esiinny DVV:n sulkulistalla, varmenteen kohteen serialNumber attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus
+a) asiakasvarmenteen on myöntänyt DVV, varmenne on voimassa, eikä esiinny DVV:n sulkulistalla, varmenteen kohteen serialNumber attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus
 
 tai  
-b) palvelinvarmenne on eIDAS-hyväksytty sivustojen tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen organizationIdentifier-attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon Y-tunnus tai ALV-tunnus.
+b) asiakasvarmenne on eIDAS-hyväksytty asiakkaan (OID-tunniste: 1.3.6.1.5.5.7.3.2) tunnistamisvarmenne, voimassa, eikä esiinny varmenteen tarjoajan ylläpitämällä ajantasaisella sulkulistalla ja varmenteen kohteen serialNumber -attribuuttina tai jos sitä ei ole, niin organizationIdentifier -attribuuttina on kyseisen tiedon luovuttajan tai tiedon luovuttajan valtuuttaman tahon suomalainen Y-tunnus tai ALV-tunnus.
 
-Mikäli tiedon luovuttajan palvelinvarmenteessa ja lähtevän sanoman allekirjoitusvarmenteessa käytetään samaa Y-tunnusta tai ALV-tunnusta, voidaan kumpaankin tarkoitukseen käyttää samaa varmennetta.
+Mikäli tiedon luovuttajan asiakasvarmenteessa ja lähtevän sanoman allekirjoitusvarmenteessa käytetään samaa Y-tunnusta tai ALV-tunnusta, voidaan kumpaankin tarkoitukseen käyttää samaa varmennetta.
 
-Huom. Jotta tietoliikenteen suojaus täyttää alla viitatut Kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Lisäksi varmenteen tulee olla QWAC (Qualified Website Authentication Certificate) tyyppinen palvelinvarmenne, joka sisältää laajennukset (X509v3 Extended Key Usage: TLS Web Client Authentication, TLS Web Server Authentication). Nämä tulee huomioida varmennetta tilattaessa.
+Huom. Jotta tietoliikenteen suojaus täyttää alla viitatut Kyberturvallisuuskeskuksen tietoturvavaatimukset, tulee käytettävän varmenteen julkisen avaimen (RSA public key) olla vähintään 3072 bittinen. Lisäksi varmenteessa tulee olla määriteltynä X509v3 Extended Key Usage -kenttään Client Authentication (TLS Web Client Authentication), jonka OID-tunniste: 1.3.6.1.5.5.7.3.2. Nämä tulee huomioida varmennetta tilattaessa.
 
 #### Tilirekisterin palvelinvarmenne
 
 Tiedon luovuttaja tunnistaa yhteyden vastapuolen Tilirekisteriksi palvelinvarmenteen perusteella seuraavin edellytyksin:  
 a) Tilirekisterin ylläpitäjän (Tullin) palvelinvarmenteen on myöntänyt DVV, varmenne on voimassa eikä esiinny DVV:n ylläpitämällä sulkulistalla  
-b) varmenteen kohteen serialNumber attributti on “FI02454428” tai “0245442-8”.
+b) varmenteen kohteen SerialNumber-kentän (OID 2.5.4.5) arvo on “FI02454428” tai “0245442-8” (voimassa 01/2027 asti) ja uudessa varmenteessa 01/2027 lähtien korvaava OrganizationIdentifier-kenttä (OID 2.5.4.97), jonka arvo on ”VATFI-02454428” tai ”NTRFI-0245442-8”.
 
 ### <a name="3-2"></a> 3.2 Yhteyksien suojaaminen
 
-Tilirekisterin päivitysrajapinnan yhteydet on suojattava TLS-salauksella käyttäen TLS-protokollan versiota 1.2 tai korkeampaa. Yhteyden molemmat päät tunnistetaan yllä kuvatuilla palvelinvarmenteilla käyttäen kaksisuuntaista kättelyä. Yhteys on muodostettava käyttäen ephemeral Diffie-Hellman (DHE) avaintenvaihtoa, jossa jokaiselle sessiolle luodaan uusi uniikki yksityinen salausavain. Tämän menettelyn tarkoituksena on taata salaukselle forward secrecy -ominaisuus, jotta salausavaimen paljastuminen ei jälkikäteen johtaisi salattujen tietojen paljastumiseen.
+Tilirekisterin päivitysrajapinnan yhteydet on suojattava TLS-salauksella käyttäen TLS-protokollan versiota 1.2 tai korkeampaa. Yhteyden molemmat päät tunnistetaan yllä kuvatuilla varmenteilla käyttäen kaksisuuntaista kättelyä. Yhteys on muodostettava käyttäen ephemeral Diffie-Hellman (DHE) avaintenvaihtoa, jossa jokaiselle sessiolle luodaan uusi uniikki yksityinen salausavain. Tämän menettelyn tarkoituksena on taata salaukselle forward secrecy -ominaisuus, jotta salausavaimen paljastuminen ei jälkikäteen johtaisi salattujen tietojen paljastumiseen.
 
 TLS-salauksessa käytettyjen kryptografisten algoritmien on vastattava kryptografiselta vahvuudeltaan vähintään Traficomin määrittelemiä kryptografisia vahvuusvaatimuksia kansalliselle suojaustasolle ST IV. Tämänhetkiset vahvuusvaatimukset on kuvattu dokumentissa https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
