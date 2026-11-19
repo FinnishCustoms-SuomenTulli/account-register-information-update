@@ -6,7 +6,7 @@
 
 # Data updating interface description of the Account Register
 
-*Document version 3.0.7*
+*Document version 3.0.8*
 
 ## Version history
 
@@ -39,7 +39,7 @@ Version|Date|Description|
 3.0.5|27.8.2024|Reporting public guardian's information added to schemas, example files and chapter 5.|  
 3.0.6|10.11.2025|Added new update interface version for credit institutions. From 1.12.2025 onwards credit institutions must report customership start and possible end dates for both natural persons and organisations who own or have access right to the account.|  
 3.0.7|1.6.2026|Added new instructions for deployment and maintenance.|
-
+3.0.8|19.11.2026|In chapters 3.1 and 3.2 updated instructions about certificates to data suppliers.|
 
 ## Table of contents
 
@@ -116,7 +116,7 @@ The figure shows that the updating interface is synchronous. The body of the HTT
 
 #### Signature certificate of outgoing messages
 
-The outgoing messages must be automatically signed using x.509 (version 3) server certificate showing the Business ID or VAT identifier of the data supplier concerned. Acceptance of the signature requires that
+The outgoing messages must be automatically signed using x.509 (version 3) customer certificate showing the Business ID or VAT identifier of the data supplier concerned. Acceptance of the signature requires that
 
 either
 
@@ -124,39 +124,39 @@ a) the certificate was issued by the Digital and Population Data Services Agency
 
 or
 
-b) the certificate is an eIDAS-approved website identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the organizationIdentifier attribute of the Subject field of the certificate consists of the Business ID or VAT number of the data supplier.
+b) the certificate is an eIDAS-approved customer identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the serialnumber attribute or, if it is missing, the organizationIdentifier attribute of the Subject field of the certificate consists of the Finnish Business ID or VAT number of the data supplier.
 
 Please note: For the message signatures to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used for signatures must have at least 3072 bits. The uses of the certificate used for signatures must also include “digital signature”. These factors must be taken into account when ordering a certificate.
 
-#### Server certificate of the data supplier or the party authorised by the data supplier
+#### Customer certificate of the data supplier or the party authorised by the data supplier
 
 Data traffic must be protected (encryption and counterpart identification) using x.509 (version 3) certificates.
 
-Connections must be established using a server certificate showing the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
+Connections must be established using a customer certificate showing the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier. The party authorised by the data supplier refers, for example, to a service centre which the data supplier has authorised to compile and/or send the reports on its behalf. Such authorisation must be sent to Customs in writing.
 
 Acceptance of the signature requires that
 
 either
 
-a) the server certificate was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital and Population Data Services Agency, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT number of the data supplier or the party authorised by the data supplier
+a) the customer certificate was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list of the Digital and Population Data Services Agency, and the serialNumber attribute of the subject of the certificate consists of the Business ID or VAT number of the data supplier or the party authorised by the data supplier
 
 or
 
-b) the server certificate is an eIDAS-approved website identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the organizationIdentifier attribute of the subject of the certificate consists of the Business ID or VAT identifier of the data supplier or the party authorised by the data supplier.
+b) the customer certificate is an eIDAS-approved customer (OID identifier: 1.3.6.1.5.5.7.3.2) identification certificate, the certificate is valid and is not included in the certificate revocation list of party providing the certificate, and the serialNumber attribute or, if it is missing, the organizationIdentifier attribute of the subject of the certificate consists of the Finnish Business ID or VAT identifier of the data supplier or the party authorised by the data supplier.
 
 If the same Business ID or VAT number is used in the data traffic certificate and outgoing message signature certificate of the data supplier, the same certificate can be used for both purposes.
 
-Please note: For the protection of data communications to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used must have at least 3072 bits. In addition, the server certificate must be of type QWAC (Qualified Website Authentication Certificate), which includes extensions (X509v3 Extended Key Usage: TLS Web Client Authentication, TLS Web Server Authentication). These factors must be taken into account when ordering a certificate.
+Please note: For the protection of data communications to meet the information security requirements of the National Cyber Security Centre referred to below, the RSA public key of the certificate used must have at least 3072 bits. In addition, Client Authentication (TLS Web Client Authentication) which has OID identifier 1.3.6.1.5.5.7.3.2 has to be defined in the X509v3 Extended Key Usage field of the certificate. These factors must be taken into account when ordering a certificate.
 
 #### Server certificate of the Account Register
 
 The data supplier will identify the counterpart of the connection as the Account Register on the basis of the server certificate provided that  
 a) the server certificate of the party maintaining the Account Register (Customs) was issued by the Digital and Population Data Services Agency, the certificate is valid and is not included in the certificate revocation list maintained by the Digital and Population Data Services Agency  
-b) the serialNumber attribute of the subject of the certificate is “FI02454428” or “0245442-8”.
+b) the value in the SerialNumber field (OID 2.5.4.5) is “FI02454428” or “0245442-8” (valid until 01/2027) and in the new certificate there is a replacing OrganizationIdentifier field (OID 2.5.4.97) with value ”VATFI-02454428” or ”NTRFI-0245442-8” from 01/2027 onwards.
 
 ### 3.2 Protecting the connections <a name="3-2"></a>
 
-The connections of the Account Register data updating interface must be protected with TLS encryption using version 1.2 or later of the TLS protocol. Both ends of the connection are identified with the server certificates described above, using two-way handshaking. The connection must be established using the ephemeral Diffie-Hellman (DHE) key exchange protocol where a new unique private encryption key is created for each session. The purpose of this procedure is to ensure that encryption has the forward secrecy feature so that possible discovery of the encryption key would not subsequently lead to a disclosure of the encrypted information.
+The connections of the Account Register data updating interface must be protected with TLS encryption using version 1.2 or later of the TLS protocol. Both ends of the connection are identified with the certificates described above, using two-way handshaking. The connection must be established using the ephemeral Diffie-Hellman (DHE) key exchange protocol where a new unique private encryption key is created for each session. The purpose of this procedure is to ensure that encryption has the forward secrecy feature so that possible discovery of the encryption key would not subsequently lead to a disclosure of the encrypted information.
 
 The cryptographic algorithms used in TLS encryption must have a cryptographic strength at least equal to the cryptographic strength requirements specified by the Finnish Transport and Communications Agency Traficom for national protection level ST IV. The current strength requirements are described (in Finnish) in the document https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnro: 190/651/2015).
 
