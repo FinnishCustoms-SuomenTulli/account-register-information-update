@@ -6,7 +6,7 @@
 
 # Beskrivning av Kontoregistrets uppdateringsgränssnitt
 
-*Dokumentversion 3.0.7*
+*Dokumentversion 3.0.8*
 
 ## Versionshistorik
 
@@ -39,6 +39,7 @@ Version|Datum|Beskrivning|
 3.0.5|27.8.2024|Instruktioner för anmälandet av uppgifter gällande almänna intressebevakare har lagts till i avsnitt5 samt i schemat och exempel.|  
 3.0.6|10.11.2025|Nya uppdateringsgränssnitt för kreditinstitut har lagts till. Från och med 1.12.2025 ska kreditinstitut anmäla startdatum och eventuellt slutdatum för kundrelation för både fysiska personer och organisationer som är kontoinnehavare eller innehavare av användningsrätt till ett konto.|  
 3.0.7|1.6.2026|Uppdaterade nya instruktioner för produktionssättning och underhåll.|  
+3.0.8|19.11.2026|Uppdateringar i avsnitt 3.1 och 3.2 i anvisningar om certifikat för uppgiftsleverantören.|
 
 ## Innehåll
 
@@ -117,42 +118,42 @@ Av bilden framgår att uppdateringsgränssnittet är synkront. I brödtexten til
 
 #### Signeringscertifikat för utgående meddelanden
 
-Utgående meddelanden ska automatiskt signeras med servercertifikatet x.509 (version 3), av vilket uppgiftsleverantörens FO-nummer eller momsnummer ska framgå. Godkännande av signaturen förutsätter
+Utgående meddelanden ska automatiskt signeras med kundcertifikatet x.509 (version 3), av vilket uppgiftsleverantörens FO-nummer eller momsnummer ska framgå. Godkännande av signaturen förutsätter
 
 antingen  
 a) att certifikatet har utfärdats av Myndigheten för digitalisering och befolkningsdata (MDB), är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är uppgiftsleverantörens FO-nummer eller momsnummer.
 
 eller  
-b) att certifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är uppgiftsleverantörens FO-nummer eller momsnummer.
+b) att certifikatet är ett eIDAS-godkänt identifieringscertifikat för kunder, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet serialNumber, eller om det inte finns ett, attributet organizationIdentifier för objektet för certifikatet är uppgiftsleverantörens finskt FO-nummer eller momsnummer.
 
 Obs. För att meddelandenas signaturer ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används för signaturer ha minst 3072 bitar. Användningssyftena för ett certifikat som används för signaturer ska också omfatta ”digital signatur”. Man ska beakta dessa omständigheter när man beställer ett certifikat.
 
-#### Servercertifikat för uppgiftsleverantören eller en aktör som befullmäktigats av uppgiftsleverantören
+#### Kundcertifikat för uppgiftsleverantören eller en aktör som befullmäktigats av uppgiftsleverantören
 
 Datakommunikationen ska skyddas (kryptering och identifiering av motpart) med x.509-certifikat (version 3).
 
-Ett servercertifikat ska användas för att bilda en förbindelse, och FO-numret eller momsnumret för uppgiftsleverantören eller en aktör som befullmäktigats av denne ska framgå av certifikatet. Med en aktör som befullmäktigats av leverantören av uppgifter avses exempelvis en servicecentral som leverantören har befullmäktigat att upprätta och/eller skicka anmälningar. En fullmakt gällande detta ska lämnas in skriftligen till Tullen.
+Ett kundcertifikat ska användas för att bilda en förbindelse, och FO-numret eller momsnumret för uppgiftsleverantören eller en aktör som befullmäktigats av denne ska framgå av certifikatet. Med en aktör som befullmäktigats av leverantören av uppgifter avses exempelvis en servicecentral som leverantören har befullmäktigat att upprätta och/eller skicka anmälningar. En fullmakt gällande detta ska lämnas in skriftligen till Tullen.
 
 Godkännande av signaturen förutsätter
 
 antingen  
-a) att certifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
+a) att kundcertifikatet har utfärdats av MDB, är i kraft och inte finns på MDB:s spärrlista och att attributet serialNumber för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
 
 eller  
-b) att servercertifikatet är ett eIDAS-godkänt identifieringscertifikat för webbplatser, är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet organizationIdentifier för objektet för certifikatet är FO-numret eller momsnumret för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
-Om uppgiftsleverantörens servercertifikat och signeringscertifikat för utgående meddelanden har samma FO-nummer eller momsnummer, kan samma certifikat användas för båda ändamålen.
+b) att kundcertifikatet är ett eIDAS-godkänt identifieringscertifikat för kunder (OID: 1.3.6.1.5.5.7.3.2), är i kraft och inte finns på certifikatutfärdarens uppdaterade spärrlista och att attributet serialNumber, eller om det inte finns ett, attributet organizationIdentifier för objektet för certifikatet är finskt FO-nummer eller momsnummer för leverantören av uppgifter eller en aktör som befullmäktigats av denne.
+Om uppgiftsleverantörens kundcertifikat och signeringscertifikat för utgående meddelanden har samma FO-nummer eller momsnummer, kan samma certifikat användas för båda ändamålen.
 
-Obs. För att skyddet av datakommunikationen ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används ha minst 3072 bitar. Dessutom måste servercertifikatet vara av typen QWAC (Qualified Website Authentication Certificate), som innehåller tillägg (X509v3 Extended Key Usage: TLS Web Client Authentication, TLS Web Server Authentication). Man ska beakta dessa omständigheter när man beställer ett certifikat.
+Obs. För att skyddet av datakommunikationen ska uppfylla de datasäkerhetskrav från Cybersäkerhetscentret som det hänvisas till nedan ska den öppna nyckeln (RSA public key) för certifikatet som används ha minst 3072 bitar. Dessutom måste certifikatet ha Client Authentication (TLS Web Client Authentication) med OID 1.3.6.1.5.5.7.3.2. definierad i fältet X509v3 Extended Key Usage. Man ska beakta dessa omständigheter när man beställer ett certifikat.
 
 #### Kontoregistrets servercertifikat
 
 Leverantören av uppgifter identifierar förbindelsens motpart som Kontoregistret på basis av ett servercertifikat, förutsatt att   
 a) servercertifikatet för den som ansvarar för Kontoregistret (Tullen) har utfärdats av MDB och inte finns med på MDB:s spärrlista  
-b) attributet serialNumber för certifikatets objekt är ”FI02454428” eller ”0245442-8”
+b) värdet i fältet SerialNumber (OID 2.5.4.5) är “FI02454428” eller “0245442-8” (giltigt till 01/2027) och det nya certifikatet från och med 01/2027 har ett ersättande fält OrganizationIdentifier (OID 2.5.4.97) som har värdet ”VATFI-02454428” eller ”NTRFI-0245442-8”.
 
 ### 3.2 Skydd för förbindelser <a name="3-2"></a>
 
-Förbindelserna i Kontoregistrets uppdateringsgränssnitt är skyddade med TLS-kryptering med TLS-protokollets version 1.2 eller högre. Båda ändarna av förbindelsen identifieras med ovan beskrivna servercertifikat genom ömsesidig TLS-autentisering. Förbindelsen ska bildas med hjälp av ett ephemeral Diffie-Hellman (DHE) -nyckelbyte där det för varje session skapas en ny unik privat krypteringsnyckel. Syftet med detta förfarande är att säkerställa krypteringens forward secrecy-egenskap så att ett röjande av krypteringsnyckeln inte leder till att den krypterade informationen röjs.
+Förbindelserna i Kontoregistrets uppdateringsgränssnitt är skyddade med TLS-kryptering med TLS-protokollets version 1.2 eller högre. Båda ändarna av förbindelsen identifieras med ovan beskrivna certifikat genom ömsesidig TLS-autentisering. Förbindelsen ska bildas med hjälp av ett ephemeral Diffie-Hellman (DHE) -nyckelbyte där det för varje session skapas en ny unik privat krypteringsnyckel. Syftet med detta förfarande är att säkerställa krypteringens forward secrecy-egenskap så att ett röjande av krypteringsnyckeln inte leder till att den krypterade informationen röjs.
 
 De kryptografiska algoritmer som används vid TLS-kryptering ska till sin kryptografiska styrka motsvara minst Transport- och kommunikationsverkets krav på kryptografisk styrka för den nationella skyddsnivån ST IV. De nuvarande kraven gällande styrkan beskrivs på finska i dokumentet https://www.kyberturvallisuuskeskus.fi/sites/default/files/media/regulation/ohje-kryptografiset-vahvuusvaatimukset-kansalliset-suojaustasot.pdf (Dnr: 190/651/2015).
 
